@@ -28,7 +28,7 @@
             <td>
                 <asp:GridView ID="gdvCategoriasNoticia" runat="server" OnRowCommand="gdvCategoriasNoticia_RowCommand"
                     Width="100%" AutoGenerateColumns="false">
-                    <AlternatingRowStyle BackColor="Gray" ForeColor="White" />
+                    <AlternatingRowStyle BackColor="#B4B3B3" ForeColor="White" />
                     <Columns>
                         <asp:TemplateField HeaderText="">
                             <ItemTemplate>

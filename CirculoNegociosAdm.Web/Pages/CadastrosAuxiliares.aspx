@@ -26,5 +26,11 @@
             </td>
         </tr>
 
+        <tr>
+            <td>
+                <a href="CadastroEstado.aspx">Cadastro de Estados</a>
+            </td>
+        </tr>
+
     </table>
 </asp:Content>

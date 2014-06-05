@@ -5,13 +5,14 @@
 <head runat="server">
     <title></title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <%@ register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
-    </asp:ScriptManager>
+    <ajaxToolkit:ToolkitScriptManager ID="scriptmanager1" runat="server">
+    </ajaxToolkit:ToolkitScriptManager>
     <div class="page">
         <div class="header">
             <div class="title">
@@ -43,9 +44,9 @@
                         <asp:MenuItem NavigateUrl="~/About.aspx" Text="Ajuda" />
                         <asp:MenuItem NavigateUrl="~/Pages/CadastroCliente.aspx" Text="Cadastro Cliente" />
                         <asp:MenuItem NavigateUrl="~/Pages/CadastroNoticia.aspx" Text="Cadastro Noticia" />
-                        <asp:MenuItem NavigateUrl="~/Pages/CadastrosAuxiliares.aspx" Text="Cadastros Auxiliares" />
+                        <asp:MenuItem NavigateUrl="~/Pages/CadastroBanner.aspx" Text="Cadastro Banner" />
                         <asp:MenuItem NavigateUrl="~/Account/Register.aspx" Text="Cadastro Administradores" />
-
+                        <asp:MenuItem NavigateUrl="~/Pages/CadastrosAuxiliares.aspx" Text="Cadastros Auxiliares" />
                     </Items>
                 </asp:Menu>
             </div>

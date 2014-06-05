@@ -44,7 +44,9 @@
     <Compile Include="CategoriaClienteBusiness.cs" />
     <Compile Include="CategoriaNoticiaBusiness.cs" />
     <Compile Include="ClientesBusiness.cs" />
+    <Compile Include="EstadoBusiness.cs" />
     <Compile Include="LogradouroBusiness.cs" />
+    <Compile Include="NoticiaBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoBannerBusiness.cs" />
   </ItemGroup>

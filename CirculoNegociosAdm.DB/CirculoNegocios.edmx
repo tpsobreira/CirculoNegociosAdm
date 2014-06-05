@@ -12,6 +12,13 @@
           <EntitySet Name="tbCategoriaNoticia" EntityType="CirculoNegocioModel.Store.tbCategoriaNoticia" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tbClientes" EntityType="CirculoNegocioModel.Store.tbClientes" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tbEstados" EntityType="CirculoNegocioModel.Store.tbEstados" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbFilePathNoticias" EntityType="CirculoNegocioModel.Store.tbFilePathNoticias" store:Type="Tables" store:Schema="dbo" store:Name="tbFilePathNoticias">
+            <DefiningQuery>SELECT 
+      [tbFilePathNoticias].[id] AS [id], 
+      [tbFilePathNoticias].[idNoticia] AS [idNoticia], 
+      [tbFilePathNoticias].[filePath] AS [filePath]
+      FROM [dbo].[tbFilePathNoticias] AS [tbFilePathNoticias]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="tbNoticias" EntityType="CirculoNegocioModel.Store.tbNoticias" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tbTipoBanner" EntityType="CirculoNegocioModel.Store.tbTipoBanner" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tbUsuarioAdministrador" EntityType="CirculoNegocioModel.Store.tbUsuarioAdministrador" store:Type="Tables" Schema="dbo" />
@@ -38,6 +45,10 @@
           <AssociationSet Name="FK__tbCliente__idCat__123EB7A3" Association="CirculoNegocioModel.Store.FK__tbCliente__idCat__123EB7A3">
             <End Role="tbCategoriaCliente" EntitySet="tbCategoriaCliente" />
             <End Role="tbClientes" EntitySet="tbClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbFilePat__idNot__44CA3770" Association="CirculoNegocioModel.Store.FK__tbFilePat__idNot__44CA3770">
+            <End Role="tbNoticias" EntitySet="tbNoticias" />
+            <End Role="tbFilePathNoticias" EntitySet="tbFilePathNoticias" />
           </AssociationSet>
           <AssociationSet Name="FK__tbNoticia__estad__3A4CA8FD" Association="CirculoNegocioModel.Store.FK__tbNoticia__estad__3A4CA8FD">
             <End Role="tbEstados" EntitySet="tbEstados" />
@@ -127,6 +138,17 @@
           </Key>
           <Property Name="sigla" Type="char" Nullable="false" MaxLength="2" />
           <Property Name="nome" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'CirculoNegocio.dbo.tbFilePathNoticias' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="tbFilePathNoticias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idNoticia" Type="int" />
+          <Property Name="filePath" Type="varchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="tbNoticias">
           <Key>
@@ -236,6 +258,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__tbFilePat__idNot__44CA3770">
+          <End Role="tbNoticias" Type="CirculoNegocioModel.Store.tbNoticias" Multiplicity="0..1" />
+          <End Role="tbFilePathNoticias" Type="CirculoNegocioModel.Store.tbFilePathNoticias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbNoticias">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbFilePathNoticias">
+              <PropertyRef Name="idNoticia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__tbNoticia__estad__3A4CA8FD">
           <End Role="tbEstados" Type="CirculoNegocioModel.Store.tbEstados" Multiplicity="0..1" />
           <End Role="tbNoticias" Type="CirculoNegocioModel.Store.tbNoticias" Multiplicity="*" />
@@ -305,6 +339,11 @@
           <AssociationSet Name="FK__tbNoticia__estad__3A4CA8FD" Association="CirculoNegocioModel.FK__tbNoticia__estad__3A4CA8FD">
             <End Role="tbEstado" EntitySet="tbEstados" />
             <End Role="tbNoticia" EntitySet="tbNoticias" />
+          </AssociationSet>
+          <EntitySet Name="tbFilePathNoticias" EntityType="CirculoNegocioModel.tbFilePathNoticia" />
+          <AssociationSet Name="FK__tbFilePat__idNot__44CA3770" Association="CirculoNegocioModel.FK__tbFilePat__idNot__44CA3770">
+            <End Role="tbNoticia" EntitySet="tbNoticias" />
+            <End Role="tbFilePathNoticia" EntitySet="tbFilePathNoticias" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="tbCategoriaCliente">
@@ -440,6 +479,7 @@
           <Property Type="String" Name="Sinopse" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="dataHoraDe" />
           <Property Type="DateTime" Name="dataHoraAte" />
+          <NavigationProperty Name="tbFilePathNoticias" Relationship="CirculoNegocioModel.FK__tbFilePat__idNot__44CA3770" FromRole="tbNoticia" ToRole="tbFilePathNoticia" />
         </EntityType>
         <EntityType Name="tbTipoBanner">
           <Key>
@@ -532,6 +572,27 @@
             </Principal>
             <Dependent Role="tbNoticia">
               <PropertyRef Name="estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbFilePathNoticia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idNoticia" />
+          <Property Type="String" Name="filePath" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbNoticia" Relationship="CirculoNegocioModel.FK__tbFilePat__idNot__44CA3770" FromRole="tbFilePathNoticia" ToRole="tbNoticia" />
+        </EntityType>
+        <Association Name="FK__tbFilePat__idNot__44CA3770">
+          <End Type="CirculoNegocioModel.tbNoticia" Role="tbNoticia" Multiplicity="0..1" />
+          <End Type="CirculoNegocioModel.tbFilePathNoticia" Role="tbFilePathNoticia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbNoticia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbFilePathNoticia">
+              <PropertyRef Name="idNoticia" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -666,6 +727,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbFilePathNoticias">
+            <EntityTypeMapping TypeName="CirculoNegocioModel.tbFilePathNoticia">
+              <MappingFragment StoreEntitySet="tbFilePathNoticias">
+                <ScalarProperty Name="filePath" ColumnName="filePath" />
+                <ScalarProperty Name="idNoticia" ColumnName="idNoticia" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -727,12 +797,17 @@
           <ConnectorPoint PointX="11.375" PointY="4.5" />
         </AssociationConnector>
         <AssociationConnector Association="CirculoNegocioModel.FK__tbNoticia__idCat__3B40CD36" >
-          <ConnectorPoint PointX="6.875" PointY="12.071848958333334" />
-          <ConnectorPoint PointX="7.625" PointY="12.071848958333334" />
+          <ConnectorPoint PointX="6.875" PointY="12.167999674479166" />
+          <ConnectorPoint PointX="7.625" PointY="12.167999674479166" />
         </AssociationConnector>
         <AssociationConnector Association="CirculoNegocioModel.FK__tbNoticia__estad__3A4CA8FD" >
           <ConnectorPoint PointX="6.875" PointY="9.8026432291666659" />
           <ConnectorPoint PointX="7.625" PointY="9.8026432291666659" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="CirculoNegocioModel.tbFilePathNoticia" Width="1.5" PointX="9.875" PointY="10" Height="1.7879850260416674" />
+        <AssociationConnector Association="CirculoNegocioModel.FK__tbFilePat__idNot__44CA3770" >
+          <ConnectorPoint PointX="9.125" PointY="10.893992513020834" />
+          <ConnectorPoint PointX="9.875" PointY="10.893992513020834" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

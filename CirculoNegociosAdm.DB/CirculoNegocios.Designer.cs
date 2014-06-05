@@ -27,6 +27,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("CirculoNegocioModel", "FK__tbBannerP__idCli__3493CFA7", "tbCliente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CirculoNegociosAdm.DB.tbCliente), "tbBannerPrincipal", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CirculoNegociosAdm.DB.tbBannerPrincipal), true)]
 [assembly: EdmRelationshipAttribute("CirculoNegocioModel", "FK__tbNoticia__idCat__3B40CD36", "tbCategoriaNoticia", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CirculoNegociosAdm.DB.tbCategoriaNoticia), "tbNoticia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CirculoNegociosAdm.DB.tbNoticia), true)]
 [assembly: EdmRelationshipAttribute("CirculoNegocioModel", "FK__tbNoticia__estad__3A4CA8FD", "tbEstado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CirculoNegociosAdm.DB.tbEstado), "tbNoticia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CirculoNegociosAdm.DB.tbNoticia), true)]
+[assembly: EdmRelationshipAttribute("CirculoNegocioModel", "FK__tbFilePat__idNot__44CA3770", "tbNoticia", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CirculoNegociosAdm.DB.tbNoticia), "tbFilePathNoticia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CirculoNegociosAdm.DB.tbFilePathNoticia), true)]
 
 #endregion
 
@@ -221,6 +222,22 @@ namespace CirculoNegociosAdm.DB
             }
         }
         private ObjectSet<tbTipoBanner> _tbTipoBanners;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbFilePathNoticia> tbFilePathNoticias
+        {
+            get
+            {
+                if ((_tbFilePathNoticias == null))
+                {
+                    _tbFilePathNoticias = base.CreateObjectSet<tbFilePathNoticia>("tbFilePathNoticias");
+                }
+                return _tbFilePathNoticias;
+            }
+        }
+        private ObjectSet<tbFilePathNoticia> _tbFilePathNoticias;
 
         #endregion
 
@@ -296,6 +313,14 @@ namespace CirculoNegociosAdm.DB
         public void AddTotbTipoBanners(tbTipoBanner tbTipoBanner)
         {
             base.AddObject("tbTipoBanners", tbTipoBanner);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbFilePathNoticias EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbFilePathNoticias(tbFilePathNoticia tbFilePathNoticia)
+        {
+            base.AddObject("tbFilePathNoticias", tbFilePathNoticia);
         }
 
         #endregion
@@ -2113,6 +2138,153 @@ namespace CirculoNegociosAdm.DB
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="CirculoNegocioModel", Name="tbFilePathNoticia")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tbFilePathNoticia : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new tbFilePathNoticia object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        public static tbFilePathNoticia CreatetbFilePathNoticia(global::System.Int32 id)
+        {
+            tbFilePathNoticia tbFilePathNoticia = new tbFilePathNoticia();
+            tbFilePathNoticia.id = id;
+            return tbFilePathNoticia;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idNoticia
+        {
+            get
+            {
+                return _idNoticia;
+            }
+            set
+            {
+                OnidNoticiaChanging(value);
+                ReportPropertyChanging("idNoticia");
+                _idNoticia = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idNoticia");
+                OnidNoticiaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idNoticia;
+        partial void OnidNoticiaChanging(Nullable<global::System.Int32> value);
+        partial void OnidNoticiaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String filePath
+        {
+            get
+            {
+                return _filePath;
+            }
+            set
+            {
+                OnfilePathChanging(value);
+                ReportPropertyChanging("filePath");
+                _filePath = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("filePath");
+                OnfilePathChanged();
+            }
+        }
+        private global::System.String _filePath;
+        partial void OnfilePathChanging(global::System.String value);
+        partial void OnfilePathChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("CirculoNegocioModel", "FK__tbFilePat__idNot__44CA3770", "tbNoticia")]
+        public tbNoticia tbNoticia
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tbNoticia>("CirculoNegocioModel.FK__tbFilePat__idNot__44CA3770", "tbNoticia").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tbNoticia>("CirculoNegocioModel.FK__tbFilePat__idNot__44CA3770", "tbNoticia").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<tbNoticia> tbNoticiaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tbNoticia>("CirculoNegocioModel.FK__tbFilePat__idNot__44CA3770", "tbNoticia");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tbNoticia>("CirculoNegocioModel.FK__tbFilePat__idNot__44CA3770", "tbNoticia", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="CirculoNegocioModel", Name="tbNoticia")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -2479,6 +2651,28 @@ namespace CirculoNegociosAdm.DB
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tbEstado>("CirculoNegocioModel.FK__tbNoticia__estad__3A4CA8FD", "tbEstado", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("CirculoNegocioModel", "FK__tbFilePat__idNot__44CA3770", "tbFilePathNoticia")]
+        public EntityCollection<tbFilePathNoticia> tbFilePathNoticias
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tbFilePathNoticia>("CirculoNegocioModel.FK__tbFilePat__idNot__44CA3770", "tbFilePathNoticia");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tbFilePathNoticia>("CirculoNegocioModel.FK__tbFilePat__idNot__44CA3770", "tbFilePathNoticia", value);
                 }
             }
         }

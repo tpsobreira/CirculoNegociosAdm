@@ -28,7 +28,7 @@
             <td>
                 <asp:GridView ID="gdvTipoBanner" runat="server" OnRowCommand="gdvTipoBanner_RowCommand"
                     Width="100%" AutoGenerateColumns="false">
-                    <AlternatingRowStyle BackColor="Gray" ForeColor="White" />
+                    <AlternatingRowStyle BackColor="#B4B3B3" ForeColor="White" />
                     <Columns>
                         <asp:TemplateField HeaderText="">
                             <ItemTemplate>
