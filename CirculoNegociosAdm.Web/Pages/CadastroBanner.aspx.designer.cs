@@ -85,6 +85,15 @@ namespace CirculoNegociosAdm.Pages {
         protected global::System.Web.UI.WebControls.RadioButtonList rdlAtivo;
         
         /// <summary>
+        /// FileUpImagensBanner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpImagensBanner;
+        
+        /// <summary>
         /// btnIncluir control.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,15 @@ namespace CirculoNegociosAdm.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAlterar;
+        
+        /// <summary>
+        /// gdvBanners control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gdvBanners;
         
         /// <summary>
         /// AbaBannerPrincipal control.
@@ -157,6 +175,15 @@ namespace CirculoNegociosAdm.Pages {
         protected global::System.Web.UI.WebControls.RadioButtonList rdlAtivoBannerPrincipal;
         
         /// <summary>
+        /// FileUpImagensBannerPrincipal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpImagensBannerPrincipal;
+        
+        /// <summary>
         /// btnIncluirBannerPrincipal control.
         /// </summary>
         /// <remarks>
@@ -173,5 +200,14 @@ namespace CirculoNegociosAdm.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button2;
+        
+        /// <summary>
+        /// gdvBannersPrincipal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gdvBannersPrincipal;
     }
 }

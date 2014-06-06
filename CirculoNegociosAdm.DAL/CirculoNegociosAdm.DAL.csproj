@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BannerDAL.cs" />
+    <Compile Include="BannerPrincipalDAL.cs" />
     <Compile Include="CategoriaClienteDAL.cs" />
     <Compile Include="CategoriaNoticiaDAL.cs" />
     <Compile Include="ClientesDAL.cs" />

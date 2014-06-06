@@ -85,12 +85,7 @@ namespace CirculoNegociosAdm.Pages
             ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), Guid.NewGuid().ToString(), "alert('" + mensagem + "');", true);
         }
 
-        private void ConsultaCEP(string cep)
-        { 
-            
-
-        }
-
+        
         protected void lnkCep_Click(object sender, EventArgs e)
         {
             LogradouroBusiness logradouroBusiness = new LogradouroBusiness();

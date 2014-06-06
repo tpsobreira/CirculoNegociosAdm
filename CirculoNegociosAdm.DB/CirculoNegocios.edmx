@@ -71,6 +71,8 @@
           <Property Name="dataDe" Type="datetime" />
           <Property Name="dataAte" Type="datetime" />
           <Property Name="Ativo" Type="bit" />
+          <Property Name="DataUltimaAlteracao" Type="datetime" />
+          <Property Name="responsavelUltimaAlteracao" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="tbBannerPrincipal">
           <Key>
@@ -83,6 +85,8 @@
           <Property Name="dataDe" Type="datetime" />
           <Property Name="dataAte" Type="datetime" />
           <Property Name="Ativo" Type="bit" />
+          <Property Name="DataUltimaAlteracao" Type="datetime" />
+          <Property Name="responsavelUltimaAlteracao" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="tbCategoriaCliente">
           <Key>
@@ -427,6 +431,8 @@
           <NavigationProperty Name="tbEstado" Relationship="CirculoNegocioModel.FK__tbBanner__estado__2FCF1A8A" FromRole="tbBanner" ToRole="tbEstado" />
           <NavigationProperty Name="tbCliente" Relationship="CirculoNegocioModel.FK__tbBanner__idClie__2EDAF651" FromRole="tbBanner" ToRole="tbCliente" />
           <NavigationProperty Name="tbTipoBanner" Relationship="CirculoNegocioModel.FK__tbBanner__idTipo__2DE6D218" FromRole="tbBanner" ToRole="tbTipoBanner" />
+          <Property Type="DateTime" Name="DataUltimaAlteracao" />
+          <Property Type="String" Name="responsavelUltimaAlteracao" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tbBannerPrincipal">
           <Key>
@@ -441,6 +447,8 @@
           <Property Type="Boolean" Name="Ativo" />
           <NavigationProperty Name="tbEstado" Relationship="CirculoNegocioModel.FK__tbBannerP__estad__3587F3E0" FromRole="tbBannerPrincipal" ToRole="tbEstado" />
           <NavigationProperty Name="tbCliente" Relationship="CirculoNegocioModel.FK__tbBannerP__idCli__3493CFA7" FromRole="tbBannerPrincipal" ToRole="tbCliente" />
+          <Property Type="DateTime" Name="DataUltimaAlteracao" />
+          <Property Type="String" Name="responsavelUltimaAlteracao" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tbCategoriaNoticia">
           <Key>
@@ -658,6 +666,8 @@
           <EntitySetMapping Name="tbBanners">
             <EntityTypeMapping TypeName="CirculoNegocioModel.tbBanner">
               <MappingFragment StoreEntitySet="tbBanner">
+                <ScalarProperty Name="responsavelUltimaAlteracao" ColumnName="responsavelUltimaAlteracao" />
+                <ScalarProperty Name="DataUltimaAlteracao" ColumnName="DataUltimaAlteracao" />
                 <ScalarProperty Name="Ativo" ColumnName="Ativo" />
                 <ScalarProperty Name="dataAte" ColumnName="dataAte" />
                 <ScalarProperty Name="dataDe" ColumnName="dataDe" />
@@ -672,6 +682,8 @@
           <EntitySetMapping Name="tbBannerPrincipals">
             <EntityTypeMapping TypeName="CirculoNegocioModel.tbBannerPrincipal">
               <MappingFragment StoreEntitySet="tbBannerPrincipal">
+                <ScalarProperty Name="responsavelUltimaAlteracao" ColumnName="responsavelUltimaAlteracao" />
+                <ScalarProperty Name="DataUltimaAlteracao" ColumnName="DataUltimaAlteracao" />
                 <ScalarProperty Name="Ativo" ColumnName="Ativo" />
                 <ScalarProperty Name="dataAte" ColumnName="dataAte" />
                 <ScalarProperty Name="dataDe" ColumnName="dataDe" />
@@ -764,8 +776,8 @@
           <ConnectorPoint PointX="2.25" PointY="4.1151432291666667" />
           <ConnectorPoint PointX="3" PointY="4.1151432291666667" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="CirculoNegocioModel.tbBanner" Width="1.5" PointX="7.625" PointY="4.25" Height="3.1340950520833335" />
-        <EntityTypeShape EntityType="CirculoNegocioModel.tbBannerPrincipal" Width="1.5" PointX="10.625" PointY="4.5" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="CirculoNegocioModel.tbBanner" Width="1.5" PointX="7.625" PointY="4.25" Height="3.5186979166666656" />
+        <EntityTypeShape EntityType="CirculoNegocioModel.tbBannerPrincipal" Width="1.5" PointX="10.625" PointY="4.5" Height="3.1340950520833335" />
         <EntityTypeShape EntityType="CirculoNegocioModel.tbCategoriaNoticia" Width="1.5" PointX="5.375" PointY="11.625" Height="1.9802864583333317" />
         <EntityTypeShape EntityType="CirculoNegocioModel.tbEstado" Width="1.5" PointX="5.375" PointY="8.625" Height="1.9802864583333317" />
         <EntityTypeShape EntityType="CirculoNegocioModel.tbNoticia" Width="1.5" PointX="7.625" PointY="9" Height="3.5186979166666674" />
@@ -773,23 +785,25 @@
         <AssociationConnector Association="CirculoNegocioModel.FK__tbBanner__estado__2FCF1A8A" >
           <ConnectorPoint PointX="6.875" PointY="8.6261528461538468" />
           <ConnectorPoint PointX="7.25" PointY="8.2511528461538468" />
-          <ConnectorPoint PointX="7.25" PointY="5.9889245260416679" />
-          <ConnectorPoint PointX="7.625" PointY="5.9889245260416679" />
+          <ConnectorPoint PointX="7.25" PointY="5.2098927259786656" />
+          <ConnectorPoint PointX="7.625" PointY="5.2098927259786656" />
         </AssociationConnector>
         <AssociationConnector Association="CirculoNegocioModel.FK__tbBanner__idClie__2EDAF651" >
-          <ConnectorPoint PointX="4.5" PointY="4.53125" />
-          <ConnectorPoint PointX="7.625" PointY="4.53125" />
+          <ConnectorPoint PointX="4.5" PointY="7.2230029296874987" />
+          <ConnectorPoint PointX="7.166666666666667" PointY="7.2230029296874978" />
+          <ConnectorPoint PointX="7.333333333333333" PointY="7.2230029296874987" />
+          <ConnectorPoint PointX="7.625" PointY="7.2230029296874987" />
         </AssociationConnector>
         <AssociationConnector Association="CirculoNegocioModel.FK__tbBanner__idTipo__2DE6D218" >
-          <ConnectorPoint PointX="6.875" PointY="6.3986669921874988" />
-          <ConnectorPoint PointX="7.166666666666667" PointY="6.3986669921874979" />
-          <ConnectorPoint PointX="7.333333333333333" PointY="6.3986669921874988" />
-          <ConnectorPoint PointX="7.625" PointY="6.3986669921874988" />
+          <ConnectorPoint PointX="6.875" PointY="6.0950895921559987" />
+          <ConnectorPoint PointX="7.166666666666667" PointY="6.0950895921559978" />
+          <ConnectorPoint PointX="7.333333333333333" PointY="6.0950895921559987" />
+          <ConnectorPoint PointX="7.625" PointY="6.0950895921559987" />
         </AssociationConnector>
         <AssociationConnector Association="CirculoNegocioModel.FK__tbBannerP__estad__3587F3E0" >
           <ConnectorPoint PointX="6.875" PointY="8.8130789230769242" />
-          <ConnectorPoint PointX="11.375" PointY="8.8130789230769242" />
-          <ConnectorPoint PointX="11.375" PointY="7.2494921875" />
+          <ConnectorPoint PointX="11.78125" PointY="8.8130789230769242" />
+          <ConnectorPoint PointX="11.78125" PointY="7.6340950520833335" />
         </AssociationConnector>
         <AssociationConnector Association="CirculoNegocioModel.FK__tbBannerP__idCli__3493CFA7" >
           <ConnectorPoint PointX="4.5" PointY="3.5862939453125" />

@@ -8,5 +8,6 @@ namespace CirculoNegociosAdm.Entity
 {
     public class BannerEntity : tbBanner
     {
+        public string nomeCliente { get; set; }
     }
 }
