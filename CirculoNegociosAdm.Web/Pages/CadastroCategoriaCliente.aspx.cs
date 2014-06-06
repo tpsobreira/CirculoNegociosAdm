@@ -54,7 +54,6 @@ namespace CirculoNegociosAdm.Pages
                 string retorno = categoriaClienteBusiness.DeletaCategoriaCliente(Convert.ToInt32(e.CommandArgument));
 
                 this.Alert(retorno);
-
                 CarregaGridView();
             }
         }

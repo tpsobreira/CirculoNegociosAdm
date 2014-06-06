@@ -115,7 +115,9 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Caminho Arquivo">
                                         <ItemTemplate>
-                                            <asp:Literal ID="litCaminhoArquivo" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"imagemFilePath") %>'></asp:Literal>
+                                            <asp:Literal ID="litCaminhoArquivo" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().Substring(DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().LastIndexOf("Banners"), DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().Length - DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().LastIndexOf("Banners")) %>'></asp:Literal>
+                                                                                                       
+                                            
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Data Inicio">
@@ -243,7 +245,9 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Caminho Arquivo">
                                         <ItemTemplate>
-                                            <asp:Literal ID="litCaminhoArquivo" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"imagemFilePath") %>'></asp:Literal>
+                                            <asp:Literal ID="litCaminhoArquivo" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().Substring(DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().LastIndexOf("BannerPrincipal"), DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().Length - DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().LastIndexOf("BannerPrincipal")) %>'></asp:Literal>
+                                                                                                       
+                                            
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Data Inicio">

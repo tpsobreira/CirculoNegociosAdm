@@ -53,7 +53,7 @@ namespace CirculoNegociosAdm.Pages
                     Directory.CreateDirectory(Server.MapPath(@"~/Banners/" + idBanner));
                 }
 
-                string caminhoArquivo = Server.MapPath(@"~/Banners/" + idBanner) + @"\\" + FileUpImagensBanner.FileName;
+                string caminhoArquivo = Server.MapPath(@"~/Banners/" + idBanner) + @"\" + FileUpImagensBanner.FileName;
                 FileUpImagensBanner.SaveAs(caminhoArquivo);
 
                 bannerBusiness.AtualizaFilePathImagemBanner(idBanner, caminhoArquivo);
@@ -116,31 +116,33 @@ namespace CirculoNegociosAdm.Pages
             banner.dataAte = Convert.ToDateTime(txtDataHoraFinalBannerPrincipal.Text);
             banner.dataDe = Convert.ToDateTime(txtDataHoraInicialBannerPrincipal.Text);
             banner.estado = ddlEstadoBannerPrincipal.SelectedValue;
+            banner.responsavelUltimaAlteracao = Membership.GetUser().UserName;
+            banner.DataUltimaAlteracao = DateTime.Now;
 
             int idBanner = bannerPrincipalBusiness.InsereBannerPrincipal(banner);
 
-            if (FileUpImagensBanner.HasFile)
+            if (FileUpImagensBannerPrincipal.HasFile)
             {
                 if (!Directory.Exists(Server.MapPath(@"~/BannerPrincipal/" + idBanner)))
                     Directory.CreateDirectory(Server.MapPath(@"~/BannerPrincipal/" + idBanner));
 
-                string caminhoArquivo = Server.MapPath(@"~/BannerPrincipal/" + idBanner) + @"/" + FileUpImagensBanner.FileName;
-                FileUpImagensBanner.SaveAs(caminhoArquivo);
+                string caminhoArquivo = Server.MapPath(@"~/BannerPrincipal/" + idBanner) + @"\" + FileUpImagensBannerPrincipal.FileName;
+                FileUpImagensBannerPrincipal.SaveAs(caminhoArquivo);
 
-                bannerBusiness.AtualizaFilePathImagemBanner(idBanner, caminhoArquivo);
+                bannerPrincipalBusiness.AtualizaFilePathImagemBannerPrincipal(idBanner, caminhoArquivo);
 
             }
             else
             {
-                bannerBusiness.DeletaBanner(idBanner);
+                bannerPrincipalBusiness.DeletaBannerPrincipal(idBanner);
                 idBanner = 0;
                 Alert("É obrigatório selecionar a imagem!");
             }
 
             if (idBanner != 0)
-                Alert("Banner incluido com sucesso!");
+                Alert("Banner principal incluido com sucesso!");
             else
-                Alert("Ocorreu um erro ao incluir o Banner!");
+                Alert("Ocorreu um erro ao incluir o Banner principal!");
 
         }
 

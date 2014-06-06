@@ -31,6 +31,7 @@ namespace CirculoNegociosAdm.DAL
                     obj.idCliente = item.idCliente;
                     obj.nomeCliente = item.nome;
                     obj.idTipoBanner = item.idTipoBanner;
+                    obj.imagemFilePath = item.imagemFilePath;
 
                     lstBanners.Add(obj);
                 }
