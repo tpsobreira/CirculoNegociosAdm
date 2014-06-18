@@ -49,6 +49,8 @@
     <Compile Include="EstadoEntity.cs" />
     <Compile Include="LogradouroEntity.cs" />
     <Compile Include="NoticiaEntity.cs" />
+    <Compile Include="OfertaEntity.cs" />
+    <Compile Include="PromocaoEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoBannerEntity.cs" />
   </ItemGroup>

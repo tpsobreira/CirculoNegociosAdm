@@ -10,25 +10,16 @@
 namespace CirculoNegociosAdm.Pages {
     
     
-    public partial class CadastroNoticia {
+    public partial class CadastroOferta {
         
         /// <summary>
-        /// ddlCategoriaNoticia control.
+        /// ddlCliente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCategoriaNoticia;
-        
-        /// <summary>
-        /// ddlUF control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUF;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCliente;
         
         /// <summary>
         /// txtTitulo control.
@@ -40,15 +31,6 @@ namespace CirculoNegociosAdm.Pages {
         protected global::System.Web.UI.WebControls.TextBox txtTitulo;
         
         /// <summary>
-        /// txtSinopse control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSinopse;
-        
-        /// <summary>
         /// txtDescricao control.
         /// </summary>
         /// <remarks>
@@ -56,6 +38,24 @@ namespace CirculoNegociosAdm.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDescricao;
+        
+        /// <summary>
+        /// txtLinkDestino control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLinkDestino;
+        
+        /// <summary>
+        /// FileUpImagemOferta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpImagemOferta;
         
         /// <summary>
         /// txtDataHoraDe control.
@@ -76,39 +76,39 @@ namespace CirculoNegociosAdm.Pages {
         protected global::System.Web.UI.WebControls.TextBox txtDataHoraAte;
         
         /// <summary>
-        /// rdlAtiva control.
+        /// btnIncluirOferta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rdlAtiva;
+        protected global::System.Web.UI.WebControls.Button btnIncluirOferta;
         
         /// <summary>
-        /// fileUpImagens control.
+        /// btnCancelar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileUpImagens;
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
         
         /// <summary>
-        /// btnIncluir control.
+        /// BtnAlterarOferta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIncluir;
+        protected global::System.Web.UI.WebControls.Button BtnAlterarOferta;
         
         /// <summary>
-        /// gdvNoticias control.
+        /// gdvOfertas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gdvNoticias;
+        protected global::System.Web.UI.WebControls.GridView gdvOfertas;
     }
 }

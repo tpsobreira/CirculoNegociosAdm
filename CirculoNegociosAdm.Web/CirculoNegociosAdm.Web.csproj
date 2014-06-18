@@ -71,7 +71,10 @@
     <Content Include="Pages\CadastroCliente.aspx" />
     <Content Include="Pages\CadastroEstado.aspx" />
     <Content Include="Pages\CadastroNoticia.aspx" />
+    <Content Include="Pages\CadastroOferta.aspx" />
+    <Content Include="Pages\CadastroPromocao.aspx" />
     <Content Include="Pages\CadastrosAuxiliares.aspx" />
+    <Content Include="Pages\CadastroSubCategoriaCliente.aspx" />
     <Content Include="Pages\CadastroTipoBanner.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
@@ -177,12 +180,33 @@
     <Compile Include="Pages\CadastroNoticia.aspx.designer.cs">
       <DependentUpon>CadastroNoticia.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\CadastroOferta.aspx.cs">
+      <DependentUpon>CadastroOferta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CadastroOferta.aspx.designer.cs">
+      <DependentUpon>CadastroOferta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CadastroPromocao.aspx.cs">
+      <DependentUpon>CadastroPromocao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CadastroPromocao.aspx.designer.cs">
+      <DependentUpon>CadastroPromocao.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CadastrosAuxiliares.aspx.cs">
       <DependentUpon>CadastrosAuxiliares.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\CadastrosAuxiliares.aspx.designer.cs">
       <DependentUpon>CadastrosAuxiliares.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CadastroSubCategoriaCliente.aspx.cs">
+      <DependentUpon>CadastroSubCategoriaCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CadastroSubCategoriaCliente.aspx.designer.cs">
+      <DependentUpon>CadastroSubCategoriaCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\CadastroTipoBanner.aspx.cs">
       <DependentUpon>CadastroTipoBanner.aspx</DependentUpon>

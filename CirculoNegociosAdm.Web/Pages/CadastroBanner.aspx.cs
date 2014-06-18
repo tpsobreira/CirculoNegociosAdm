@@ -74,9 +74,7 @@ namespace CirculoNegociosAdm.Pages
             else
                 Alert("Ocorreu um erro ao incluir o Banner!");
 
-        }
-
-        
+        }       
 
         private void CarregaGridView()
         {
@@ -100,8 +98,6 @@ namespace CirculoNegociosAdm.Pages
             }
         }
 
-
-
         #region ### Banner Principal
 
 
@@ -113,6 +109,9 @@ namespace CirculoNegociosAdm.Pages
             banner.idCliente = Convert.ToInt32(ddlClienteBannerPrincipal.SelectedValue);
             ativo = rdlAtivoBannerPrincipal.SelectedValue == "1" ? true : false;
             banner.Ativo = ativo;
+            banner.Descricao = txtDescricaoBannerPrincipal.Text;
+            banner.Rodape1 = txtTextoRodape1BannerPrincial.Text;
+            banner.Rodape2 = txtTextoRodape2BannerPrincial.Text;
             banner.dataAte = Convert.ToDateTime(txtDataHoraFinalBannerPrincipal.Text);
             banner.dataDe = Convert.ToDateTime(txtDataHoraInicialBannerPrincipal.Text);
             banner.estado = ddlEstadoBannerPrincipal.SelectedValue;
@@ -159,7 +158,6 @@ namespace CirculoNegociosAdm.Pages
         }
 
         #endregion
-
 
         private void PreencheCombos()
         {

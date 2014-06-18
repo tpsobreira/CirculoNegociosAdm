@@ -21,11 +21,6 @@ namespace CirculoNegociosAdm.Business
             return lObjBannerDAL.InsereBanner(banner);
         }
 
-        public void AtualizaFilePathImagemBanner(int idBanner, string filePath)
-        {
-            lObjBannerDAL.AtualizaFilePathImagemBanner(idBanner, filePath);
-        }
-
         public string DeletaBanner(int id)
         {
             bool ret = lObjBannerDAL.DeletaBanner(id);
@@ -34,6 +29,11 @@ namespace CirculoNegociosAdm.Business
                 return "Banner excluido com sucesso!";
             else
                 return "Ocorreu um erro ao excluir o Banner!";
+        }
+
+        public void AtualizaFilePathImagemBanner(int idBanner, string filePath)
+        {
+            lObjBannerDAL.AtualizaFilePathImagemBanner(idBanner, filePath);
         }
     }
 }

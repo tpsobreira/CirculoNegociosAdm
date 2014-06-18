@@ -1,30 +1,21 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="CadastroNoticia.aspx.cs" Inherits="CirculoNegociosAdm.Pages.CadastroNoticia" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CadastroPromocao.aspx.cs" Inherits="CirculoNegociosAdm.Pages.CadastroPromocao" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        Cadastro de Noticia
+        Cadastro de Promoções
         <br />
         <br />
     </h2>
     <table>
         <tr>
             <td>
-                Categoria da Noticia:
-            </td>
-            <td>
-                Estado:
+                Cliente:
             </td>
         </tr>
         <tr>
             <td>
-                <asp:DropDownList ID="ddlCategoriaNoticia" runat="server" Width="300px">
-                </asp:DropDownList>
-            </td>
-            <td>
-                <asp:DropDownList ID="ddlUF" runat="server" Width="300px">
+                <asp:DropDownList ID="ddlCliente" runat="server" Width="250px">
                 </asp:DropDownList>
             </td>
         </tr>
@@ -32,82 +23,57 @@
             <td>
                 Titulo:
             </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <asp:TextBox ID="txtTitulo" runat="server" Width="600px"></asp:TextBox>
+           
+            <td>
+                Link de Destino:
             </td>
         </tr>
         <tr>
             <td>
-                Sinopse:
+                <asp:TextBox ID="txtTitulo" runat="server" Width="250px"></asp:TextBox>
             </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <asp:TextBox ID="txtSinopse" runat="server" TextMode="MultiLine" Width="600px" Height="70px"></asp:TextBox>
+            
+            <td>
+                <asp:TextBox ID="txtLinkDestino" runat="server" Width="250px"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td>
-                Descrição:
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <asp:TextBox ID="txtDescricao" runat="server" TextMode="MultiLine" Width="600px"
-                    Height="180px"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Data e Hora Incial:
+                Imagem:
             </td>
             <td>
-                Data e Hora Final:
+                Data Hora De:
+            </td>
+            <td>
+                Data Hora Até:
             </td>
         </tr>
         <tr>
             <td>
-                <asp:TextBox ID="txtDataHoraDe" runat="server" Width="300px"></asp:TextBox>
+                <asp:FileUpload ID="FileUpImagemPromocao" runat="server" Width="250px" />
             </td>
             <td>
-                <asp:TextBox ID="txtDataHoraAte" runat="server" Width="300px"></asp:TextBox>
+                <asp:TextBox ID="txtDataHoraDe" runat="server" Width="250px"></asp:TextBox>
+            </td>
+            <td>
+                <asp:TextBox ID="txtDataHoraAte" runat="server" Width="250px"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td>
-                Ativa:
-            </td>
-        </tr>
-        <tr>
-            <td valign="top">
-                <asp:RadioButtonList ID="rdlAtiva" runat="server" RepeatDirection="Horizontal">
-                    <asp:ListItem Text="Sim" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Não" Value="0"></asp:ListItem>
-                </asp:RadioButtonList>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Imagens:
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:FileUpload ID="fileUpImagens" runat="server" Width="300px" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:Button ID="btnIncluir" runat="server" Text="Incluir Noticia" OnClick="btnIncluir_Click" />
+                <asp:Button ID="btnIncluirPromocao" runat="server" Text="Incluir" 
+                    onclick="btnIncluirPromocao_Click" />
+                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
+                    onclick="btnCancelar_Click"  />
+                <asp:Button ID="BtnAlterarPromocao" runat="server" Text="Alterar" 
+                    Visible="False" onclick="BtnAlterarPromocao_Click"  />
             </td>
         </tr>
     </table>
     <table>
         <tr>
             <td>
-                <asp:GridView ID="gdvNoticias" runat="server" OnRowCommand="gdvNoticias_RowCommand"
+                <asp:GridView ID="gdvPromocoes" runat="server" OnRowCommand="gdvPromocoes_RowCommand"
                     Width="100%" AutoGenerateColumns="false">
                     <AlternatingRowStyle BackColor="#B4B3B3" ForeColor="White" />
                     <Columns>
@@ -126,37 +92,37 @@
                                 <asp:Literal ID="litId" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"id") %>'></asp:Literal>
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Nome Cliente">
+                            <ItemTemplate>
+                                <asp:Literal ID="litNomeCliente" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"nomeCliente") %>'></asp:Literal>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Titulo">
                             <ItemTemplate>
                                 <asp:Literal ID="litTitulo" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"titulo") %>'></asp:Literal>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Sinopse">
+                        <asp:TemplateField HeaderText="Caminho Arquivo">
                             <ItemTemplate>
-                                <asp:Literal ID="litSinopse" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Sinopse") %>'></asp:Literal>
+                                <asp:Literal ID="litCaminhoArquivo" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().Substring(DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().LastIndexOf("Banners"), DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().Length - DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().LastIndexOf("Banners")) %>'></asp:Literal>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Estado">
+                        <asp:TemplateField HeaderText="Link Destino">
                             <ItemTemplate>
-                                <asp:Literal ID="litEstado" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"estado") %>'></asp:Literal>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="ID Categoria">
-                            <ItemTemplate>
-                                <asp:Literal ID="litIdCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"idCategoria") %>'></asp:Literal>
+                                <asp:Literal ID="litLinkDestino" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"link") %>'></asp:Literal>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Data Inicio">
                             <ItemTemplate>
-                                <asp:Literal ID="litDataInicio" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"dataHoraDe") %>'></asp:Literal>
+                                <asp:Literal ID="litDataInicio" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"dataDe") %>'></asp:Literal>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Data Fim">
                             <ItemTemplate>
-                                <asp:Literal ID="litDataFim" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"dataHoraAte") %>'></asp:Literal>
+                                <asp:Literal ID="litDataFim" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"dataAte") %>'></asp:Literal>
                             </ItemTemplate>
                         </asp:TemplateField>
-                       <%-- <asp:TemplateField HeaderText="Data Ultima Alteração">
+                        <asp:TemplateField HeaderText="Data Ultima Alteração">
                             <ItemTemplate>
                                 <asp:Literal ID="litDataUltimaAlteracao" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"DataUltimaAlteracao") %>'></asp:Literal>
                             </ItemTemplate>
@@ -165,7 +131,7 @@
                             <ItemTemplate>
                                 <asp:Literal ID="litResponsavel" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"responsavelUltimaAlteracao") %>'></asp:Literal>
                             </ItemTemplate>
-                        </asp:TemplateField>--%>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Ativo">
                             <ItemTemplate>
                                 <asp:Literal ID="litAtivo" runat="server" Text='<%#Convert.ToBoolean(DataBinder.Eval(Container.DataItem,"Ativo")) == true ? "Sim" : "Não" %>'></asp:Literal>

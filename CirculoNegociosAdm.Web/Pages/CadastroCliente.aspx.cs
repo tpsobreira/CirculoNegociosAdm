@@ -19,6 +19,7 @@ namespace CirculoNegociosAdm.Pages
             if (!IsPostBack)
             {
                 CarregaGridView();
+                PreencheCombos();
             }
         }
 
@@ -102,6 +103,16 @@ namespace CirculoNegociosAdm.Pages
         private void RestauraControles()
         {
             txtNome.Text = string.Empty;
+        }
+
+        private void PreencheCombos()
+        {
+            ddlCategoria.DataSource = new CategoriaClienteBusiness().ConsultaTodasCategoriasCliente();
+            ddlCategoria.DataValueField = "id";
+            ddlCategoria.DataValueField = "Nome";
+            ddlCategoria.DataBind();
+            ddlCategoria.Items.Insert(0, "Selecione...");
+
         }
     }
 }

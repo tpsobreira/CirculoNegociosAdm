@@ -11,20 +11,44 @@ namespace CirculoNegociosAdm.Pages
 {
     public partial class CadastroNoticia : System.Web.UI.Page
     {
+        NoticiaBusiness noticiaBusiness = new NoticiaBusiness();
         CategoriaNoticiaBusiness categoriaNoticiaBusiness = new CategoriaNoticiaBusiness();
         EstadoBusiness estadoBusiness = new EstadoBusiness();
-        
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                PreencheCombos();
+                CarregaGridView();
+            }
         }
 
         protected void btnIncluir_Click(object sender, EventArgs e)
         {
             if (ValidaCampos())
             {
-                
+                NoticiaEntity noticia = new NoticiaEntity();
+                bool? ativo;
+
+                noticia.titulo = txtTitulo.Text;
+                noticia.Sinopse = txtSinopse.Text;
+                noticia.Descricao = txtDescricao.Text;
+                noticia.estado = ddlUF.SelectedValue;
+                noticia.idCategoria = Convert.ToInt32(ddlCategoriaNoticia.SelectedValue);
+                ativo = rdlAtiva.SelectedValue == "1" ? true : false;
+                noticia.Ativo = ativo;
+                noticia.dataHoraDe = Convert.ToDateTime(txtDataHoraDe.Text);
+                noticia.dataHoraAte = Convert.ToDateTime(txtDataHoraAte.Text);
+
+                int idNoticia = noticiaBusiness.InsereNoticia(noticia);
+
+                if (idNoticia != 0 )
+                {
+                    Alert("Noticia incluida com sucesso");
+                }
+
+                CarregaGridView();
             }
             else
             {
@@ -46,6 +70,24 @@ namespace CirculoNegociosAdm.Pages
             ddlUF.DataTextField = "Nome";
             ddlUF.DataBind();
             ddlUF.Items.Insert(0, "Selecionar...");
+        }
+
+        private void CarregaGridView()
+        {
+            gdvNoticias.DataSource = noticiaBusiness.ConsultaTodosNoticias();
+            gdvNoticias.DataBind();
+        }
+
+        protected void gdvNoticias_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Deletar")
+            {
+                string retorno = noticiaBusiness.DeletaNoticia(Convert.ToInt32(e.CommandArgument));
+
+                this.Alert(retorno);
+
+                CarregaGridView();
+            }
         }
 
         private bool ValidaCampos()

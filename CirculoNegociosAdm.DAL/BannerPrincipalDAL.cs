@@ -15,7 +15,7 @@ namespace CirculoNegociosAdm.DAL
 
             using (var context = new CirculoNegocioEntities())
             {
-                var ret = context.tbBannerPrincipals.Join(context.tbClientes, b => b.idCliente, c => c.id, (b, c) => new { b.id, b.idCliente, c.nome, b.Ativo, b.dataAte, b.dataDe, b.DataUltimaAlteracao, b.estado, b.imagemFilePath, b.responsavelUltimaAlteracao }).ToList();
+                var ret = context.tbBannerPrincipals.Join(context.tbClientes, b => b.idCliente, c => c.id, (b, c) => new { b.id, b.idCliente, c.nome, b.Ativo, b.dataAte, b.dataDe, b.DataUltimaAlteracao, b.estado, b.imagemFilePath, b.responsavelUltimaAlteracao, b.Descricao, b.Rodape1, b.Rodape2 }).ToList();
 
                 foreach (var item in ret)
                 {
@@ -29,6 +29,9 @@ namespace CirculoNegociosAdm.DAL
                     obj.idCliente = item.idCliente;
                     obj.nomeCliente = item.nome;
                     obj.imagemFilePath = item.imagemFilePath;
+                    obj.Descricao = item.Descricao;
+                    obj.Rodape1 = item.Rodape1;
+                    obj.Rodape2 = item.Rodape2;
 
                     lstBanners.Add(obj);
                 }
@@ -109,6 +112,9 @@ namespace CirculoNegociosAdm.DAL
             tb.idCliente = banner.idCliente;
             tb.responsavelUltimaAlteracao = banner.responsavelUltimaAlteracao;
             tb.DataUltimaAlteracao = banner.DataUltimaAlteracao;
+            tb.Descricao = banner.Descricao;
+            tb.Rodape1 = banner.Rodape1;
+            tb.Rodape2 = banner.Rodape2;
 
             return tb;
         }

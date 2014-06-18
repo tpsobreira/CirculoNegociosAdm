@@ -173,6 +173,32 @@
                             </asp:DropDownList>
                         </td>
                     </tr>
+
+
+                    <tr>
+                        <td>
+                            Descricao:
+                        </td>
+                        <td>
+                            Texto Rodape 1:
+                        </td>
+                        <td>
+                            Texto Rodape 2:
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:TextBox ID="txtDescricaoBannerPrincipal" runat="server" Width="250px"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtTextoRodape1BannerPrincial" runat="server" Width="250px"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtTextoRodape2BannerPrincial" runat="server" Width="250px"></asp:TextBox>
+                        </td>
+                    </tr>
+
+
                     <tr>
                         <td>
                             Data/Hora Inicial:

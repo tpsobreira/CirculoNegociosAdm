@@ -24,21 +24,25 @@ namespace CirculoNegociosAdm.DAL
             return lstNoticias;
         }
 
-        public bool InsereNoticia(NoticiaEntity Noticia)
+        public int InsereNoticia(NoticiaEntity Noticia)
         {
+            int idNoticia = 0;
+
             try
             {
                 using (var context = new CirculoNegocioEntities())
                 {
                     context.tbNoticias.AddObject(CastNoticia(Noticia));
                     context.SaveChanges();
+
+                    idNoticia = Noticia.id;
                 }
 
-                return true;
+                return idNoticia;
             }
             catch (Exception)
             {
-                return false;
+                return 0;
             }
 
         }
@@ -71,11 +75,15 @@ namespace CirculoNegociosAdm.DAL
                 NoticiaEntity objNoticia = new NoticiaEntity();
 
                 objNoticia.Ativo = item.Ativo;
+                objNoticia.idCategoria = item.idCategoria;
+                objNoticia.Descricao = item.Descricao;
+                objNoticia.titulo = item.titulo;
                 objNoticia.dataHoraAte = item.dataHoraAte;
                 objNoticia.dataHoraDe = item.dataHoraDe;
-                objNoticia.Descricao = item.Descricao;
+                objNoticia.Sinopse = item.Sinopse;
                 objNoticia.estado = item.estado;
                 objNoticia.filePathImagens = item.filePathImagens;
+                objNoticia.id = item.id;
 
                 lstNoticiasEntity.Add(objNoticia);
             }
@@ -88,9 +96,12 @@ namespace CirculoNegociosAdm.DAL
             tbNoticia tb = new tbNoticia();
 
             tb.Ativo = noticia.Ativo;
+            tb.idCategoria = noticia.idCategoria;
+            tb.Descricao = noticia.Descricao;
+            tb.titulo = noticia.titulo;
             tb.dataHoraAte = noticia.dataHoraAte;
             tb.dataHoraDe = noticia.dataHoraDe;
-            tb.Descricao = noticia.Descricao;
+            tb.Sinopse = noticia.Sinopse;
             tb.estado = noticia.estado;
             tb.filePathImagens = noticia.filePathImagens;
 

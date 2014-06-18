@@ -149,7 +149,17 @@
             </td>
             <td>
                 <asp:DropDownList ID="ddlCategoria" runat="server" Width="300px">
-                    <asp:ListItem Text="Comercio" Value="1"></asp:ListItem>
+                </asp:DropDownList>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Sub-Categoria:
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:DropDownList ID="ddlSubCategoria" runat="server" Width="300px">
                 </asp:DropDownList>
             </td>
         </tr>
