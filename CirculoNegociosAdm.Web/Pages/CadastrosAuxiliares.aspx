@@ -17,6 +17,11 @@
         </tr>
         <tr>
             <td>
+                <a href="CadastroSubCategoriaCliente.aspx">Cadastro de SubCategoria de Cliente</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <a href="CadastroCategoriaNoticia.aspx">Cadastro de Categoria de Noticia</a>
             </td>
         </tr>

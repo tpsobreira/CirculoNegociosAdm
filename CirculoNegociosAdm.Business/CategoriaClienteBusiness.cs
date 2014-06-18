@@ -16,7 +16,7 @@ namespace CirculoNegociosAdm.Business
             return lObjCategoriaClienteDAL.ConsultaTodasCategoriasCliente();
         }
 
-        public string InsereCliente(CategoriaClienteEntity categoriaCliente)
+        public string InsereCategoriaCliente(CategoriaClienteEntity categoriaCliente)
         {
             bool ret = lObjCategoriaClienteDAL.InsereCategoriaCliente(categoriaCliente);
 

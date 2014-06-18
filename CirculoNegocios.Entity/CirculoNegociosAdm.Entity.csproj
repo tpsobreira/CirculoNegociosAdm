@@ -52,6 +52,7 @@
     <Compile Include="OfertaEntity.cs" />
     <Compile Include="PromocaoEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubCategoriaClienteEntity.cs" />
     <Compile Include="TipoBannerEntity.cs" />
   </ItemGroup>
   <ItemGroup>

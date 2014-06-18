@@ -16,15 +16,22 @@ namespace CirculoNegociosAdm.Business
             return lObjClientesDAL.ConsultaTodosClientes();
         }
 
-        public string InsereCliente(ClienteEntity cliente)
+        public int InsereCliente(ClienteEntity cliente, out string mensagem)
         {
-            bool ret = lObjClientesDAL.InsereCliente(cliente);
+            int ret = lObjClientesDAL.InsereCliente(cliente);
 
-            if (ret)
-                return "Cliente incluido com sucesso!";
+            if (ret != 0)
+                mensagem = "Cliente incluido com sucesso!";
             else
-                return "Ocorreu um erro ao incluir o cliente!";
+                mensagem = "Ocorreu um erro ao incluir o cliente!";
+
+            return ret;
             
+        }
+
+        public void AtualizaImagensCliente(int idCliente, string logo, string img1, string img2, string img3)
+        {
+            lObjClientesDAL.AtualizaImagensCliente(idCliente, logo, img1, img2, img3);
         }
 
         public string DeletaCliente(int id)

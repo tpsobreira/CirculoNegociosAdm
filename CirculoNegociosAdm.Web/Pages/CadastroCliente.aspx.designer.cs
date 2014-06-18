@@ -265,6 +265,42 @@ namespace CirculoNegociosAdm.Pages {
         protected global::System.Web.UI.WebControls.Button btnCancelar;
         
         /// <summary>
+        /// FileUpLogo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpLogo;
+        
+        /// <summary>
+        /// FileUpImg1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpImg1;
+        
+        /// <summary>
+        /// FileUpImg2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpImg2;
+        
+        /// <summary>
+        /// FileUpImg3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpImg3;
+        
+        /// <summary>
         /// gdvClientes control.
         /// </summary>
         /// <remarks>

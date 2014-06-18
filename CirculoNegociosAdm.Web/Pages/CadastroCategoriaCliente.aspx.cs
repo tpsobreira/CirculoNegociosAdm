@@ -32,7 +32,7 @@ namespace CirculoNegociosAdm.Pages
 
             string retorno = string.Empty;
 
-            retorno = categoriaClienteBusiness.InsereCliente(objCategoriaCliente);
+            retorno = categoriaClienteBusiness.InsereCategoriaCliente(objCategoriaCliente);
 
             this.Alert(retorno);
 

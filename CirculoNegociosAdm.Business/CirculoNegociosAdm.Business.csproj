@@ -52,6 +52,7 @@
     <Compile Include="OfertaBusiness.cs" />
     <Compile Include="PromocaoBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubCategoriaClienteBusiness.cs" />
     <Compile Include="TipoBannerBusiness.cs" />
   </ItemGroup>
   <ItemGroup>

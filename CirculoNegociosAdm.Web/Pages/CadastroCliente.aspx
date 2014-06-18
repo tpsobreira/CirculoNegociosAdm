@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="CadastroCliente.aspx.cs" Inherits="CirculoNegociosAdm.Pages.CadastroCliente" %>
+    CodeBehind="CadastroCliente.aspx.cs" Inherits="CirculoNegociosAdm.Pages.CadastroCliente" MaintainScrollPositionOnPostback="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
@@ -148,7 +148,8 @@
                 <asp:TextBox ID="txtSite" runat="server" Width="300px"></asp:TextBox>
             </td>
             <td>
-                <asp:DropDownList ID="ddlCategoria" runat="server" Width="300px">
+                <asp:DropDownList ID="ddlCategoria" runat="server" Width="300px" 
+                    AutoPostBack="True" onselectedindexchanged="ddlCategoria_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
         </tr>
@@ -210,6 +211,35 @@
                 <asp:Button ID="btnConcluir" runat="server" Text="Concluir" OnClick="btnConcluir_Click" />
                 &nbsp;
                 <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Logotipo:
+            </td>
+            <td>
+                Imagem 1:
+            </td>
+            <td>
+                Imagem 2:
+            </td>
+            <td>
+                Imagem 3:
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:FileUpload ID="FileUpLogo" runat="server" />
+            </td>
+            
+            <td>
+                <asp:FileUpload ID="FileUpImg1" runat="server" />
+            </td>
+            <td>
+                <asp:FileUpload ID="FileUpImg2" runat="server" />
+            </td>
+            <td>
+                <asp:FileUpload ID="FileUpImg3" runat="server" />
             </td>
         </tr>
     </table>

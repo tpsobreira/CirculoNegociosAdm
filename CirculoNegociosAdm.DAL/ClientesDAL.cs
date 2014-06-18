@@ -27,23 +27,48 @@ namespace CirculoNegociosAdm.DAL
             return lstClientes;
         }
 
-        public bool InsereCliente(ClienteEntity Cliente)
+        public int InsereCliente(ClienteEntity Cliente)
+        {
+            int idCliente = 0;
+
+            try
+            {
+                using (var context = new CirculoNegocioEntities())
+                {
+                    tbCliente tb = CastCliente(Cliente); 
+                    context.tbClientes.AddObject(tb);
+                    context.SaveChanges();
+                    idCliente = tb.id;
+                }
+
+                return idCliente;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            
+        }
+
+        public void AtualizaImagensCliente(int idCliente, string logo, string img1, string img2, string img3)
         {
             try
             {
                 using (var context = new CirculoNegocioEntities())
                 {
-                    context.tbClientes.AddObject(CastCliente(Cliente));
+                    tbCliente cliente = (from p in context.tbClientes where p.id == idCliente select p).First();
+                    cliente.anexoLogoPath = logo;
+                    cliente.anexoImagem1Path = img1;
+                    cliente.anexoImagem2Path = img2;
+                    cliente.anexoImagem3Path = img3;
+
                     context.SaveChanges();
                 }
-
-                return true;
             }
             catch (Exception)
             {
-                return false;
+                throw;
             }
-            
         }
 
         public bool DeletaCliente(int id)
@@ -84,6 +109,7 @@ namespace CirculoNegociosAdm.DAL
             tCliente.estado = cliente.estado;
             tCliente.Funcionamento = cliente.Funcionamento;
             tCliente.idCategoriaCliente = cliente.idCategoriaCliente;
+            tCliente.idSubCategoriaCliente = cliente.idSubCategoriaCliente;
             tCliente.inscricaoEstadual = cliente.inscricaoEstadual;
             tCliente.nome = cliente.nome;
             tCliente.nomeFantasia = cliente.nomeFantasia;
@@ -121,6 +147,7 @@ namespace CirculoNegociosAdm.DAL
                 tCliente.estado = cliente.estado;
                 tCliente.Funcionamento = cliente.Funcionamento;
                 tCliente.idCategoriaCliente = cliente.idCategoriaCliente;
+                tCliente.idSubCategoriaCliente = cliente.idSubCategoriaCliente;
                 tCliente.inscricaoEstadual = cliente.inscricaoEstadual;
                 tCliente.nome = cliente.nome;
                 tCliente.nomeFantasia = cliente.nomeFantasia;
