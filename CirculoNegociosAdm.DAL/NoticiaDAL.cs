@@ -32,10 +32,11 @@ namespace CirculoNegociosAdm.DAL
             {
                 using (var context = new CirculoNegocioEntities())
                 {
-                    context.tbNoticias.AddObject(CastNoticia(Noticia));
+                    tbNoticia tb = CastNoticia(Noticia);
+                    context.tbNoticias.AddObject(tb);
                     context.SaveChanges();
 
-                    idNoticia = Noticia.id;
+                    idNoticia = tb.id;
                 }
 
                 return idNoticia;
@@ -45,6 +46,28 @@ namespace CirculoNegociosAdm.DAL
                 return 0;
             }
 
+        }
+
+        public void AtualizaImagensNoticia(int idNoticia, string imgHome, string img1, string img2, string img3)
+        {
+            try
+            {
+                using (var context = new CirculoNegocioEntities())
+                {
+                    tbNoticia noticia = (from p in context.tbNoticias where p.id == idNoticia select p).First();
+                    
+                    noticia.imagemHome = imgHome;
+                    noticia.imagem1 = img1;
+                    noticia.imagem2 = img2;
+                    noticia.imagem3 = img3;
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public bool DeletaNoticia(int id)
@@ -82,7 +105,7 @@ namespace CirculoNegociosAdm.DAL
                 objNoticia.dataHoraDe = item.dataHoraDe;
                 objNoticia.Sinopse = item.Sinopse;
                 objNoticia.estado = item.estado;
-                objNoticia.filePathImagens = item.filePathImagens;
+                //objNoticia.filePathImagens = item.filePathImagens;
                 objNoticia.id = item.id;
 
                 lstNoticiasEntity.Add(objNoticia);
@@ -103,7 +126,7 @@ namespace CirculoNegociosAdm.DAL
             tb.dataHoraDe = noticia.dataHoraDe;
             tb.Sinopse = noticia.Sinopse;
             tb.estado = noticia.estado;
-            tb.filePathImagens = noticia.filePathImagens;
+            //tb.filePathImagens = noticia.filePathImagens;
 
             return tb;
         }

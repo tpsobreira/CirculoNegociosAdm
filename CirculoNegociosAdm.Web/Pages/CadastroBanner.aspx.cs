@@ -15,6 +15,7 @@ namespace CirculoNegociosAdm.Pages
     {
         BannerBusiness bannerBusiness = new BannerBusiness();
         BannerPrincipalBusiness bannerPrincipalBusiness = new BannerPrincipalBusiness();
+        BannerBuscaBusiness bannerBuscaBusiness = new BannerBuscaBusiness();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,6 +25,8 @@ namespace CirculoNegociosAdm.Pages
                 CarregaGridView();
             }
         }
+
+        #region ### Banner Home
 
         //Inclui banner comum
         protected void btnIncluir_Click(object sender, EventArgs e)
@@ -35,8 +38,8 @@ namespace CirculoNegociosAdm.Pages
             banner.idTipoBanner = Convert.ToInt32(ddlTipoBanner.SelectedValue);
             ativo = rdlAtivo.SelectedValue == "1" ? true : false;
             banner.Ativo = ativo;
-            banner.dataAte = Convert.ToDateTime(txtDataHoraFinal.Text);
-            banner.dataDe = Convert.ToDateTime(txtDataHoraInicial.Text);
+            banner.dataAte = Convert.ToDateTime(Convert.ToDateTime(txtDataHoraFinal.Text).ToString("s"));
+            banner.dataDe = Convert.ToDateTime(Convert.ToDateTime(txtDataHoraInicial.Text).ToString("s"));
             banner.estado = ddlEstado.SelectedValue;
             banner.responsavelUltimaAlteracao = Membership.GetUser().UserName;
             banner.DataUltimaAlteracao = DateTime.Now;
@@ -74,17 +77,11 @@ namespace CirculoNegociosAdm.Pages
             else
                 Alert("Ocorreu um erro ao incluir o Banner!");
 
-        }       
+            CarregaGridView();
 
-        private void CarregaGridView()
-        {
-            gdvBanners.DataSource = bannerBusiness.ConsultaTodosBanners();
-            gdvBanners.DataBind();
-
-
-            gdvBannersPrincipal.DataSource = bannerPrincipalBusiness.ConsultaTodosBannerPrincipals();
-            gdvBannersPrincipal.DataBind();
         }
+
+
 
         protected void gdvBanners_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -97,6 +94,8 @@ namespace CirculoNegociosAdm.Pages
                 CarregaGridView();
             }
         }
+
+        #endregion
 
         #region ### Banner Principal
 
@@ -112,8 +111,8 @@ namespace CirculoNegociosAdm.Pages
             banner.Descricao = txtDescricaoBannerPrincipal.Text;
             banner.Rodape1 = txtTextoRodape1BannerPrincial.Text;
             banner.Rodape2 = txtTextoRodape2BannerPrincial.Text;
-            banner.dataAte = Convert.ToDateTime(txtDataHoraFinalBannerPrincipal.Text);
-            banner.dataDe = Convert.ToDateTime(txtDataHoraInicialBannerPrincipal.Text);
+            banner.dataAte = Convert.ToDateTime(Convert.ToDateTime(txtDataHoraFinalBannerPrincipal.Text).ToString("s"));
+            banner.dataDe = Convert.ToDateTime(Convert.ToDateTime(txtDataHoraInicialBannerPrincipal.Text).ToString("s"));
             banner.estado = ddlEstadoBannerPrincipal.SelectedValue;
             banner.responsavelUltimaAlteracao = Membership.GetUser().UserName;
             banner.DataUltimaAlteracao = DateTime.Now;
@@ -143,6 +142,7 @@ namespace CirculoNegociosAdm.Pages
             else
                 Alert("Ocorreu um erro ao incluir o Banner principal!");
 
+            CarregaGridView();
         }
 
         protected void gdvBannersPrincipal_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -156,6 +156,67 @@ namespace CirculoNegociosAdm.Pages
                 CarregaGridView();
             }
         }
+
+        #endregion
+
+        #region ### Banner Busca
+
+        protected void btnIncluirBannerBusca_Click(object sender, EventArgs e)
+        {
+            BannerBuscaEntity banner = new BannerBuscaEntity();
+            bool? ativo;
+
+            banner.idCliente = Convert.ToInt32(ddlClienteBannerBusca.SelectedValue);
+            ativo = rdlAtivoBannerBusca.SelectedValue == "1" ? true : false;
+            banner.Ativo = ativo;
+            banner.idCategoria = Convert.ToInt32(ddlCategoriaBannerBusca.SelectedValue);
+            banner.dataAte = Convert.ToDateTime(Convert.ToDateTime(txtDataHoraFinalBannerBusca.Text).ToString("s"));
+            banner.dataDe = Convert.ToDateTime(Convert.ToDateTime(txtDataHoraInicialBannerBusca.Text).ToString("s"));
+            banner.estado = ddlEstadoBannerBusca.SelectedValue;
+            banner.responsavelUltimaAlteracao = Membership.GetUser().UserName;
+            banner.DataUltimaAlteracao = DateTime.Now;
+
+            int idBanner = bannerBuscaBusiness.InsereBannerBusca(banner);
+
+            if (FileUpBannerBusca.HasFile)
+            {
+                if (!Directory.Exists(Server.MapPath(@"~/BannerBusca/" + idBanner)))
+                    Directory.CreateDirectory(Server.MapPath(@"~/BannerBusca/" + idBanner));
+
+                string caminhoArquivo = Server.MapPath(@"~/BannerBusca/" + idBanner) + @"\" + FileUpBannerBusca.FileName;
+                FileUpBannerBusca.SaveAs(caminhoArquivo);
+
+                bannerBuscaBusiness.AtualizaFilePathImagemBannerBusca(idBanner, caminhoArquivo);
+
+            }
+            else
+            {
+                bannerBuscaBusiness.DeletaBannerBusca(idBanner);
+                idBanner = 0;
+                Alert("É obrigatório selecionar a imagem!");
+            }
+
+            if (idBanner != 0)
+                Alert("Banner busca incluido com sucesso!");
+            else
+                Alert("Ocorreu um erro ao incluir o Banner busca!");
+
+            CarregaGridView();
+
+        }
+
+        protected void gdvBannersBusca_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Deletar")
+            {
+                string retorno = bannerBuscaBusiness.DeletaBannerBusca(Convert.ToInt32(e.CommandArgument));
+
+                this.Alert(retorno);
+
+                CarregaGridView();
+            }
+        }
+
 
         #endregion
 
@@ -197,6 +258,41 @@ namespace CirculoNegociosAdm.Pages
             #endregion
 
 
+            #region ### Banner Busca
+
+            ddlClienteBannerBusca.DataSource = new ClientesBusiness().ConsultaTodosClientes();
+            ddlClienteBannerBusca.DataValueField = "id";
+            ddlClienteBannerBusca.DataTextField = "Nome";
+            ddlClienteBannerBusca.DataBind();
+            ddlClienteBannerBusca.Items.Insert(0, "Selecionar...");
+
+            ddlEstadoBannerBusca.DataSource = new EstadoBusiness().ConsultaTodosEstados();
+            ddlEstadoBannerBusca.DataValueField = "sigla";
+            ddlEstadoBannerBusca.DataTextField = "Nome";
+            ddlEstadoBannerBusca.DataBind();
+            ddlEstadoBannerBusca.Items.Insert(0, "Selecionar...");
+
+            ddlCategoriaBannerBusca.DataSource = new CategoriaClienteBusiness().ConsultaTodasCategoriasCliente();
+            ddlCategoriaBannerBusca.DataValueField = "id";
+            ddlCategoriaBannerBusca.DataTextField = "Nome";
+            ddlCategoriaBannerBusca.DataBind();
+            ddlCategoriaBannerBusca.Items.Insert(0, "Selecionar...");
+
+            #endregion
+
+
+        }
+
+        private void CarregaGridView()
+        {
+            gdvBanners.DataSource = bannerBusiness.ConsultaTodosBanners();
+            gdvBanners.DataBind();
+
+            gdvBannersPrincipal.DataSource = bannerPrincipalBusiness.ConsultaTodosBannerPrincipals();
+            gdvBannersPrincipal.DataBind();
+
+            gdvBannersBusca.DataSource = bannerBuscaBusiness.ConsultaTodosBannerBuscas();
+            gdvBannersBusca.DataBind();
 
         }
 

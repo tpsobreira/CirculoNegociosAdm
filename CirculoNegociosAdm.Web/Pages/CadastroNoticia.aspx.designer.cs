@@ -85,13 +85,40 @@ namespace CirculoNegociosAdm.Pages {
         protected global::System.Web.UI.WebControls.RadioButtonList rdlAtiva;
         
         /// <summary>
-        /// fileUpImagens control.
+        /// fileUpImagemHome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileUpImagens;
+        protected global::System.Web.UI.WebControls.FileUpload fileUpImagemHome;
+        
+        /// <summary>
+        /// FileUpImagem1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpImagem1;
+        
+        /// <summary>
+        /// FileUpImagem2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpImagem2;
+        
+        /// <summary>
+        /// FileUpImagem3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpImagem3;
         
         /// <summary>
         /// btnIncluir control.

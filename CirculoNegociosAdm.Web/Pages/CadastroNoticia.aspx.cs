@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CirculoNegociosAdm.Business;
 using CirculoNegociosAdm.Entity;
+using System.IO;
 
 namespace CirculoNegociosAdm.Pages
 {
@@ -38,23 +39,73 @@ namespace CirculoNegociosAdm.Pages
                 noticia.idCategoria = Convert.ToInt32(ddlCategoriaNoticia.SelectedValue);
                 ativo = rdlAtiva.SelectedValue == "1" ? true : false;
                 noticia.Ativo = ativo;
-                noticia.dataHoraDe = Convert.ToDateTime(txtDataHoraDe.Text);
-                noticia.dataHoraAte = Convert.ToDateTime(txtDataHoraAte.Text);
+                noticia.dataHoraAte = Convert.ToDateTime(Convert.ToDateTime(txtDataHoraAte.Text).ToString("s"));
+                noticia.dataHoraDe = Convert.ToDateTime(Convert.ToDateTime(txtDataHoraDe.Text).ToString("s"));
 
                 int idNoticia = noticiaBusiness.InsereNoticia(noticia);
 
-                if (idNoticia != 0 )
+                SalvaImagens(idNoticia);
+
+
+                if (idNoticia != 0)
                 {
                     Alert("Noticia incluida com sucesso");
                 }
 
                 CarregaGridView();
+                RestauraControles();
             }
             else
             {
                 Alert("É obrigatório preencher todos os campos!");
             }
 
+        }
+
+        private void SalvaImagens(int idNoticia)
+        {
+            string caminhoHome = string.Empty;
+            string caminhoImg1 = string.Empty;
+            string caminhoImg2 = string.Empty;
+            string caminhoImg3 = string.Empty;
+
+
+            if (fileUpImagemHome.HasFile && FileUpImagem1.HasFile && FileUpImagem2.HasFile && FileUpImagem3.HasFile)
+            {
+                if (!Directory.Exists(Server.MapPath(@"~/HomeNoticia/" + idNoticia)))
+                    Directory.CreateDirectory(Server.MapPath(@"~/HomeNoticia/" + idNoticia));
+                else
+                {
+                    Directory.Delete(Server.MapPath(@"~/HomeNoticia/" + idNoticia));
+                    Directory.CreateDirectory(Server.MapPath(@"~/HomeNoticia/" + idNoticia));
+                }
+
+                caminhoHome = Server.MapPath(@"~/HomeNoticia/" + idNoticia) + @"\" + fileUpImagemHome.FileName;
+                fileUpImagemHome.SaveAs(caminhoHome);
+
+                if (!Directory.Exists(Server.MapPath(@"~/Noticias/" + idNoticia)))
+                    Directory.CreateDirectory(Server.MapPath(@"~/Noticias/" + idNoticia));
+                else
+                {
+                    Directory.Delete(Server.MapPath(@"~/Noticias/" + idNoticia));
+                    Directory.CreateDirectory(Server.MapPath(@"~/Noticias/" + idNoticia));
+                }
+
+                caminhoImg1 = Server.MapPath(@"~/Noticias/" + idNoticia) + @"\" + FileUpImagem1.FileName;
+                caminhoImg2 = Server.MapPath(@"~/Noticias/" + idNoticia) + @"\" + FileUpImagem2.FileName;
+                caminhoImg3 = Server.MapPath(@"~/Noticias/" + idNoticia) + @"\" + FileUpImagem3.FileName;
+
+                FileUpImagem1.SaveAs(caminhoImg1);
+                FileUpImagem2.SaveAs(caminhoImg2);
+                FileUpImagem3.SaveAs(caminhoImg3);
+
+                noticiaBusiness.AtualizaImagensNoticia(idNoticia, caminhoHome, caminhoImg1, caminhoImg2, caminhoImg3);
+
+            }
+            else
+            {
+                Alert("É obrigatório selecionar todas as imagens, se não tiver 3 imagens diferentes, pode colocar a mesma imagem, apenas mudando o nome do arquivo!");
+            }
         }
 
         private void PreencheCombos()
@@ -111,6 +162,11 @@ namespace CirculoNegociosAdm.Pages
 
         private void RestauraControles()
         {
+            txtTitulo.Text = string.Empty;
+            txtDataHoraAte.Text = string.Empty;
+            txtDataHoraDe.Text = string.Empty;
+            txtDescricao.Text = string.Empty;
+            txtSinopse.Text = string.Empty;
             txtTitulo.Text = string.Empty;
         }
     }

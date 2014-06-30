@@ -32,6 +32,8 @@ namespace CirculoNegociosAdm.DAL
                     obj.Descricao = item.Descricao;
                     obj.Rodape1 = item.Rodape1;
                     obj.Rodape2 = item.Rodape2;
+                    obj.responsavelUltimaAlteracao = item.responsavelUltimaAlteracao;
+                    obj.DataUltimaAlteracao = item.DataUltimaAlteracao;
 
                     lstBanners.Add(obj);
                 }

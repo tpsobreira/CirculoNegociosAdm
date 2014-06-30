@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="CadastroCliente.aspx.cs" Inherits="CirculoNegociosAdm.Pages.CadastroCliente" MaintainScrollPositionOnPostback="true" %>
+    CodeBehind="CadastroCliente.aspx.cs" Inherits="CirculoNegociosAdm.Pages.CadastroCliente"
+    MaintainScrollPositionOnPostback="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
@@ -10,6 +11,7 @@
         <br />
     </h2>
     <table>
+        <asp:HiddenField ID="hdIdClienteEdit" runat="server" />
         <tr>
             <td>
                 Razão Social:
@@ -75,13 +77,11 @@
             <td>
                 Endereço:
             </td>
-            
         </tr>
         <tr>
             <td>
                 <asp:TextBox ID="txtCep" runat="server" Width="220px"></asp:TextBox>
-                <asp:LinkButton
-                    ID="lnkCep" runat="server" onclick="lnkCep_Click">Pesquisa CEP</asp:LinkButton>
+                <asp:LinkButton ID="lnkCep" runat="server" OnClick="lnkCep_Click">Pesquisa CEP</asp:LinkButton>
             </td>
             <td>
                 <asp:TextBox ID="txtEndereco" runat="server" Width="300px"></asp:TextBox>
@@ -148,8 +148,8 @@
                 <asp:TextBox ID="txtSite" runat="server" Width="300px"></asp:TextBox>
             </td>
             <td>
-                <asp:DropDownList ID="ddlCategoria" runat="server" Width="300px" 
-                    AutoPostBack="True" onselectedindexchanged="ddlCategoria_SelectedIndexChanged">
+                <asp:DropDownList ID="ddlCategoria" runat="server" Width="300px" AutoPostBack="True"
+                    OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
         </tr>
@@ -207,13 +207,6 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2">
-                <asp:Button ID="btnConcluir" runat="server" Text="Concluir" OnClick="btnConcluir_Click" />
-                &nbsp;
-                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" />
-            </td>
-        </tr>
-        <tr>
             <td>
                 Logotipo:
             </td>
@@ -231,7 +224,6 @@
             <td>
                 <asp:FileUpload ID="FileUpLogo" runat="server" />
             </td>
-            
             <td>
                 <asp:FileUpload ID="FileUpImg1" runat="server" />
             </td>
@@ -240,6 +232,15 @@
             </td>
             <td>
                 <asp:FileUpload ID="FileUpImg3" runat="server" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <asp:Button ID="btnIncluir" runat="server" Text="Concluir" OnClick="btnIncluir_Click" />
+                <asp:Button ID="btnAlterar" runat="server" Text="Alterar" OnClick="btnAlterar_Click" Visible="false" />
+                &nbsp;
+                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
+                    onclick="btnCancelar_Click" />
             </td>
         </tr>
     </table>

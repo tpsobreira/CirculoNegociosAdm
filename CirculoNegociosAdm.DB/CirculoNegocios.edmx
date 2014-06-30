@@ -7,49 +7,17 @@
     <Schema Namespace="CirculoNegocioModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="CirculoNegocioModelStoreContainer">
           <EntitySet Name="tbBanner" EntityType="CirculoNegocioModel.Store.tbBanner" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbBannerBusca" EntityType="CirculoNegocioModel.Store.tbBannerBusca" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tbBannerPrincipal" EntityType="CirculoNegocioModel.Store.tbBannerPrincipal" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tbCategoriaCliente" EntityType="CirculoNegocioModel.Store.tbCategoriaCliente" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tbCategoriaNoticia" EntityType="CirculoNegocioModel.Store.tbCategoriaNoticia" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tbClientes" EntityType="CirculoNegocioModel.Store.tbClientes" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tbEstados" EntityType="CirculoNegocioModel.Store.tbEstados" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tbFilePathNoticias" EntityType="CirculoNegocioModel.Store.tbFilePathNoticias" store:Type="Tables" store:Schema="dbo" store:Name="tbFilePathNoticias">
-            <DefiningQuery>SELECT 
-      [tbFilePathNoticias].[id] AS [id], 
-      [tbFilePathNoticias].[idNoticia] AS [idNoticia], 
-      [tbFilePathNoticias].[filePath] AS [filePath]
-      FROM [dbo].[tbFilePathNoticias] AS [tbFilePathNoticias]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="tbNoticias" EntityType="CirculoNegocioModel.Store.tbNoticias" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tbOfertas" EntityType="CirculoNegocioModel.Store.tbOfertas" store:Type="Tables" store:Schema="dbo" store:Name="tbOfertas">
-            <DefiningQuery>SELECT 
-      [tbOfertas].[id] AS [id], 
-      [tbOfertas].[idCliente] AS [idCliente], 
-      [tbOfertas].[titulo] AS [titulo], 
-      [tbOfertas].[descricao] AS [descricao], 
-      [tbOfertas].[imagemFilePath] AS [imagemFilePath], 
-      [tbOfertas].[link] AS [link], 
-      [tbOfertas].[dataDe] AS [dataDe], 
-      [tbOfertas].[dataAte] AS [dataAte], 
-      [tbOfertas].[responsavelUltimaAlteracao] AS [responsavelUltimaAlteracao], 
-      [tbOfertas].[dataUltimaAlteracao] AS [dataUltimaAlteracao]
-      FROM [dbo].[tbOfertas] AS [tbOfertas]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tbPromocoes" EntityType="CirculoNegocioModel.Store.tbPromocoes" store:Type="Tables" store:Schema="dbo" store:Name="tbPromocoes">
-            <DefiningQuery>SELECT 
-      [tbPromocoes].[id] AS [id], 
-      [tbPromocoes].[idCliente] AS [idCliente], 
-      [tbPromocoes].[titulo] AS [titulo], 
-      [tbPromocoes].[imagemFilePath] AS [imagemFilePath], 
-      [tbPromocoes].[link] AS [link], 
-      [tbPromocoes].[dataDe] AS [dataDe], 
-      [tbPromocoes].[dataAte] AS [dataAte], 
-      [tbPromocoes].[responsavelUltimaAlteracao] AS [responsavelUltimaAlteracao], 
-      [tbPromocoes].[dataUltimaAlteracao] AS [dataUltimaAlteracao]
-      FROM [dbo].[tbPromocoes] AS [tbPromocoes]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="tbOfertas" EntityType="CirculoNegocioModel.Store.tbOfertas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbPromocoes" EntityType="CirculoNegocioModel.Store.tbPromocoes" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tbSubCategoriaCliente" EntityType="CirculoNegocioModel.Store.tbSubCategoriaCliente" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tbTipoBanner" EntityType="CirculoNegocioModel.Store.tbTipoBanner" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tbUsuarioAdministrador" EntityType="CirculoNegocioModel.Store.tbUsuarioAdministrador" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK__tbBanner__estado__2FCF1A8A" Association="CirculoNegocioModel.Store.FK__tbBanner__estado__2FCF1A8A">
             <End Role="tbEstados" EntitySet="tbEstados" />
             <End Role="tbBanner" EntitySet="tbBanner" />
@@ -61,6 +29,18 @@
           <AssociationSet Name="FK__tbBanner__idTipo__2DE6D218" Association="CirculoNegocioModel.Store.FK__tbBanner__idTipo__2DE6D218">
             <End Role="tbTipoBanner" EntitySet="tbTipoBanner" />
             <End Role="tbBanner" EntitySet="tbBanner" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbBannerB__estad__73852659" Association="CirculoNegocioModel.Store.FK__tbBannerB__estad__73852659">
+            <End Role="tbEstados" EntitySet="tbEstados" />
+            <End Role="tbBannerBusca" EntitySet="tbBannerBusca" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbBannerB__idCat__719CDDE7" Association="CirculoNegocioModel.Store.FK__tbBannerB__idCat__719CDDE7">
+            <End Role="tbCategoriaCliente" EntitySet="tbCategoriaCliente" />
+            <End Role="tbBannerBusca" EntitySet="tbBannerBusca" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbBannerB__idCli__72910220" Association="CirculoNegocioModel.Store.FK__tbBannerB__idCli__72910220">
+            <End Role="tbClientes" EntitySet="tbClientes" />
+            <End Role="tbBannerBusca" EntitySet="tbBannerBusca" />
           </AssociationSet>
           <AssociationSet Name="FK__tbBannerP__estad__3587F3E0" Association="CirculoNegocioModel.Store.FK__tbBannerP__estad__3587F3E0">
             <End Role="tbEstados" EntitySet="tbEstados" />
@@ -78,10 +58,6 @@
             <End Role="tbSubCategoriaCliente" EntitySet="tbSubCategoriaCliente" />
             <End Role="tbClientes" EntitySet="tbClientes" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbFilePat__idNot__44CA3770" Association="CirculoNegocioModel.Store.FK__tbFilePat__idNot__44CA3770">
-            <End Role="tbNoticias" EntitySet="tbNoticias" />
-            <End Role="tbFilePathNoticias" EntitySet="tbFilePathNoticias" />
-          </AssociationSet>
           <AssociationSet Name="FK__tbNoticia__estad__3A4CA8FD" Association="CirculoNegocioModel.Store.FK__tbNoticia__estad__3A4CA8FD">
             <End Role="tbEstados" EntitySet="tbEstados" />
             <End Role="tbNoticias" EntitySet="tbNoticias" />
@@ -90,9 +66,17 @@
             <End Role="tbCategoriaNoticia" EntitySet="tbCategoriaNoticia" />
             <End Role="tbNoticias" EntitySet="tbNoticias" />
           </AssociationSet>
+          <AssociationSet Name="FK__tbOfertas__estad__6CD828CA" Association="CirculoNegocioModel.Store.FK__tbOfertas__estad__6CD828CA">
+            <End Role="tbEstados" EntitySet="tbEstados" />
+            <End Role="tbOfertas" EntitySet="tbOfertas" />
+          </AssociationSet>
           <AssociationSet Name="FK__tbOfertas__idCli__46B27FE2" Association="CirculoNegocioModel.Store.FK__tbOfertas__idCli__46B27FE2">
             <End Role="tbClientes" EntitySet="tbClientes" />
             <End Role="tbOfertas" EntitySet="tbOfertas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbPromoco__estad__690797E6" Association="CirculoNegocioModel.Store.FK__tbPromoco__estad__690797E6">
+            <End Role="tbEstados" EntitySet="tbEstados" />
+            <End Role="tbPromocoes" EntitySet="tbPromocoes" />
           </AssociationSet>
           <AssociationSet Name="FK__tbPromoco__idCli__489AC854" Association="CirculoNegocioModel.Store.FK__tbPromoco__idCli__489AC854">
             <End Role="tbClientes" EntitySet="tbClientes" />
@@ -112,6 +96,21 @@
           <Property Name="imagemFilePath" Type="varchar" MaxLength="500" />
           <Property Name="idCliente" Type="int" />
           <Property Name="estado" Type="char" MaxLength="2" />
+          <Property Name="dataDe" Type="datetime" />
+          <Property Name="dataAte" Type="datetime" />
+          <Property Name="Ativo" Type="bit" />
+          <Property Name="DataUltimaAlteracao" Type="datetime" />
+          <Property Name="responsavelUltimaAlteracao" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tbBannerBusca">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idCategoria" Type="int" />
+          <Property Name="idCliente" Type="int" />
+          <Property Name="estado" Type="char" MaxLength="2" />
+          <Property Name="imagemFilePath" Type="varchar" MaxLength="500" />
           <Property Name="dataDe" Type="datetime" />
           <Property Name="dataAte" Type="datetime" />
           <Property Name="Ativo" Type="bit" />
@@ -169,6 +168,7 @@
           <Property Name="cidade" Type="varchar" MaxLength="500" />
           <Property Name="estado" Type="char" MaxLength="2" />
           <Property Name="cep" Type="varchar" MaxLength="20" />
+          <Property Name="bairro" Type="varchar" MaxLength="100" />
           <Property Name="complemento" Type="varchar" MaxLength="1000" />
           <Property Name="telefone1" Type="varchar" MaxLength="30" />
           <Property Name="telefone2" Type="varchar" MaxLength="30" />
@@ -176,6 +176,10 @@
           <Property Name="idCategoriaCliente" Type="int" />
           <Property Name="idSubCategoriaCliente" Type="int" />
           <Property Name="servicos" Type="varchar(max)" />
+          <Property Name="horaSemanaDe" Type="char" MaxLength="5" />
+          <Property Name="horaSemanaAte" Type="char" MaxLength="5" />
+          <Property Name="horaFdsDe" Type="char" MaxLength="5" />
+          <Property Name="horaFdsAte" Type="char" MaxLength="5" />
           <Property Name="Funcionamento" Type="varchar" MaxLength="1000" />
           <Property Name="observacoes" Type="varchar(max)" />
           <Property Name="anexoImagem1Path" Type="varchar" MaxLength="500" />
@@ -191,17 +195,6 @@
           <Property Name="sigla" Type="char" Nullable="false" MaxLength="2" />
           <Property Name="nome" Type="varchar" MaxLength="200" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'CirculoNegocio.dbo.tbFilePathNoticias' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
-        <EntityType Name="tbFilePathNoticias">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="idNoticia" Type="int" />
-          <Property Name="filePath" Type="varchar" MaxLength="1000" />
-        </EntityType>
         <EntityType Name="tbNoticias">
           <Key>
             <PropertyRef Name="id" />
@@ -215,12 +208,12 @@
           <Property Name="dataHoraDe" Type="datetime" />
           <Property Name="dataHoraAte" Type="datetime" />
           <Property Name="responsavelInsercao" Type="varchar" MaxLength="200" />
-          <Property Name="filePathImagens" Type="varchar" MaxLength="500" />
+          <Property Name="imagemHome" Type="varchar" MaxLength="500" />
+          <Property Name="imagem1" Type="varchar" MaxLength="500" />
+          <Property Name="imagem2" Type="varchar" MaxLength="500" />
+          <Property Name="imagem3" Type="varchar" MaxLength="500" />
           <Property Name="Ativo" Type="bit" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'CirculoNegocio.dbo.tbOfertas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="tbOfertas">
           <Key>
             <PropertyRef Name="id" />
@@ -235,10 +228,9 @@
           <Property Name="dataAte" Type="datetime" />
           <Property Name="responsavelUltimaAlteracao" Type="varchar" MaxLength="500" />
           <Property Name="dataUltimaAlteracao" Type="datetime" />
+          <Property Name="estado" Type="char" MaxLength="2" />
+          <Property Name="Ativo" Type="bit" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'CirculoNegocio.dbo.tbPromocoes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="tbPromocoes">
           <Key>
             <PropertyRef Name="id" />
@@ -252,6 +244,8 @@
           <Property Name="dataAte" Type="datetime" />
           <Property Name="responsavelUltimaAlteracao" Type="varchar" MaxLength="500" />
           <Property Name="dataUltimaAlteracao" Type="datetime" />
+          <Property Name="estado" Type="char" MaxLength="2" />
+          <Property Name="Ativo" Type="bit" />
         </EntityType>
         <EntityType Name="tbSubCategoriaCliente">
           <Key>
@@ -271,17 +265,6 @@
           <Property Name="Nome" Type="varchar" MaxLength="500" />
           <Property Name="DataUltimaAlteracao" Type="datetime" />
           <Property Name="responsavelUltimaAlteracao" Type="varchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="tbUsuarioAdministrador">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="nome" Type="varchar" MaxLength="255" />
-          <Property Name="usuario" Type="varchar" MaxLength="255" />
-          <Property Name="senha" Type="varchar(max)" />
-          <Property Name="dataInclusao" Type="datetime" />
-          <Property Name="responsavelInclusao" Type="varchar" MaxLength="255" />
         </EntityType>
         <Association Name="FK__tbBanner__estado__2FCF1A8A">
           <End Role="tbEstados" Type="CirculoNegocioModel.Store.tbEstados" Multiplicity="0..1" />
@@ -316,6 +299,42 @@
             </Principal>
             <Dependent Role="tbBanner">
               <PropertyRef Name="idTipoBanner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbBannerB__estad__73852659">
+          <End Role="tbEstados" Type="CirculoNegocioModel.Store.tbEstados" Multiplicity="0..1" />
+          <End Role="tbBannerBusca" Type="CirculoNegocioModel.Store.tbBannerBusca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEstados">
+              <PropertyRef Name="sigla" />
+            </Principal>
+            <Dependent Role="tbBannerBusca">
+              <PropertyRef Name="estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbBannerB__idCat__719CDDE7">
+          <End Role="tbCategoriaCliente" Type="CirculoNegocioModel.Store.tbCategoriaCliente" Multiplicity="0..1" />
+          <End Role="tbBannerBusca" Type="CirculoNegocioModel.Store.tbBannerBusca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbCategoriaCliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbBannerBusca">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbBannerB__idCli__72910220">
+          <End Role="tbClientes" Type="CirculoNegocioModel.Store.tbClientes" Multiplicity="0..1" />
+          <End Role="tbBannerBusca" Type="CirculoNegocioModel.Store.tbBannerBusca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbClientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbBannerBusca">
+              <PropertyRef Name="idCliente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -367,18 +386,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbFilePat__idNot__44CA3770">
-          <End Role="tbNoticias" Type="CirculoNegocioModel.Store.tbNoticias" Multiplicity="0..1" />
-          <End Role="tbFilePathNoticias" Type="CirculoNegocioModel.Store.tbFilePathNoticias" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbNoticias">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="tbFilePathNoticias">
-              <PropertyRef Name="idNoticia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__tbNoticia__estad__3A4CA8FD">
           <End Role="tbEstados" Type="CirculoNegocioModel.Store.tbEstados" Multiplicity="0..1" />
           <End Role="tbNoticias" Type="CirculoNegocioModel.Store.tbNoticias" Multiplicity="*" />
@@ -403,6 +410,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__tbOfertas__estad__6CD828CA">
+          <End Role="tbEstados" Type="CirculoNegocioModel.Store.tbEstados" Multiplicity="0..1" />
+          <End Role="tbOfertas" Type="CirculoNegocioModel.Store.tbOfertas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEstados">
+              <PropertyRef Name="sigla" />
+            </Principal>
+            <Dependent Role="tbOfertas">
+              <PropertyRef Name="estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__tbOfertas__idCli__46B27FE2">
           <End Role="tbClientes" Type="CirculoNegocioModel.Store.tbClientes" Multiplicity="0..1" />
           <End Role="tbOfertas" Type="CirculoNegocioModel.Store.tbOfertas" Multiplicity="*" />
@@ -412,6 +431,18 @@
             </Principal>
             <Dependent Role="tbOfertas">
               <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbPromoco__estad__690797E6">
+          <End Role="tbEstados" Type="CirculoNegocioModel.Store.tbEstados" Multiplicity="0..1" />
+          <End Role="tbPromocoes" Type="CirculoNegocioModel.Store.tbPromocoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEstados">
+              <PropertyRef Name="sigla" />
+            </Principal>
+            <Dependent Role="tbPromocoes">
+              <PropertyRef Name="estado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -444,25 +475,22 @@
     <edmx:ConceptualModels>
       <Schema Namespace="CirculoNegocioModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="CirculoNegocioEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="tbCategoriaClientes" EntityType="CirculoNegocioModel.tbCategoriaCliente" />
-          <EntitySet Name="tbClientes" EntityType="CirculoNegocioModel.tbCliente" />
-          <EntitySet Name="tbUsuarioAdministradors" EntityType="CirculoNegocioModel.tbUsuarioAdministrador" />
-          <AssociationSet Name="FK__tbCliente__idCat__123EB7A3" Association="CirculoNegocioModel.FK__tbCliente__idCat__123EB7A3">
-            <End Role="tbCategoriaCliente" EntitySet="tbCategoriaClientes" />
-            <End Role="tbClientes" EntitySet="tbClientes" />
-          </AssociationSet>
           <EntitySet Name="tbBanners" EntityType="CirculoNegocioModel.tbBanner" />
           <EntitySet Name="tbBannerPrincipals" EntityType="CirculoNegocioModel.tbBannerPrincipal" />
+          <EntitySet Name="tbCategoriaClientes" EntityType="CirculoNegocioModel.tbCategoriaCliente" />
           <EntitySet Name="tbCategoriaNoticias" EntityType="CirculoNegocioModel.tbCategoriaNoticia" />
+          <EntitySet Name="tbClientes" EntityType="CirculoNegocioModel.tbCliente" />
           <EntitySet Name="tbEstados" EntityType="CirculoNegocioModel.tbEstado" />
-          <EntitySet Name="tbNoticias" EntityType="CirculoNegocioModel.tbNoticia" />
+          <EntitySet Name="tbOfertas" EntityType="CirculoNegocioModel.tbOferta" />
+          <EntitySet Name="tbPromocoes" EntityType="CirculoNegocioModel.tbPromoco" />
+          <EntitySet Name="tbSubCategoriaClientes" EntityType="CirculoNegocioModel.tbSubCategoriaCliente" />
           <EntitySet Name="tbTipoBanners" EntityType="CirculoNegocioModel.tbTipoBanner" />
           <AssociationSet Name="FK__tbBanner__estado__2FCF1A8A" Association="CirculoNegocioModel.FK__tbBanner__estado__2FCF1A8A">
-            <End Role="tbEstado" EntitySet="tbEstados" />
+            <End Role="tbEstados" EntitySet="tbEstados" />
             <End Role="tbBanner" EntitySet="tbBanners" />
           </AssociationSet>
           <AssociationSet Name="FK__tbBanner__idClie__2EDAF651" Association="CirculoNegocioModel.FK__tbBanner__idClie__2EDAF651">
-            <End Role="tbCliente" EntitySet="tbClientes" />
+            <End Role="tbClientes" EntitySet="tbClientes" />
             <End Role="tbBanner" EntitySet="tbBanners" />
           </AssociationSet>
           <AssociationSet Name="FK__tbBanner__idTipo__2DE6D218" Association="CirculoNegocioModel.FK__tbBanner__idTipo__2DE6D218">
@@ -470,13 +498,55 @@
             <End Role="tbBanner" EntitySet="tbBanners" />
           </AssociationSet>
           <AssociationSet Name="FK__tbBannerP__estad__3587F3E0" Association="CirculoNegocioModel.FK__tbBannerP__estad__3587F3E0">
-            <End Role="tbEstado" EntitySet="tbEstados" />
+            <End Role="tbEstados" EntitySet="tbEstados" />
             <End Role="tbBannerPrincipal" EntitySet="tbBannerPrincipals" />
           </AssociationSet>
           <AssociationSet Name="FK__tbBannerP__idCli__3493CFA7" Association="CirculoNegocioModel.FK__tbBannerP__idCli__3493CFA7">
-            <End Role="tbCliente" EntitySet="tbClientes" />
+            <End Role="tbClientes" EntitySet="tbClientes" />
             <End Role="tbBannerPrincipal" EntitySet="tbBannerPrincipals" />
           </AssociationSet>
+          <AssociationSet Name="FK__tbCliente__idCat__123EB7A3" Association="CirculoNegocioModel.FK__tbCliente__idCat__123EB7A3">
+            <End Role="tbCategoriaCliente" EntitySet="tbCategoriaClientes" />
+            <End Role="tbClientes" EntitySet="tbClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbSubCate__idCat__51300E55" Association="CirculoNegocioModel.FK__tbSubCate__idCat__51300E55">
+            <End Role="tbCategoriaCliente" EntitySet="tbCategoriaClientes" />
+            <End Role="tbSubCategoriaCliente" EntitySet="tbSubCategoriaClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbCliente__idSub__58D1301D" Association="CirculoNegocioModel.FK__tbCliente__idSub__58D1301D">
+            <End Role="tbSubCategoriaCliente" EntitySet="tbSubCategoriaClientes" />
+            <End Role="tbClientes" EntitySet="tbClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbOfertas__idCli__46B27FE2" Association="CirculoNegocioModel.FK__tbOfertas__idCli__46B27FE2">
+            <End Role="tbClientes" EntitySet="tbClientes" />
+            <End Role="tbOfertas" EntitySet="tbOfertas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbPromoco__idCli__489AC854" Association="CirculoNegocioModel.FK__tbPromoco__idCli__489AC854">
+            <End Role="tbClientes" EntitySet="tbClientes" />
+            <End Role="tbPromocoes" EntitySet="tbPromocoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbPromoco__estad__690797E6" Association="CirculoNegocioModel.FK__tbPromoco__estad__690797E6">
+            <End Role="tbEstados" EntitySet="tbEstados" />
+            <End Role="tbPromocoes" EntitySet="tbPromocoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbOfertas__estad__6CD828CA" Association="CirculoNegocioModel.FK__tbOfertas__estad__6CD828CA">
+            <End Role="tbEstado" EntitySet="tbEstados" />
+            <End Role="tbOferta" EntitySet="tbOfertas" />
+          </AssociationSet>
+          <EntitySet Name="tbBannerBuscas" EntityType="CirculoNegocioModel.tbBannerBusca" />
+          <AssociationSet Name="FK__tbBannerB__estad__73852659" Association="CirculoNegocioModel.FK__tbBannerB__estad__73852659">
+            <End Role="tbEstado" EntitySet="tbEstados" />
+            <End Role="tbBannerBusca" EntitySet="tbBannerBuscas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbBannerB__idCat__719CDDE7" Association="CirculoNegocioModel.FK__tbBannerB__idCat__719CDDE7">
+            <End Role="tbCategoriaCliente" EntitySet="tbCategoriaClientes" />
+            <End Role="tbBannerBusca" EntitySet="tbBannerBuscas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbBannerB__idCli__72910220" Association="CirculoNegocioModel.FK__tbBannerB__idCli__72910220">
+            <End Role="tbCliente" EntitySet="tbClientes" />
+            <End Role="tbBannerBusca" EntitySet="tbBannerBuscas" />
+          </AssociationSet>
+          <EntitySet Name="tbNoticias" EntityType="CirculoNegocioModel.tbNoticia" />
           <AssociationSet Name="FK__tbNoticia__idCat__3B40CD36" Association="CirculoNegocioModel.FK__tbNoticia__idCat__3B40CD36">
             <End Role="tbCategoriaNoticia" EntitySet="tbCategoriaNoticias" />
             <End Role="tbNoticia" EntitySet="tbNoticias" />
@@ -485,41 +555,65 @@
             <End Role="tbEstado" EntitySet="tbEstados" />
             <End Role="tbNoticia" EntitySet="tbNoticias" />
           </AssociationSet>
-          <EntitySet Name="tbFilePathNoticias" EntityType="CirculoNegocioModel.tbFilePathNoticia" />
-          <AssociationSet Name="FK__tbFilePat__idNot__44CA3770" Association="CirculoNegocioModel.FK__tbFilePat__idNot__44CA3770">
-            <End Role="tbNoticia" EntitySet="tbNoticias" />
-            <End Role="tbFilePathNoticia" EntitySet="tbFilePathNoticias" />
-          </AssociationSet>
-          <EntitySet Name="tbOfertas" EntityType="CirculoNegocioModel.tbOferta" />
-          <AssociationSet Name="FK__tbOfertas__idCli__46B27FE2" Association="CirculoNegocioModel.FK__tbOfertas__idCli__46B27FE2">
-            <End Role="tbCliente" EntitySet="tbClientes" />
-            <End Role="tbOferta" EntitySet="tbOfertas" />
-          </AssociationSet>
-          <EntitySet Name="tbPromocaos" EntityType="CirculoNegocioModel.tbPromocao" />
-          <AssociationSet Name="FK__tbPromoco__idCli__489AC854" Association="CirculoNegocioModel.FK__tbPromoco__idCli__489AC854">
-            <End Role="tbCliente" EntitySet="tbClientes" />
-            <End Role="tbPromoco" EntitySet="tbPromocaos" />
-          </AssociationSet>
-          <EntitySet Name="tbSubCategoriaClientes" EntityType="CirculoNegocioModel.tbSubCategoriaCliente" />
-          <AssociationSet Name="FK__tbSubCate__idCat__51300E55" Association="CirculoNegocioModel.FK__tbSubCate__idCat__51300E55">
-            <End Role="tbCategoriaCliente" EntitySet="tbCategoriaClientes" />
-            <End Role="tbSubCategoriaCliente" EntitySet="tbSubCategoriaClientes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__tbCliente__idSub__58D1301D" Association="CirculoNegocioModel.FK__tbCliente__idSub__58D1301D">
-            <End Role="tbSubCategoriaCliente" EntitySet="tbSubCategoriaClientes" />
-            <End Role="tbCliente" EntitySet="tbClientes" />
-          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="tbBanner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTipoBanner" Type="Int32" />
+          <Property Name="imagemFilePath" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="idCliente" Type="Int32" />
+          <Property Name="estado" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="dataDe" Type="DateTime" />
+          <Property Name="dataAte" Type="DateTime" />
+          <Property Name="Ativo" Type="Boolean" />
+          <Property Name="DataUltimaAlteracao" Type="DateTime" />
+          <Property Name="responsavelUltimaAlteracao" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="tbEstado" Relationship="CirculoNegocioModel.FK__tbBanner__estado__2FCF1A8A" FromRole="tbBanner" ToRole="tbEstados" />
+          <NavigationProperty Name="tbCliente" Relationship="CirculoNegocioModel.FK__tbBanner__idClie__2EDAF651" FromRole="tbBanner" ToRole="tbClientes" />
+          <NavigationProperty Name="tbTipoBanner" Relationship="CirculoNegocioModel.FK__tbBanner__idTipo__2DE6D218" FromRole="tbBanner" ToRole="tbTipoBanner" />
+        </EntityType>
+        <EntityType Name="tbBannerPrincipal">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imagemFilePath" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="idCliente" Type="Int32" />
+          <Property Name="estado" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="Descricao" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="Rodape1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Rodape2" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="dataDe" Type="DateTime" />
+          <Property Name="dataAte" Type="DateTime" />
+          <Property Name="Ativo" Type="Boolean" />
+          <Property Name="DataUltimaAlteracao" Type="DateTime" />
+          <Property Name="responsavelUltimaAlteracao" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="tbEstado" Relationship="CirculoNegocioModel.FK__tbBannerP__estad__3587F3E0" FromRole="tbBannerPrincipal" ToRole="tbEstados" />
+          <NavigationProperty Name="tbCliente" Relationship="CirculoNegocioModel.FK__tbBannerP__idCli__3493CFA7" FromRole="tbBannerPrincipal" ToRole="tbClientes" />
+        </EntityType>
         <EntityType Name="tbCategoriaCliente">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nome" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DataUltimaAlteracao" Type="DateTime" />
+          <Property Name="responsavelUltimaAlteracao" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="tbClientes" Relationship="CirculoNegocioModel.FK__tbCliente__idCat__123EB7A3" FromRole="tbCategoriaCliente" ToRole="tbClientes" />
-          <Property Type="DateTime" Name="DataUltimaAlteracao" />
-          <Property Type="String" Name="responsavelUltimaAlteracao" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tbSubCategoriaClientes" Relationship="CirculoNegocioModel.FK__tbSubCate__idCat__51300E55" FromRole="tbCategoriaCliente" ToRole="tbSubCategoriaCliente" />
+          <NavigationProperty Name="tbBannerBuscas" Relationship="CirculoNegocioModel.FK__tbBannerB__idCat__719CDDE7" FromRole="tbCategoriaCliente" ToRole="tbBannerBusca" />
+        </EntityType>
+        <EntityType Name="tbCategoriaNoticia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="DataUltimaAlteracao" Type="DateTime" />
+          <Property Name="responsavelUltimaAlteracao" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="tbNoticias" Relationship="CirculoNegocioModel.FK__tbNoticia__idCat__3B40CD36" FromRole="tbCategoriaNoticia" ToRole="tbNoticia" />
         </EntityType>
         <EntityType Name="tbCliente">
           <Key>
@@ -537,12 +631,18 @@
           <Property Name="cidade" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
           <Property Name="estado" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
           <Property Name="cep" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="bairro" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="complemento" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
           <Property Name="telefone1" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
           <Property Name="telefone2" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
           <Property Name="site" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
           <Property Name="idCategoriaCliente" Type="Int32" />
+          <Property Name="idSubCategoriaCliente" Type="Int32" />
           <Property Name="servicos" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="horaSemanaDe" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="horaSemanaAte" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="horaFdsDe" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="horaFdsAte" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
           <Property Name="Funcionamento" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
           <Property Name="observacoes" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="anexoImagem1Path" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
@@ -550,25 +650,146 @@
           <Property Name="anexoImagem3Path" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
           <Property Name="anexoLogoPath" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
           <Property Name="ativo" Type="Boolean" />
+          <NavigationProperty Name="tbBanners" Relationship="CirculoNegocioModel.FK__tbBanner__idClie__2EDAF651" FromRole="tbClientes" ToRole="tbBanner" />
+          <NavigationProperty Name="tbBannerPrincipals" Relationship="CirculoNegocioModel.FK__tbBannerP__idCli__3493CFA7" FromRole="tbClientes" ToRole="tbBannerPrincipal" />
           <NavigationProperty Name="tbCategoriaCliente" Relationship="CirculoNegocioModel.FK__tbCliente__idCat__123EB7A3" FromRole="tbClientes" ToRole="tbCategoriaCliente" />
-          <NavigationProperty Name="tbBanners" Relationship="CirculoNegocioModel.FK__tbBanner__idClie__2EDAF651" FromRole="tbCliente" ToRole="tbBanner" />
-          <NavigationProperty Name="tbBannerPrincipals" Relationship="CirculoNegocioModel.FK__tbBannerP__idCli__3493CFA7" FromRole="tbCliente" ToRole="tbBannerPrincipal" />
-          <NavigationProperty Name="tbOfertas" Relationship="CirculoNegocioModel.FK__tbOfertas__idCli__46B27FE2" FromRole="tbCliente" ToRole="tbOferta" />
-          <NavigationProperty Name="tbPromocoes" Relationship="CirculoNegocioModel.FK__tbPromoco__idCli__489AC854" FromRole="tbCliente" ToRole="tbPromoco" />
-          <Property Type="Int32" Name="idSubCategoriaCliente" />
-          <NavigationProperty Name="tbSubCategoriaCliente" Relationship="CirculoNegocioModel.FK__tbCliente__idSub__58D1301D" FromRole="tbCliente" ToRole="tbSubCategoriaCliente" />
+          <NavigationProperty Name="tbSubCategoriaCliente" Relationship="CirculoNegocioModel.FK__tbCliente__idSub__58D1301D" FromRole="tbClientes" ToRole="tbSubCategoriaCliente" />
+          <NavigationProperty Name="tbOfertas" Relationship="CirculoNegocioModel.FK__tbOfertas__idCli__46B27FE2" FromRole="tbClientes" ToRole="tbOfertas" />
+          <NavigationProperty Name="tbPromocoes" Relationship="CirculoNegocioModel.FK__tbPromoco__idCli__489AC854" FromRole="tbClientes" ToRole="tbPromocoes" />
+          <NavigationProperty Name="tbBannerBuscas" Relationship="CirculoNegocioModel.FK__tbBannerB__idCli__72910220" FromRole="tbCliente" ToRole="tbBannerBusca" />
         </EntityType>
-        <EntityType Name="tbUsuarioAdministrador">
+        <EntityType Name="tbEstado">
+          <Key>
+            <PropertyRef Name="sigla" />
+          </Key>
+          <Property Name="sigla" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="nome" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="tbBanners" Relationship="CirculoNegocioModel.FK__tbBanner__estado__2FCF1A8A" FromRole="tbEstados" ToRole="tbBanner" />
+          <NavigationProperty Name="tbBannerPrincipals" Relationship="CirculoNegocioModel.FK__tbBannerP__estad__3587F3E0" FromRole="tbEstados" ToRole="tbBannerPrincipal" />
+          <NavigationProperty Name="tbPromocoes" Relationship="CirculoNegocioModel.FK__tbPromoco__estad__690797E6" FromRole="tbEstados" ToRole="tbPromocoes" />
+          <NavigationProperty Name="tbOfertas" Relationship="CirculoNegocioModel.FK__tbOfertas__estad__6CD828CA" FromRole="tbEstado" ToRole="tbOferta" />
+          <NavigationProperty Name="tbBannerBuscas" Relationship="CirculoNegocioModel.FK__tbBannerB__estad__73852659" FromRole="tbEstado" ToRole="tbBannerBusca" />
+          <NavigationProperty Name="tbNoticias" Relationship="CirculoNegocioModel.FK__tbNoticia__estad__3A4CA8FD" FromRole="tbEstado" ToRole="tbNoticia" />
+        </EntityType>
+        <EntityType Name="tbOferta">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nome" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="usuario" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="senha" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
-          <Property Name="dataInclusao" Type="DateTime" />
-          <Property Name="responsavelInclusao" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="idCliente" Type="Int32" />
+          <Property Name="titulo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="descricao" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="imagemFilePath" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="link" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="dataDe" Type="DateTime" />
+          <Property Name="dataAte" Type="DateTime" />
+          <Property Name="responsavelUltimaAlteracao" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="dataUltimaAlteracao" Type="DateTime" />
+          <NavigationProperty Name="tbCliente" Relationship="CirculoNegocioModel.FK__tbOfertas__idCli__46B27FE2" FromRole="tbOfertas" ToRole="tbClientes" />
+          <Property Type="String" Name="estado" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="tbEstado" Relationship="CirculoNegocioModel.FK__tbOfertas__estad__6CD828CA" FromRole="tbOferta" ToRole="tbEstado" />
+          <Property Type="Boolean" Name="Ativo" />
         </EntityType>
+        <EntityType Name="tbPromoco">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCliente" Type="Int32" />
+          <Property Name="titulo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="imagemFilePath" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="link" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="dataDe" Type="DateTime" />
+          <Property Name="dataAte" Type="DateTime" />
+          <Property Name="responsavelUltimaAlteracao" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="dataUltimaAlteracao" Type="DateTime" />
+          <Property Name="estado" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="tbCliente" Relationship="CirculoNegocioModel.FK__tbPromoco__idCli__489AC854" FromRole="tbPromocoes" ToRole="tbClientes" />
+          <NavigationProperty Name="tbEstado" Relationship="CirculoNegocioModel.FK__tbPromoco__estad__690797E6" FromRole="tbPromocoes" ToRole="tbEstados" />
+          <Property Type="Boolean" Name="Ativo" />
+        </EntityType>
+        <EntityType Name="tbSubCategoriaCliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCategoria" Type="Int32" />
+          <Property Name="Nome" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DataUltimaAlteracao" Type="DateTime" />
+          <Property Name="responsavelUltimaAlteracao" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="tbCategoriaCliente" Relationship="CirculoNegocioModel.FK__tbSubCate__idCat__51300E55" FromRole="tbSubCategoriaCliente" ToRole="tbCategoriaCliente" />
+          <NavigationProperty Name="tbClientes" Relationship="CirculoNegocioModel.FK__tbCliente__idSub__58D1301D" FromRole="tbSubCategoriaCliente" ToRole="tbClientes" />
+        </EntityType>
+        <EntityType Name="tbTipoBanner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="DataUltimaAlteracao" Type="DateTime" />
+          <Property Name="responsavelUltimaAlteracao" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="tbBanners" Relationship="CirculoNegocioModel.FK__tbBanner__idTipo__2DE6D218" FromRole="tbTipoBanner" ToRole="tbBanner" />
+        </EntityType>
+        <Association Name="FK__tbBanner__estado__2FCF1A8A">
+          <End Role="tbEstados" Type="CirculoNegocioModel.tbEstado" Multiplicity="0..1" />
+          <End Role="tbBanner" Type="CirculoNegocioModel.tbBanner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEstados">
+              <PropertyRef Name="sigla" />
+            </Principal>
+            <Dependent Role="tbBanner">
+              <PropertyRef Name="estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbBanner__idClie__2EDAF651">
+          <End Role="tbClientes" Type="CirculoNegocioModel.tbCliente" Multiplicity="0..1" />
+          <End Role="tbBanner" Type="CirculoNegocioModel.tbBanner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbClientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbBanner">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbBanner__idTipo__2DE6D218">
+          <End Role="tbTipoBanner" Type="CirculoNegocioModel.tbTipoBanner" Multiplicity="0..1" />
+          <End Role="tbBanner" Type="CirculoNegocioModel.tbBanner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbTipoBanner">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbBanner">
+              <PropertyRef Name="idTipoBanner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbBannerP__estad__3587F3E0">
+          <End Role="tbEstados" Type="CirculoNegocioModel.tbEstado" Multiplicity="0..1" />
+          <End Role="tbBannerPrincipal" Type="CirculoNegocioModel.tbBannerPrincipal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEstados">
+              <PropertyRef Name="sigla" />
+            </Principal>
+            <Dependent Role="tbBannerPrincipal">
+              <PropertyRef Name="estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbBannerP__idCli__3493CFA7">
+          <End Role="tbClientes" Type="CirculoNegocioModel.tbCliente" Multiplicity="0..1" />
+          <End Role="tbBannerPrincipal" Type="CirculoNegocioModel.tbBannerPrincipal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbClientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbBannerPrincipal">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__tbCliente__idCat__123EB7A3">
           <End Role="tbCategoriaCliente" Type="CirculoNegocioModel.tbCategoriaCliente" Multiplicity="0..1" />
           <End Role="tbClientes" Type="CirculoNegocioModel.tbCliente" Multiplicity="*" />
@@ -581,152 +802,153 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="tbBanner">
+        <Association Name="FK__tbSubCate__idCat__51300E55">
+          <End Role="tbCategoriaCliente" Type="CirculoNegocioModel.tbCategoriaCliente" Multiplicity="0..1" />
+          <End Role="tbSubCategoriaCliente" Type="CirculoNegocioModel.tbSubCategoriaCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbCategoriaCliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbSubCategoriaCliente">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbCliente__idSub__58D1301D">
+          <End Role="tbSubCategoriaCliente" Type="CirculoNegocioModel.tbSubCategoriaCliente" Multiplicity="0..1" />
+          <End Role="tbClientes" Type="CirculoNegocioModel.tbCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbSubCategoriaCliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbClientes">
+              <PropertyRef Name="idSubCategoriaCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbOfertas__idCli__46B27FE2">
+          <End Role="tbClientes" Type="CirculoNegocioModel.tbCliente" Multiplicity="0..1" />
+          <End Role="tbOfertas" Type="CirculoNegocioModel.tbOferta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbClientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbOfertas">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbPromoco__idCli__489AC854">
+          <End Role="tbClientes" Type="CirculoNegocioModel.tbCliente" Multiplicity="0..1" />
+          <End Role="tbPromocoes" Type="CirculoNegocioModel.tbPromoco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbClientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbPromocoes">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbPromoco__estad__690797E6">
+          <End Role="tbEstados" Type="CirculoNegocioModel.tbEstado" Multiplicity="0..1" />
+          <End Role="tbPromocoes" Type="CirculoNegocioModel.tbPromoco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEstados">
+              <PropertyRef Name="sigla" />
+            </Principal>
+            <Dependent Role="tbPromocoes">
+              <PropertyRef Name="estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbOfertas__estad__6CD828CA">
+          <End Type="CirculoNegocioModel.tbEstado" Role="tbEstado" Multiplicity="0..1" />
+          <End Type="CirculoNegocioModel.tbOferta" Role="tbOferta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEstado">
+              <PropertyRef Name="sigla" />
+            </Principal>
+            <Dependent Role="tbOferta">
+              <PropertyRef Name="estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbBannerBusca">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="idTipoBanner" />
-          <Property Type="String" Name="imagemFilePath" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="idCategoria" />
           <Property Type="Int32" Name="idCliente" />
           <Property Type="String" Name="estado" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="imagemFilePath" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="dataDe" />
           <Property Type="DateTime" Name="dataAte" />
           <Property Type="Boolean" Name="Ativo" />
-          <NavigationProperty Name="tbEstado" Relationship="CirculoNegocioModel.FK__tbBanner__estado__2FCF1A8A" FromRole="tbBanner" ToRole="tbEstado" />
-          <NavigationProperty Name="tbCliente" Relationship="CirculoNegocioModel.FK__tbBanner__idClie__2EDAF651" FromRole="tbBanner" ToRole="tbCliente" />
-          <NavigationProperty Name="tbTipoBanner" Relationship="CirculoNegocioModel.FK__tbBanner__idTipo__2DE6D218" FromRole="tbBanner" ToRole="tbTipoBanner" />
           <Property Type="DateTime" Name="DataUltimaAlteracao" />
           <Property Type="String" Name="responsavelUltimaAlteracao" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbEstado" Relationship="CirculoNegocioModel.FK__tbBannerB__estad__73852659" FromRole="tbBannerBusca" ToRole="tbEstado" />
+          <NavigationProperty Name="tbCategoriaCliente" Relationship="CirculoNegocioModel.FK__tbBannerB__idCat__719CDDE7" FromRole="tbBannerBusca" ToRole="tbCategoriaCliente" />
+          <NavigationProperty Name="tbCliente" Relationship="CirculoNegocioModel.FK__tbBannerB__idCli__72910220" FromRole="tbBannerBusca" ToRole="tbCliente" />
         </EntityType>
-        <EntityType Name="tbBannerPrincipal">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="imagemFilePath" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="idCliente" />
-          <Property Type="String" Name="estado" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Type="DateTime" Name="dataDe" />
-          <Property Type="DateTime" Name="dataAte" />
-          <Property Type="Boolean" Name="Ativo" />
-          <NavigationProperty Name="tbEstado" Relationship="CirculoNegocioModel.FK__tbBannerP__estad__3587F3E0" FromRole="tbBannerPrincipal" ToRole="tbEstado" />
-          <NavigationProperty Name="tbCliente" Relationship="CirculoNegocioModel.FK__tbBannerP__idCli__3493CFA7" FromRole="tbBannerPrincipal" ToRole="tbCliente" />
-          <Property Type="DateTime" Name="DataUltimaAlteracao" />
-          <Property Type="String" Name="responsavelUltimaAlteracao" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Descricao" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Rodape1" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Rodape2" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="tbCategoriaNoticia">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Nome" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="DataUltimaAlteracao" />
-          <Property Type="String" Name="responsavelUltimaAlteracao" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbNoticias" Relationship="CirculoNegocioModel.FK__tbNoticia__idCat__3B40CD36" FromRole="tbCategoriaNoticia" ToRole="tbNoticia" />
-        </EntityType>
-        <EntityType Name="tbEstado">
-          <Key>
-            <PropertyRef Name="sigla" />
-          </Key>
-          <Property Type="String" Name="sigla" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Type="String" Name="nome" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbBanners" Relationship="CirculoNegocioModel.FK__tbBanner__estado__2FCF1A8A" FromRole="tbEstado" ToRole="tbBanner" />
-          <NavigationProperty Name="tbBannerPrincipals" Relationship="CirculoNegocioModel.FK__tbBannerP__estad__3587F3E0" FromRole="tbEstado" ToRole="tbBannerPrincipal" />
-          <NavigationProperty Name="tbNoticias" Relationship="CirculoNegocioModel.FK__tbNoticia__estad__3A4CA8FD" FromRole="tbEstado" ToRole="tbNoticia" />
-        </EntityType>
+        <Association Name="FK__tbBannerB__estad__73852659">
+          <End Type="CirculoNegocioModel.tbEstado" Role="tbEstado" Multiplicity="0..1" />
+          <End Type="CirculoNegocioModel.tbBannerBusca" Role="tbBannerBusca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEstado">
+              <PropertyRef Name="sigla" />
+            </Principal>
+            <Dependent Role="tbBannerBusca">
+              <PropertyRef Name="estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbBannerB__idCat__719CDDE7">
+          <End Type="CirculoNegocioModel.tbCategoriaCliente" Role="tbCategoriaCliente" Multiplicity="0..1" />
+          <End Type="CirculoNegocioModel.tbBannerBusca" Role="tbBannerBusca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbCategoriaCliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbBannerBusca">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbBannerB__idCli__72910220">
+          <End Type="CirculoNegocioModel.tbCliente" Role="tbCliente" Multiplicity="0..1" />
+          <End Type="CirculoNegocioModel.tbBannerBusca" Role="tbBannerBusca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbCliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbBannerBusca">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="tbNoticia">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="titulo" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Sinopse" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Descricao" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="estado" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Type="Int32" Name="idCategoria" />
+          <Property Type="DateTime" Name="dataHoraDe" />
+          <Property Type="DateTime" Name="dataHoraAte" />
           <Property Type="String" Name="responsavelInsercao" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="filePathImagens" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="imagemHome" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="imagem1" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="imagem2" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="imagem3" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="Ativo" />
           <NavigationProperty Name="tbCategoriaNoticia" Relationship="CirculoNegocioModel.FK__tbNoticia__idCat__3B40CD36" FromRole="tbNoticia" ToRole="tbCategoriaNoticia" />
           <NavigationProperty Name="tbEstado" Relationship="CirculoNegocioModel.FK__tbNoticia__estad__3A4CA8FD" FromRole="tbNoticia" ToRole="tbEstado" />
-          <Property Type="String" Name="Sinopse" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="dataHoraDe" />
-          <Property Type="DateTime" Name="dataHoraAte" />
-          <NavigationProperty Name="tbFilePathNoticias" Relationship="CirculoNegocioModel.FK__tbFilePat__idNot__44CA3770" FromRole="tbNoticia" ToRole="tbFilePathNoticia" />
         </EntityType>
-        <EntityType Name="tbTipoBanner">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Nome" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="DataUltimaAlteracao" />
-          <Property Type="String" Name="responsavelUltimaAlteracao" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbBanners" Relationship="CirculoNegocioModel.FK__tbBanner__idTipo__2DE6D218" FromRole="tbTipoBanner" ToRole="tbBanner" />
-        </EntityType>
-        <Association Name="FK__tbBanner__estado__2FCF1A8A">
-          <End Type="CirculoNegocioModel.tbEstado" Role="tbEstado" Multiplicity="0..1" />
-          <End Type="CirculoNegocioModel.tbBanner" Role="tbBanner" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbEstado">
-              <PropertyRef Name="sigla" />
-            </Principal>
-            <Dependent Role="tbBanner">
-              <PropertyRef Name="estado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__tbBanner__idClie__2EDAF651">
-          <End Type="CirculoNegocioModel.tbCliente" Role="tbCliente" Multiplicity="0..1" />
-          <End Type="CirculoNegocioModel.tbBanner" Role="tbBanner" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbCliente">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="tbBanner">
-              <PropertyRef Name="idCliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__tbBanner__idTipo__2DE6D218">
-          <End Type="CirculoNegocioModel.tbTipoBanner" Role="tbTipoBanner" Multiplicity="0..1" />
-          <End Type="CirculoNegocioModel.tbBanner" Role="tbBanner" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbTipoBanner">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="tbBanner">
-              <PropertyRef Name="idTipoBanner" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__tbBannerP__estad__3587F3E0">
-          <End Type="CirculoNegocioModel.tbEstado" Role="tbEstado" Multiplicity="0..1" />
-          <End Type="CirculoNegocioModel.tbBannerPrincipal" Role="tbBannerPrincipal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbEstado">
-              <PropertyRef Name="sigla" />
-            </Principal>
-            <Dependent Role="tbBannerPrincipal">
-              <PropertyRef Name="estado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__tbBannerP__idCli__3493CFA7">
-          <End Type="CirculoNegocioModel.tbCliente" Role="tbCliente" Multiplicity="0..1" />
-          <End Type="CirculoNegocioModel.tbBannerPrincipal" Role="tbBannerPrincipal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbCliente">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="tbBannerPrincipal">
-              <PropertyRef Name="idCliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__tbNoticia__idCat__3B40CD36">
           <End Type="CirculoNegocioModel.tbCategoriaNoticia" Role="tbCategoriaNoticia" Multiplicity="0..1" />
           <End Type="CirculoNegocioModel.tbNoticia" Role="tbNoticia" Multiplicity="*" />
@@ -751,138 +973,69 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="tbFilePathNoticia">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="idNoticia" />
-          <Property Type="String" Name="filePath" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbNoticia" Relationship="CirculoNegocioModel.FK__tbFilePat__idNot__44CA3770" FromRole="tbFilePathNoticia" ToRole="tbNoticia" />
-        </EntityType>
-        <Association Name="FK__tbFilePat__idNot__44CA3770">
-          <End Type="CirculoNegocioModel.tbNoticia" Role="tbNoticia" Multiplicity="0..1" />
-          <End Type="CirculoNegocioModel.tbFilePathNoticia" Role="tbFilePathNoticia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbNoticia">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="tbFilePathNoticia">
-              <PropertyRef Name="idNoticia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="tbOferta">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="idCliente" />
-          <Property Type="String" Name="titulo" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="descricao" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="imagemFilePath" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="link" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="dataDe" />
-          <Property Type="DateTime" Name="dataAte" />
-          <Property Type="String" Name="responsavelUltimaAlteracao" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="dataUltimaAlteracao" />
-          <NavigationProperty Name="tbCliente" Relationship="CirculoNegocioModel.FK__tbOfertas__idCli__46B27FE2" FromRole="tbOferta" ToRole="tbCliente" />
-        </EntityType>
-        <Association Name="FK__tbOfertas__idCli__46B27FE2">
-          <End Type="CirculoNegocioModel.tbCliente" Role="tbCliente" Multiplicity="0..1" />
-          <End Type="CirculoNegocioModel.tbOferta" Role="tbOferta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbCliente">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="tbOferta">
-              <PropertyRef Name="idCliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="tbPromocao">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="idCliente" />
-          <Property Type="String" Name="titulo" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="imagemFilePath" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="link" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="dataDe" />
-          <Property Type="DateTime" Name="dataAte" />
-          <Property Type="String" Name="responsavelUltimaAlteracao" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="dataUltimaAlteracao" />
-          <NavigationProperty Name="tbCliente" Relationship="CirculoNegocioModel.FK__tbPromoco__idCli__489AC854" FromRole="tbPromoco" ToRole="tbCliente" />
-        </EntityType>
-        <Association Name="FK__tbPromoco__idCli__489AC854">
-          <End Type="CirculoNegocioModel.tbCliente" Role="tbCliente" Multiplicity="0..1" />
-          <End Type="CirculoNegocioModel.tbPromocao" Role="tbPromoco" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbCliente">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="tbPromoco">
-              <PropertyRef Name="idCliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="tbSubCategoriaCliente">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="idCategoria" />
-          <Property Type="String" Name="Nome" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="DataUltimaAlteracao" />
-          <Property Type="String" Name="responsavelUltimaAlteracao" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbCategoriaCliente" Relationship="CirculoNegocioModel.FK__tbSubCate__idCat__51300E55" FromRole="tbSubCategoriaCliente" ToRole="tbCategoriaCliente" />
-          <NavigationProperty Name="tbClientes" Relationship="CirculoNegocioModel.FK__tbCliente__idSub__58D1301D" FromRole="tbSubCategoriaCliente" ToRole="tbCliente" />
-        </EntityType>
-        <Association Name="FK__tbSubCate__idCat__51300E55">
-          <End Type="CirculoNegocioModel.tbCategoriaCliente" Role="tbCategoriaCliente" Multiplicity="0..1" />
-          <End Type="CirculoNegocioModel.tbSubCategoriaCliente" Role="tbSubCategoriaCliente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbCategoriaCliente">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="tbSubCategoriaCliente">
-              <PropertyRef Name="idCategoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__tbCliente__idSub__58D1301D">
-          <End Type="CirculoNegocioModel.tbSubCategoriaCliente" Role="tbSubCategoriaCliente" Multiplicity="0..1" />
-          <End Type="CirculoNegocioModel.tbCliente" Role="tbCliente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbSubCategoriaCliente">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="tbCliente">
-              <PropertyRef Name="idSubCategoriaCliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CirculoNegocioModelStoreContainer" CdmEntityContainer="CirculoNegocioEntities">
+          <EntitySetMapping Name="tbBanners">
+            <EntityTypeMapping TypeName="CirculoNegocioModel.tbBanner">
+              <MappingFragment StoreEntitySet="tbBanner">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idTipoBanner" ColumnName="idTipoBanner" />
+                <ScalarProperty Name="imagemFilePath" ColumnName="imagemFilePath" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="dataDe" ColumnName="dataDe" />
+                <ScalarProperty Name="dataAte" ColumnName="dataAte" />
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+                <ScalarProperty Name="DataUltimaAlteracao" ColumnName="DataUltimaAlteracao" />
+                <ScalarProperty Name="responsavelUltimaAlteracao" ColumnName="responsavelUltimaAlteracao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbBannerPrincipals">
+            <EntityTypeMapping TypeName="CirculoNegocioModel.tbBannerPrincipal">
+              <MappingFragment StoreEntitySet="tbBannerPrincipal">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="imagemFilePath" ColumnName="imagemFilePath" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Rodape1" ColumnName="Rodape1" />
+                <ScalarProperty Name="Rodape2" ColumnName="Rodape2" />
+                <ScalarProperty Name="dataDe" ColumnName="dataDe" />
+                <ScalarProperty Name="dataAte" ColumnName="dataAte" />
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+                <ScalarProperty Name="DataUltimaAlteracao" ColumnName="DataUltimaAlteracao" />
+                <ScalarProperty Name="responsavelUltimaAlteracao" ColumnName="responsavelUltimaAlteracao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tbCategoriaClientes">
             <EntityTypeMapping TypeName="CirculoNegocioModel.tbCategoriaCliente">
               <MappingFragment StoreEntitySet="tbCategoriaCliente">
-                <ScalarProperty Name="responsavelUltimaAlteracao" ColumnName="responsavelUltimaAlteracao" />
-                <ScalarProperty Name="DataUltimaAlteracao" ColumnName="DataUltimaAlteracao" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
-                </MappingFragment>
+                <ScalarProperty Name="DataUltimaAlteracao" ColumnName="DataUltimaAlteracao" />
+                <ScalarProperty Name="responsavelUltimaAlteracao" ColumnName="responsavelUltimaAlteracao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbCategoriaNoticias">
+            <EntityTypeMapping TypeName="CirculoNegocioModel.tbCategoriaNoticia">
+              <MappingFragment StoreEntitySet="tbCategoriaNoticia">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="DataUltimaAlteracao" ColumnName="DataUltimaAlteracao" />
+                <ScalarProperty Name="responsavelUltimaAlteracao" ColumnName="responsavelUltimaAlteracao" />
+              </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tbClientes">
             <EntityTypeMapping TypeName="CirculoNegocioModel.tbCliente">
               <MappingFragment StoreEntitySet="tbClientes">
-                <ScalarProperty Name="idSubCategoriaCliente" ColumnName="idSubCategoriaCliente" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="razaoSocial" ColumnName="razaoSocial" />
                 <ScalarProperty Name="nomeFantasia" ColumnName="nomeFantasia" />
@@ -895,12 +1048,18 @@
                 <ScalarProperty Name="cidade" ColumnName="cidade" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
                 <ScalarProperty Name="complemento" ColumnName="complemento" />
                 <ScalarProperty Name="telefone1" ColumnName="telefone1" />
                 <ScalarProperty Name="telefone2" ColumnName="telefone2" />
                 <ScalarProperty Name="site" ColumnName="site" />
                 <ScalarProperty Name="idCategoriaCliente" ColumnName="idCategoriaCliente" />
+                <ScalarProperty Name="idSubCategoriaCliente" ColumnName="idSubCategoriaCliente" />
                 <ScalarProperty Name="servicos" ColumnName="servicos" />
+                <ScalarProperty Name="horaSemanaDe" ColumnName="horaSemanaDe" />
+                <ScalarProperty Name="horaSemanaAte" ColumnName="horaSemanaAte" />
+                <ScalarProperty Name="horaFdsDe" ColumnName="horaFdsDe" />
+                <ScalarProperty Name="horaFdsAte" ColumnName="horaFdsAte" />
                 <ScalarProperty Name="Funcionamento" ColumnName="Funcionamento" />
                 <ScalarProperty Name="observacoes" ColumnName="observacoes" />
                 <ScalarProperty Name="anexoImagem1Path" ColumnName="anexoImagem1Path" />
@@ -911,144 +1070,102 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbUsuarioAdministradors">
-            <EntityTypeMapping TypeName="CirculoNegocioModel.tbUsuarioAdministrador">
-              <MappingFragment StoreEntitySet="tbUsuarioAdministrador">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
-                <ScalarProperty Name="usuario" ColumnName="usuario" />
-                <ScalarProperty Name="senha" ColumnName="senha" />
-                <ScalarProperty Name="dataInclusao" ColumnName="dataInclusao" />
-                <ScalarProperty Name="responsavelInclusao" ColumnName="responsavelInclusao" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbBanners">
-            <EntityTypeMapping TypeName="CirculoNegocioModel.tbBanner">
-              <MappingFragment StoreEntitySet="tbBanner">
-                <ScalarProperty Name="responsavelUltimaAlteracao" ColumnName="responsavelUltimaAlteracao" />
-                <ScalarProperty Name="DataUltimaAlteracao" ColumnName="DataUltimaAlteracao" />
-                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
-                <ScalarProperty Name="dataAte" ColumnName="dataAte" />
-                <ScalarProperty Name="dataDe" ColumnName="dataDe" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
-                <ScalarProperty Name="imagemFilePath" ColumnName="imagemFilePath" />
-                <ScalarProperty Name="idTipoBanner" ColumnName="idTipoBanner" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbBannerPrincipals">
-            <EntityTypeMapping TypeName="CirculoNegocioModel.tbBannerPrincipal">
-              <MappingFragment StoreEntitySet="tbBannerPrincipal">
-                <ScalarProperty Name="Rodape2" ColumnName="Rodape2" />
-                <ScalarProperty Name="Rodape1" ColumnName="Rodape1" />
-                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
-                <ScalarProperty Name="responsavelUltimaAlteracao" ColumnName="responsavelUltimaAlteracao" />
-                <ScalarProperty Name="DataUltimaAlteracao" ColumnName="DataUltimaAlteracao" />
-                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
-                <ScalarProperty Name="dataAte" ColumnName="dataAte" />
-                <ScalarProperty Name="dataDe" ColumnName="dataDe" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
-                <ScalarProperty Name="imagemFilePath" ColumnName="imagemFilePath" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbCategoriaNoticias">
-            <EntityTypeMapping TypeName="CirculoNegocioModel.tbCategoriaNoticia">
-              <MappingFragment StoreEntitySet="tbCategoriaNoticia">
-                <ScalarProperty Name="responsavelUltimaAlteracao" ColumnName="responsavelUltimaAlteracao" />
-                <ScalarProperty Name="DataUltimaAlteracao" ColumnName="DataUltimaAlteracao" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbEstados">
             <EntityTypeMapping TypeName="CirculoNegocioModel.tbEstado">
               <MappingFragment StoreEntitySet="tbEstados">
-                <ScalarProperty Name="nome" ColumnName="nome" />
                 <ScalarProperty Name="sigla" ColumnName="sigla" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbNoticias">
-            <EntityTypeMapping TypeName="CirculoNegocioModel.tbNoticia">
-              <MappingFragment StoreEntitySet="tbNoticias">
-                <ScalarProperty Name="dataHoraAte" ColumnName="dataHoraAte" />
-                <ScalarProperty Name="dataHoraDe" ColumnName="dataHoraDe" />
-                <ScalarProperty Name="Sinopse" ColumnName="Sinopse" />
-                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
-                <ScalarProperty Name="filePathImagens" ColumnName="filePathImagens" />
-                <ScalarProperty Name="responsavelInsercao" ColumnName="responsavelInsercao" />
-                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
-                <ScalarProperty Name="titulo" ColumnName="titulo" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbTipoBanners">
-            <EntityTypeMapping TypeName="CirculoNegocioModel.tbTipoBanner">
-              <MappingFragment StoreEntitySet="tbTipoBanner">
-                <ScalarProperty Name="responsavelUltimaAlteracao" ColumnName="responsavelUltimaAlteracao" />
-                <ScalarProperty Name="DataUltimaAlteracao" ColumnName="DataUltimaAlteracao" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbFilePathNoticias">
-            <EntityTypeMapping TypeName="CirculoNegocioModel.tbFilePathNoticia">
-              <MappingFragment StoreEntitySet="tbFilePathNoticias">
-                <ScalarProperty Name="filePath" ColumnName="filePath" />
-                <ScalarProperty Name="idNoticia" ColumnName="idNoticia" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tbOfertas">
             <EntityTypeMapping TypeName="CirculoNegocioModel.tbOferta">
               <MappingFragment StoreEntitySet="tbOfertas">
-                <ScalarProperty Name="dataUltimaAlteracao" ColumnName="dataUltimaAlteracao" />
-                <ScalarProperty Name="responsavelUltimaAlteracao" ColumnName="responsavelUltimaAlteracao" />
-                <ScalarProperty Name="dataAte" ColumnName="dataAte" />
-                <ScalarProperty Name="dataDe" ColumnName="dataDe" />
-                <ScalarProperty Name="link" ColumnName="link" />
-                <ScalarProperty Name="imagemFilePath" ColumnName="imagemFilePath" />
-                <ScalarProperty Name="descricao" ColumnName="descricao" />
-                <ScalarProperty Name="titulo" ColumnName="titulo" />
-                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="imagemFilePath" ColumnName="imagemFilePath" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="dataDe" ColumnName="dataDe" />
+                <ScalarProperty Name="dataAte" ColumnName="dataAte" />
+                <ScalarProperty Name="responsavelUltimaAlteracao" ColumnName="responsavelUltimaAlteracao" />
+                <ScalarProperty Name="dataUltimaAlteracao" ColumnName="dataUltimaAlteracao" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbPromocaos">
-            <EntityTypeMapping TypeName="CirculoNegocioModel.tbPromocao">
+          <EntitySetMapping Name="tbPromocoes">
+            <EntityTypeMapping TypeName="CirculoNegocioModel.tbPromoco">
               <MappingFragment StoreEntitySet="tbPromocoes">
-                <ScalarProperty Name="dataUltimaAlteracao" ColumnName="dataUltimaAlteracao" />
-                <ScalarProperty Name="responsavelUltimaAlteracao" ColumnName="responsavelUltimaAlteracao" />
-                <ScalarProperty Name="dataAte" ColumnName="dataAte" />
-                <ScalarProperty Name="dataDe" ColumnName="dataDe" />
-                <ScalarProperty Name="link" ColumnName="link" />
-                <ScalarProperty Name="imagemFilePath" ColumnName="imagemFilePath" />
-                <ScalarProperty Name="titulo" ColumnName="titulo" />
-                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="imagemFilePath" ColumnName="imagemFilePath" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="dataDe" ColumnName="dataDe" />
+                <ScalarProperty Name="dataAte" ColumnName="dataAte" />
+                <ScalarProperty Name="responsavelUltimaAlteracao" ColumnName="responsavelUltimaAlteracao" />
+                <ScalarProperty Name="dataUltimaAlteracao" ColumnName="dataUltimaAlteracao" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tbSubCategoriaClientes">
             <EntityTypeMapping TypeName="CirculoNegocioModel.tbSubCategoriaCliente">
               <MappingFragment StoreEntitySet="tbSubCategoriaCliente">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="DataUltimaAlteracao" ColumnName="DataUltimaAlteracao" />
+                <ScalarProperty Name="responsavelUltimaAlteracao" ColumnName="responsavelUltimaAlteracao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbTipoBanners">
+            <EntityTypeMapping TypeName="CirculoNegocioModel.tbTipoBanner">
+              <MappingFragment StoreEntitySet="tbTipoBanner">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="DataUltimaAlteracao" ColumnName="DataUltimaAlteracao" />
+                <ScalarProperty Name="responsavelUltimaAlteracao" ColumnName="responsavelUltimaAlteracao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbBannerBuscas">
+            <EntityTypeMapping TypeName="CirculoNegocioModel.tbBannerBusca">
+              <MappingFragment StoreEntitySet="tbBannerBusca">
                 <ScalarProperty Name="responsavelUltimaAlteracao" ColumnName="responsavelUltimaAlteracao" />
                 <ScalarProperty Name="DataUltimaAlteracao" ColumnName="DataUltimaAlteracao" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+                <ScalarProperty Name="dataAte" ColumnName="dataAte" />
+                <ScalarProperty Name="dataDe" ColumnName="dataDe" />
+                <ScalarProperty Name="imagemFilePath" ColumnName="imagemFilePath" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
                 <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbNoticias">
+            <EntityTypeMapping TypeName="CirculoNegocioModel.tbNoticia">
+              <MappingFragment StoreEntitySet="tbNoticias">
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+                <ScalarProperty Name="imagem3" ColumnName="imagem3" />
+                <ScalarProperty Name="imagem2" ColumnName="imagem2" />
+                <ScalarProperty Name="imagem1" ColumnName="imagem1" />
+                <ScalarProperty Name="imagemHome" ColumnName="imagemHome" />
+                <ScalarProperty Name="responsavelInsercao" ColumnName="responsavelInsercao" />
+                <ScalarProperty Name="dataHoraAte" ColumnName="dataHoraAte" />
+                <ScalarProperty Name="dataHoraDe" ColumnName="dataHoraDe" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Sinopse" ColumnName="Sinopse" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1073,88 +1190,117 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="CirculoNegocios" ZoomLevel="75">
-        <EntityTypeShape EntityType="CirculoNegocioModel.tbCategoriaCliente" Width="1.5" PointX="0.75" PointY="3.125" Height="1.9802864583333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="CirculoNegocioModel.tbCliente" Width="1.5" PointX="3" PointY="1.125" Height="6.0186165364583317" IsExpanded="true" />
-        <EntityTypeShape EntityType="CirculoNegocioModel.tbUsuarioAdministrador" Width="1.5" PointX="5.75" PointY="0.75" Height="2.1725878906249996" IsExpanded="true" />
+      <Diagram Name="CirculoNegocios">
+        <EntityTypeShape EntityType="CirculoNegocioModel.tbBanner" Width="1.5" PointX="7.5" PointY="14" Height="3.5186979166666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="CirculoNegocioModel.tbBannerPrincipal" Width="1.5" PointX="10.5" PointY="14" Height="3.7109993489583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="CirculoNegocioModel.tbCategoriaCliente" Width="1.5" PointX="0.75" PointY="10.25" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CirculoNegocioModel.tbCategoriaNoticia" Width="1.5" PointX="8.25" PointY="5.75" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="CirculoNegocioModel.tbCliente" Width="1.5" PointX="5.25" PointY="11.75" Height="8.1339322916666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="CirculoNegocioModel.tbEstado" Width="1.5" PointX="5.25" PointY="8.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CirculoNegocioModel.tbOferta" Width="1.5" PointX="7.5" PointY="23" Height="3.1340950520833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="CirculoNegocioModel.tbPromoco" Width="1.5" PointX="7.5" PointY="9.125" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CirculoNegocioModel.tbSubCategoriaCliente" Width="1.5" PointX="3" PointY="19" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="CirculoNegocioModel.tbTipoBanner" Width="1.5" PointX="5.25" PointY="20.75" Height="1.9802864583333317" IsExpanded="true" />
+        <AssociationConnector Association="CirculoNegocioModel.FK__tbBanner__estado__2FCF1A8A" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="11.294497447516024" />
+          <ConnectorPoint PointX="7.1875" PointY="11.731997447516024" />
+          <ConnectorPoint PointX="7.1875" PointY="16.018624483072916" />
+          <ConnectorPoint PointX="7.5" PointY="16.018624483072916" />
+        </AssociationConnector>
+        <AssociationConnector Association="CirculoNegocioModel.FK__tbBanner__idClie__2EDAF651" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="15.09207400390625" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="15.092074003906248" />
+          <ConnectorPoint PointX="7.348958333333333" PointY="15.09207400390625" />
+          <ConnectorPoint PointX="7.5" PointY="15.09207400390625" />
+        </AssociationConnector>
+        <AssociationConnector Association="CirculoNegocioModel.FK__tbBanner__idTipo__2DE6D218" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="20.813460538461534" />
+          <ConnectorPoint PointX="7.1598244349011209" PointY="20.403636103560412" />
+          <ConnectorPoint PointX="7.2776755650988791" PointY="20.285784973362656" />
+          <ConnectorPoint PointX="7.3125" PointY="20.250960538461534" />
+          <ConnectorPoint PointX="7.3125" PointY="16.890195057291663" />
+          <ConnectorPoint PointX="7.5" PointY="16.890195057291663" />
+        </AssociationConnector>
+        <AssociationConnector Association="CirculoNegocioModel.FK__tbBannerP__estad__3587F3E0" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="11.265651293669871" />
+          <ConnectorPoint PointX="7.125" PointY="11.640651293669871" />
+          <ConnectorPoint PointX="7.125" PointY="13.625" />
+          <ConnectorPoint PointX="7.135416666666667" PointY="13.625" />
+          <ConnectorPoint PointX="7.348958333333333" PointY="13.625" />
+          <ConnectorPoint PointX="10.125" PointY="13.625" />
+          <ConnectorPoint PointX="10.5" PointY="14" />
+        </AssociationConnector>
+        <AssociationConnector Association="CirculoNegocioModel.FK__tbBannerP__idCli__3493CFA7" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="17.6460986328125" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="17.6460986328125" />
+          <ConnectorPoint PointX="7.348958333333333" PointY="17.6460986328125" />
+          <ConnectorPoint PointX="10.5" PointY="17.6460986328125" />
+        </AssociationConnector>
         <AssociationConnector Association="CirculoNegocioModel.FK__tbCliente__idCat__123EB7A3" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="4.2112939453125" />
-          <ConnectorPoint PointX="3" PointY="4.2112939453125" />
+          <ConnectorPoint PointX="2.25" PointY="12.182444661458334" />
+          <ConnectorPoint PointX="5.25" PointY="12.182444661458334" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="CirculoNegocioModel.tbBanner" Width="1.5" PointX="7.625" PointY="4.25" Height="3.5186979166666656" />
-        <EntityTypeShape EntityType="CirculoNegocioModel.tbBannerPrincipal" Width="1.5" PointX="10.625" PointY="4.5" Height="3.1340950520833335" />
-        <EntityTypeShape EntityType="CirculoNegocioModel.tbCategoriaNoticia" Width="1.5" PointX="5.375" PointY="11.625" Height="1.9802864583333317" />
-        <EntityTypeShape EntityType="CirculoNegocioModel.tbEstado" Width="1.5" PointX="5.375" PointY="8.625" Height="1.9802864583333317" />
-        <EntityTypeShape EntityType="CirculoNegocioModel.tbNoticia" Width="1.5" PointX="7.625" PointY="9" Height="3.5186979166666674" />
-        <EntityTypeShape EntityType="CirculoNegocioModel.tbTipoBanner" Width="1.5" PointX="5.375" PointY="4.875" Height="1.9802864583333317" />
-        <AssociationConnector Association="CirculoNegocioModel.FK__tbBanner__estado__2FCF1A8A" >
-          <ConnectorPoint PointX="6.875" PointY="8.6261528461538468" />
-          <ConnectorPoint PointX="7.25" PointY="8.2511528461538468" />
-          <ConnectorPoint PointX="7.25" PointY="5.7653690937499986" />
-          <ConnectorPoint PointX="7.625" PointY="5.7653690937499986" />
+        <AssociationConnector Association="CirculoNegocioModel.FK__tbSubCate__idCat__51300E55" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="12.614889322916666" />
+          <ConnectorPoint PointX="1.5" PointY="20.182444661458334" />
+          <ConnectorPoint PointX="3" PointY="20.182444661458334" />
         </AssociationConnector>
-        <AssociationConnector Association="CirculoNegocioModel.FK__tbBanner__idClie__2EDAF651" >
-          <ConnectorPoint PointX="4.5" PointY="7.3432421874999987" />
-          <ConnectorPoint PointX="5.197916666666667" PointY="7.3432421874999978" />
-          <ConnectorPoint PointX="5.364583333333333" PointY="7.3432421874999987" />
-          <ConnectorPoint PointX="7.166666666666667" PointY="7.3432421874999978" />
-          <ConnectorPoint PointX="7.333333333333333" PointY="7.3432421874999987" />
-          <ConnectorPoint PointX="7.625" PointY="7.3432421874999987" />
+        <AssociationConnector Association="CirculoNegocioModel.FK__tbCliente__idSub__58D1301D" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="19.538116861979166" />
+          <ConnectorPoint PointX="5.25" PointY="19.538116861979166" />
         </AssociationConnector>
-        <AssociationConnector Association="CirculoNegocioModel.FK__tbBanner__idTipo__2DE6D218" >
-          <ConnectorPoint PointX="6.875" PointY="6.0950895921559987" />
-          <ConnectorPoint PointX="7.166666666666667" PointY="6.0950895921559978" />
-          <ConnectorPoint PointX="7.333333333333333" PointY="6.0950895921559987" />
-          <ConnectorPoint PointX="7.625" PointY="6.0950895921559987" />
+        <AssociationConnector Association="CirculoNegocioModel.FK__tbOfertas__idCli__46B27FE2" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="20.076233723958332" />
+          <ConnectorPoint PointX="7.125" PointY="20.451233723958332" />
+          <ConnectorPoint PointX="7.125" PointY="25.441053277994797" />
+          <ConnectorPoint PointX="7.5" PointY="25.441053277994797" />
         </AssociationConnector>
-        <AssociationConnector Association="CirculoNegocioModel.FK__tbBannerP__estad__3587F3E0" >
-          <ConnectorPoint PointX="6.875" PointY="8.8130789230769242" />
-          <ConnectorPoint PointX="11.78125" PointY="8.8130789230769242" />
-          <ConnectorPoint PointX="11.78125" PointY="7.6340950520833335" />
+        <AssociationConnector Association="CirculoNegocioModel.FK__tbPromoco__idCli__489AC854" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="12.196848958333334" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="12.196848958333332" />
+          <ConnectorPoint PointX="7.348958333333333" PointY="12.196848958333334" />
+          <ConnectorPoint PointX="7.5" PointY="12.196848958333334" />
         </AssociationConnector>
-        <AssociationConnector Association="CirculoNegocioModel.FK__tbBannerP__idCli__3493CFA7" >
-          <ConnectorPoint PointX="4.5" PointY="7.9369083072916657" />
-          <ConnectorPoint PointX="5.197916666666667" PointY="7.9369083072916649" />
-          <ConnectorPoint PointX="5.364583333333333" PointY="7.9369083072916657" />
-          <ConnectorPoint PointX="7.166666666666667" PointY="7.9369083072916649" />
-          <ConnectorPoint PointX="7.333333333333333" PointY="7.9369083072916657" />
-          <ConnectorPoint PointX="10.625" PointY="7.9369083072916657" />
+        <AssociationConnector Association="CirculoNegocioModel.FK__tbPromoco__estad__690797E6" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="10.12865711492433" />
+          <ConnectorPoint PointX="7.5" PointY="10.12865711492433" />
         </AssociationConnector>
+        <AssociationConnector Association="CirculoNegocioModel.FK__tbOfertas__estad__6CD828CA" >
+          <ConnectorPoint PointX="6.7050000000000018" PointY="11.307190755208334" />
+          <ConnectorPoint PointX="7.15625" PointY="11.758440755208332" />
+          <ConnectorPoint PointX="7.15625" PointY="24.192057989008404" />
+          <ConnectorPoint PointX="7.5" PointY="24.192057989008404" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="CirculoNegocioModel.tbBannerBusca" Width="1.5" PointX="7.5" PointY="18.625" Height="3.5186979166666674" />
+        <AssociationConnector Association="CirculoNegocioModel.FK__tbBannerB__estad__73852659" >
+          <ConnectorPoint PointX="6.7488461538461548" PointY="11.307190755208334" />
+          <ConnectorPoint PointX="7.265625" PointY="11.82396960136218" />
+          <ConnectorPoint PointX="7.265625" PointY="20.762783139322913" />
+          <ConnectorPoint PointX="7.5" PointY="20.762783139322913" />
+        </AssociationConnector>
+        <AssociationConnector Association="CirculoNegocioModel.FK__tbBannerB__idCat__719CDDE7" >
+          <ConnectorPoint PointX="2.25" PointY="11.432444661458334" />
+          <ConnectorPoint PointX="6.746920572916669" PointY="11.432444661458334" />
+          <ConnectorPoint PointX="7.000126701121796" PointY="11.432444661458334" />
+          <ConnectorPoint PointX="7.21875" PointY="11.432444661458334" />
+          <ConnectorPoint PointX="7.21875" PointY="18.25" />
+          <ConnectorPoint PointX="8.25" PointY="18.25" />
+          <ConnectorPoint PointX="8.25" PointY="18.625" />
+        </AssociationConnector>
+        <AssociationConnector Association="CirculoNegocioModel.FK__tbBannerB__idCli__72910220" >
+          <ConnectorPoint PointX="6.75" PointY="19.319364361979172" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="19.319364361979172" />
+          <ConnectorPoint PointX="7.348958333333333" PointY="19.319364361979172" />
+          <ConnectorPoint PointX="7.5" PointY="19.319364361979172" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="CirculoNegocioModel.tbNoticia" Width="1.5" PointX="10.5" PointY="6.5" Height="4.0956022135416674" />
         <AssociationConnector Association="CirculoNegocioModel.FK__tbNoticia__idCat__3B40CD36" >
-          <ConnectorPoint PointX="6.875" PointY="12.167999674479166" />
-          <ConnectorPoint PointX="7.625" PointY="12.167999674479166" />
+          <ConnectorPoint PointX="9.75" PointY="7.1151432291666667" />
+          <ConnectorPoint PointX="10.5" PointY="7.1151432291666667" />
         </AssociationConnector>
         <AssociationConnector Association="CirculoNegocioModel.FK__tbNoticia__estad__3A4CA8FD" >
-          <ConnectorPoint PointX="6.875" PointY="9.8026432291666659" />
-          <ConnectorPoint PointX="7.625" PointY="9.8026432291666659" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="CirculoNegocioModel.tbFilePathNoticia" Width="1.5" PointX="9.875" PointY="10" Height="1.7879850260416674" />
-        <AssociationConnector Association="CirculoNegocioModel.FK__tbFilePat__idNot__44CA3770" >
-          <ConnectorPoint PointX="9.125" PointY="10.893992513020834" />
-          <ConnectorPoint PointX="9.875" PointY="10.893992513020834" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="CirculoNegocioModel.tbOferta" Width="1.5" PointX="5.25" PointY="14.875" Height="3.1340950520833317" />
-        <AssociationConnector Association="CirculoNegocioModel.FK__tbOfertas__idCli__46B27FE2" >
-          <ConnectorPoint PointX="4.5" PointY="3.8987939453125" />
-          <ConnectorPoint PointX="5.28125" PointY="3.8987939453125" />
-          <ConnectorPoint PointX="5.28125" PointY="14.875" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="CirculoNegocioModel.tbPromocao" Width="1.5" PointX="5.25" PointY="19" Height="2.9417936197916745" />
-        <AssociationConnector Association="CirculoNegocioModel.FK__tbPromoco__idCli__489AC854" >
-          <ConnectorPoint PointX="4.5" PointY="8.2974251302083335" />
-          <ConnectorPoint PointX="4.875" PointY="8.6724251302083335" />
-          <ConnectorPoint PointX="4.875" PointY="20.470896809895837" />
-          <ConnectorPoint PointX="5.25" PointY="20.470896809895837" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="CirculoNegocioModel.tbSubCategoriaCliente" Width="1.5" PointX="3" PointY="9.125" Height="2.1725878906250031" />
-        <AssociationConnector Association="CirculoNegocioModel.FK__tbSubCate__idCat__51300E55" >
-          <ConnectorPoint PointX="1.5" PointY="5.297587890625" />
-          <ConnectorPoint PointX="1.5" PointY="10.307444661458334" />
-          <ConnectorPoint PointX="3" PointY="10.307444661458334" />
-        </AssociationConnector>
-        <AssociationConnector Association="CirculoNegocioModel.FK__tbCliente__idSub__58D1301D" >
-          <ConnectorPoint PointX="3.7187475" PointY="9.125" />
-          <ConnectorPoint PointX="3.7187475" PointY="8.2974251302083335" />
+          <ConnectorPoint PointX="6.75" PointY="8.90625" />
+          <ConnectorPoint PointX="10.5" PointY="8.90625" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

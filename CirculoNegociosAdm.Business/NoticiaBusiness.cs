@@ -21,6 +21,11 @@ namespace CirculoNegociosAdm.Business
             return lObjNoticiaDAL.InsereNoticia(noticia);
         }
 
+        public void AtualizaImagensNoticia(int idNoticia, string imgHome, string img1, string img2, string img3)
+        {
+            lObjNoticiaDAL.AtualizaImagensNoticia(idNoticia, imgHome, img1, img2, img3);
+        }
+
         public string DeletaNoticia(int id)
         {
             bool ret = lObjNoticiaDAL.DeletaNoticia(id);

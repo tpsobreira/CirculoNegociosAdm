@@ -2,6 +2,39 @@
     CodeBehind="CadastroNoticia.aspx.cs" Inherits="CirculoNegociosAdm.Pages.CadastroNoticia" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+        <script type="text/javascript">
+            function DataHora(evento, objeto) {
+                var keypress = (window.event) ? event.keyCode : evento.which;
+                campo = eval(objeto);
+                if (campo.value == '00/00/0000 00:00:00') {
+                    campo.value = ""
+                }
+
+                caracteres = '0123456789';
+                separacao1 = '/';
+                separacao2 = ' ';
+                separacao3 = ':';
+                conjunto1 = 2;
+                conjunto2 = 5;
+                conjunto3 = 10;
+                conjunto4 = 13;
+                conjunto5 = 16;
+                if ((caracteres.search(String.fromCharCode(keypress)) != -1) && campo.value.length < (19)) {
+                    if (campo.value.length == conjunto1)
+                        campo.value = campo.value + separacao1;
+                    else if (campo.value.length == conjunto2)
+                        campo.value = campo.value + separacao1;
+                    else if (campo.value.length == conjunto3)
+                        campo.value = campo.value + separacao2;
+                    else if (campo.value.length == conjunto4)
+                        campo.value = campo.value + separacao3;
+                    else if (campo.value.length == conjunto5)
+                        campo.value = campo.value + separacao3;
+                }
+                else
+                    event.returnValue = false;
+            }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
@@ -69,10 +102,10 @@
         </tr>
         <tr>
             <td>
-                <asp:TextBox ID="txtDataHoraDe" runat="server" Width="300px"></asp:TextBox>
+                <asp:TextBox ID="txtDataHoraDe" onKeyPress="DataHora(event, this)" runat="server" Width="300px"></asp:TextBox>
             </td>
             <td>
-                <asp:TextBox ID="txtDataHoraAte" runat="server" Width="300px"></asp:TextBox>
+                <asp:TextBox ID="txtDataHoraAte" onKeyPress="DataHora(event, this)" runat="server" Width="300px"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -90,12 +123,34 @@
         </tr>
         <tr>
             <td>
-                Imagens:
+                Imagem Home:
             </td>
         </tr>
         <tr>
             <td>
-                <asp:FileUpload ID="fileUpImagens" runat="server" Width="300px" />
+                <asp:FileUpload ID="fileUpImagemHome" runat="server" Width="300px" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Imagem 1:
+            </td>
+            <td>
+                Imagem 2:
+            </td>
+            <td>
+                Imagem 3:
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:FileUpload ID="FileUpImagem1" runat="server" />   
+            </td>
+            <td>
+                <asp:FileUpload ID="FileUpImagem2" runat="server" />   
+            </td>
+            <td>
+                <asp:FileUpload ID="FileUpImagem3" runat="server" />   
             </td>
         </tr>
         <tr>

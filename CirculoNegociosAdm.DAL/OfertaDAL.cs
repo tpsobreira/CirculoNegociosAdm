@@ -15,8 +15,26 @@ namespace CirculoNegociosAdm.DAL
 
             using (var context = new CirculoNegocioEntities())
             {
-                var ret = (from p in context.tbOfertas select p).ToList();
-                lstOfertasEntity = CastListOfertaEntity(ret);
+
+                var ret = (from p in context.tbOfertas
+                           join c in context.tbClientes on p.idCliente equals c.id
+                           select new OfertaEntity
+                           {
+                               Ativo = p.Ativo,
+                               dataDe = p.dataDe,
+                               dataAte = p.dataAte,
+                               dataUltimaAlteracao = p.dataUltimaAlteracao,
+                               estado = p.estado,
+                               id = p.id,
+                               idCliente = p.idCliente,
+                               imagemFilePath = p.imagemFilePath,
+                               link = p.link,
+                               nomeCliente = c.nome,
+                               responsavelUltimaAlteracao = p.responsavelUltimaAlteracao,
+                               titulo = p.titulo
+                           }).ToList();
+
+                lstOfertasEntity = ret;
             }
 
 
@@ -67,6 +85,23 @@ namespace CirculoNegociosAdm.DAL
             }
         }
 
+        public void AtualizaFilePathImagemOferta(int idOferta, string filePath)
+        {
+            try
+            {
+                using (var context = new CirculoNegocioEntities())
+                {
+                    tbOferta oferta = (from p in context.tbOfertas where p.id == idOferta select p).First();
+                    oferta.imagemFilePath = filePath;
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         private tbOferta CastOferta(OfertaEntity oferta)
         {
             tbOferta tb = new tbOferta();
@@ -80,6 +115,7 @@ namespace CirculoNegociosAdm.DAL
             tb.link = oferta.link;
             tb.responsavelUltimaAlteracao = oferta.responsavelUltimaAlteracao;
             tb.titulo = oferta.titulo;
+            tb.estado = oferta.estado;
 
             return tb;
         }

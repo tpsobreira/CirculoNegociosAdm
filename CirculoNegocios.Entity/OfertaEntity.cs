@@ -8,5 +8,6 @@ namespace CirculoNegociosAdm.Entity
 {
     public class OfertaEntity : tbOferta
     {
+        public string nomeCliente { get; set; }
     }
 }

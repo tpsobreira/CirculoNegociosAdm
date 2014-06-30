@@ -16,9 +16,9 @@ namespace CirculoNegociosAdm.Business
             return lObjPromocaoDAL.ConsultaTodasPromocoes();
         }
 
-        public int InserePromocao(PromocaoEntity oferta)
+        public int InserePromocao(PromocaoEntity promocao)
         {
-            return lObjPromocaoDAL.InserePromocao(oferta);
+            return lObjPromocaoDAL.InserePromocao(promocao);
         }
 
         public string DeletaPromocao(int id)
@@ -29,6 +29,11 @@ namespace CirculoNegociosAdm.Business
                 return "Promocao excluida com sucesso!";
             else
                 return "Ocorreu um erro ao excluir a Promocao!";
+        }
+
+        public void AtualizaFilePathImagemPromocao(int idPromocao, string filePath)
+        {
+            lObjPromocaoDAL.AtualizaFilePathImagemPromocao(idPromocao, filePath);
         }
     }
 }

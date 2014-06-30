@@ -16,6 +16,11 @@ namespace CirculoNegociosAdm.Business
             return lObjClientesDAL.ConsultaTodosClientes();
         }
 
+        public ClienteEntity ConsultaClienteById(int idCliente)
+        {
+            return lObjClientesDAL.ConsultaClienteById(idCliente);
+        }
+
         public int InsereCliente(ClienteEntity cliente, out string mensagem)
         {
             int ret = lObjClientesDAL.InsereCliente(cliente);
@@ -27,6 +32,16 @@ namespace CirculoNegociosAdm.Business
 
             return ret;
             
+        }
+
+        public string AtualizaCliente(int idCliente, ClienteEntity cliente)
+        {
+            bool ret = lObjClientesDAL.AtualizaCliente(idCliente, cliente);
+
+            if (ret)
+                return "Cliente Atualizado com Sucesso!";
+            else
+                return "Ocorreu um erro ao atualizar o cliente!";
         }
 
         public void AtualizaImagensCliente(int idCliente, string logo, string img1, string img2, string img3)

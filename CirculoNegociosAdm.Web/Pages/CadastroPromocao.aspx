@@ -1,5 +1,40 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CadastroPromocao.aspx.cs" Inherits="CirculoNegociosAdm.Pages.CadastroPromocao" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+    CodeBehind="CadastroPromocao.aspx.cs" Inherits="CirculoNegociosAdm.Pages.CadastroPromocao" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <script type="text/javascript">
+        function DataHora(evento, objeto) {
+            var keypress = (window.event) ? event.keyCode : evento.which;
+            campo = eval(objeto);
+            if (campo.value == '00/00/0000 00:00:00') {
+                campo.value = ""
+            }
+
+            caracteres = '0123456789';
+            separacao1 = '/';
+            separacao2 = ' ';
+            separacao3 = ':';
+            conjunto1 = 2;
+            conjunto2 = 5;
+            conjunto3 = 10;
+            conjunto4 = 13;
+            conjunto5 = 16;
+            if ((caracteres.search(String.fromCharCode(keypress)) != -1) && campo.value.length < (19)) {
+                if (campo.value.length == conjunto1)
+                    campo.value = campo.value + separacao1;
+                else if (campo.value.length == conjunto2)
+                    campo.value = campo.value + separacao1;
+                else if (campo.value.length == conjunto3)
+                    campo.value = campo.value + separacao2;
+                else if (campo.value.length == conjunto4)
+                    campo.value = campo.value + separacao3;
+                else if (campo.value.length == conjunto5)
+                    campo.value = campo.value + separacao3;
+            }
+            else
+                event.returnValue = false;
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
@@ -12,10 +47,17 @@
             <td>
                 Cliente:
             </td>
+            <td>
+                Estado:
+            </td>
         </tr>
         <tr>
             <td>
                 <asp:DropDownList ID="ddlCliente" runat="server" Width="250px">
+                </asp:DropDownList>
+            </td>
+            <td>
+                <asp:DropDownList ID="ddlEstado" runat="server" Width="250px">
                 </asp:DropDownList>
             </td>
         </tr>
@@ -23,7 +65,6 @@
             <td>
                 Titulo:
             </td>
-           
             <td>
                 Link de Destino:
             </td>
@@ -32,7 +73,6 @@
             <td>
                 <asp:TextBox ID="txtTitulo" runat="server" Width="250px"></asp:TextBox>
             </td>
-            
             <td>
                 <asp:TextBox ID="txtLinkDestino" runat="server" Width="250px"></asp:TextBox>
             </td>
@@ -53,20 +93,35 @@
                 <asp:FileUpload ID="FileUpImagemPromocao" runat="server" Width="250px" />
             </td>
             <td>
-                <asp:TextBox ID="txtDataHoraDe" runat="server" Width="250px"></asp:TextBox>
+                <asp:TextBox ID="txtDataHoraDe" onKeyPress="DataHora(event, this)" runat="server"
+                    Width="250px"></asp:TextBox>
             </td>
             <td>
-                <asp:TextBox ID="txtDataHoraAte" runat="server" Width="250px"></asp:TextBox>
+                <asp:TextBox ID="txtDataHoraAte" onKeyPress="DataHora(event, this)" runat="server"
+                    Width="250px"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnIncluirPromocao" runat="server" Text="Incluir" 
-                    onclick="btnIncluirPromocao_Click" />
-                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
-                    onclick="btnCancelar_Click"  />
-                <asp:Button ID="BtnAlterarPromocao" runat="server" Text="Alterar" 
-                    Visible="False" onclick="BtnAlterarPromocao_Click"  />
+                Ativo:
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <td valign="top">
+                    <asp:RadioButtonList ID="rdlAtivo" runat="server" RepeatDirection="Horizontal">
+                        <asp:ListItem Text="Sim" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="Não" Value="0"></asp:ListItem>
+                    </asp:RadioButtonList>
+                </td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Button ID="btnIncluirPromocao" runat="server" Text="Incluir" OnClick="btnIncluirPromocao_Click" />
+                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
+                <asp:Button ID="BtnAlterarPromocao" runat="server" Text="Alterar" Visible="False"
+                    OnClick="BtnAlterarPromocao_Click" />
             </td>
         </tr>
     </table>
@@ -104,7 +159,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Caminho Arquivo">
                             <ItemTemplate>
-                                <asp:Literal ID="litCaminhoArquivo" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().Substring(DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().LastIndexOf("Banners"), DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().Length - DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().LastIndexOf("Banners")) %>'></asp:Literal>
+                                <asp:Literal ID="litCaminhoArquivo" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().Substring(DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().LastIndexOf("Promocoes"), DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().Length - DataBinder.Eval(Container.DataItem,"imagemFilePath").ToString().LastIndexOf("Promocoes")) %>'></asp:Literal>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Link Destino">

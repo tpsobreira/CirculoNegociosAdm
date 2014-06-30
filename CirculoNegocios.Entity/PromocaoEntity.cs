@@ -6,7 +6,8 @@ using CirculoNegociosAdm.DB;
 
 namespace CirculoNegociosAdm.Entity
 {
-    public class PromocaoEntity : tbPromocao
+    public class PromocaoEntity : tbPromoco
     {
+        public string nomeCliente { get; set; }
     }
 }

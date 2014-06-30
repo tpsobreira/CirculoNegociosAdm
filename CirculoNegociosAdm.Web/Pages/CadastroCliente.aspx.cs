@@ -30,7 +30,7 @@ namespace CirculoNegociosAdm.Pages
             gdvClientes.DataBind();
         }
 
-        protected void btnConcluir_Click(object sender, EventArgs e)
+        protected void btnIncluir_Click(object sender, EventArgs e)
         {
             ClienteEntity objCliente = new ClienteEntity();
             bool? ativo = false;
@@ -49,6 +49,7 @@ namespace CirculoNegociosAdm.Pages
             objCliente.email = txtEmail.Text;
             objCliente.endereco = txtEndereco.Text;
             objCliente.estado = txtEstado.Text;
+            objCliente.bairro = txtBairro.Text;
             objCliente.Funcionamento = string.Format("Util: {0} as {1} | Final: {2} as {3}", txtHoraSemanaDe.Text, txtHoraSemanaAte.Text, txtHoraFdsDe.Text, txtHoraFdsAte.Text);
             objCliente.idCategoriaCliente = Convert.ToInt32(ddlCategoria.SelectedValue);
             objCliente.idSubCategoriaCliente = Convert.ToInt32(ddlSubCategoria.SelectedValue);
@@ -58,12 +59,16 @@ namespace CirculoNegociosAdm.Pages
             objCliente.observacoes = txtObservacoes.Text;
             objCliente.razaoSocial = txtRazaoSocial.Text;
             objCliente.servicos = txtServicos.Text;
+            objCliente.horaFdsAte = txtHoraFdsAte.Text;
+            objCliente.horaFdsDe = txtHoraFdsDe.Text;
+            objCliente.horaSemanaAte = txtHoraSemanaAte.Text;
+            objCliente.horaSemanaDe = txtHoraSemanaDe.Text;
             objCliente.site = txtSite.Text;
             objCliente.telefone1 = txtTelefone1.Text;
             objCliente.telefone2 = txtTelefone2.Text;
 
             string mensagem = string.Empty;
-                
+
             int idCliente = clienteBusiness.InsereCliente(objCliente, out mensagem);
 
             SalvaImagensCliente(idCliente);
@@ -73,6 +78,56 @@ namespace CirculoNegociosAdm.Pages
             CarregaGridView();
             RestauraControles();
 
+        }
+
+        protected void btnAlterar_Click(object sender, EventArgs e)
+        {
+            ClienteEntity objCliente = new ClienteEntity();
+            bool? ativo = false;
+
+            //objCliente.anexoImagem1Path = "";
+            //objCliente.anexoImagem2Path = "";
+            //objCliente.anexoImagem3Path = "";
+            //objCliente.anexoLogoPath = "";
+            ativo = rdlAtivo.SelectedValue == "1" ? true : false;
+            objCliente.ativo = ativo;
+            objCliente.cep = txtCep.Text;
+            objCliente.cidade = txtCidade.Text;
+            objCliente.complemento = txtComplemento.Text;
+            objCliente.contatoResponsavel = txtResponsavel.Text;
+            objCliente.cpfCnpj = txtCpfCnpj.Text;
+            objCliente.email = txtEmail.Text;
+            objCliente.endereco = txtEndereco.Text;
+            objCliente.estado = txtEstado.Text;
+            objCliente.bairro = txtBairro.Text;
+            objCliente.Funcionamento = string.Format("Util: {0} as {1} | Final: {2} as {3}", txtHoraSemanaDe.Text, txtHoraSemanaAte.Text, txtHoraFdsDe.Text, txtHoraFdsAte.Text);
+            
+
+            objCliente.idCategoriaCliente = Convert.ToInt32(ddlCategoria.SelectedValue);
+            objCliente.idSubCategoriaCliente = Convert.ToInt32(ddlSubCategoria.SelectedValue);
+            objCliente.inscricaoEstadual = txtIncricaoEstadual.Text;
+            objCliente.nome = txtNome.Text;
+            objCliente.nomeFantasia = txtNomeFantasia.Text;
+            objCliente.observacoes = txtObservacoes.Text;
+            objCliente.razaoSocial = txtRazaoSocial.Text;
+            objCliente.servicos = txtServicos.Text;
+            objCliente.horaFdsAte = txtHoraFdsAte.Text;
+            objCliente.horaFdsDe = txtHoraFdsDe.Text;
+            objCliente.horaSemanaAte = txtHoraSemanaAte.Text;
+            objCliente.horaSemanaDe = txtHoraSemanaDe.Text;
+            objCliente.site = txtSite.Text;
+            objCliente.telefone1 = txtTelefone1.Text;
+            objCliente.telefone2 = txtTelefone2.Text;
+
+            string mensagem = clienteBusiness.AtualizaCliente(Convert.ToInt32(hdIdClienteEdit.Value), objCliente);
+
+            this.Alert(mensagem);
+
+            CarregaGridView();
+            RestauraControles();
+
+            btnAlterar.Visible = false;
+            btnIncluir.Visible = true;
         }
 
         protected void gdvClientes_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -85,6 +140,18 @@ namespace CirculoNegociosAdm.Pages
 
                 CarregaGridView();
             }
+            else if (e.CommandName == "Editar")
+            {
+                btnAlterar.Visible = true;
+                btnIncluir.Visible = false;
+                ClienteEntity objCliente = clienteBusiness.ConsultaClienteById(Convert.ToInt32(e.CommandArgument));
+
+                hdIdClienteEdit.Value = e.CommandArgument.ToString();
+
+                PreencheControlesEditar(objCliente);
+
+            }
+
         }
 
         private void SalvaImagensCliente(int idCliente)
@@ -93,6 +160,7 @@ namespace CirculoNegociosAdm.Pages
             string caminhoImg1 = string.Empty;
             string caminhoImg2 = string.Empty;
             string caminhoImg3 = string.Empty;
+
 
             if (FileUpLogo.HasFile && FileUpImg1.HasFile && FileUpImg2.HasFile && FileUpImg3.HasFile)
             {
@@ -130,6 +198,8 @@ namespace CirculoNegociosAdm.Pages
             {
                 Alert("É obrigatório selecionar todas as imagens, se não tiver 3 imagens diferentes, pode colocar a mesma imagem, apenas mudando o nome do arquivo!");
             }
+
+
         }
 
         private void Alert(string mensagem)
@@ -153,7 +223,72 @@ namespace CirculoNegociosAdm.Pages
 
         private void RestauraControles()
         {
+            txtBairro.Text = string.Empty;
+            txtCep.Text = string.Empty;
+            txtCidade.Text = string.Empty;
+            txtComplemento.Text = string.Empty;
+            txtCpfCnpj.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtEndereco.Text = string.Empty;
+            txtEstado.Text = string.Empty;
+            txtHoraFdsAte.Text = string.Empty;
+            txtHoraFdsDe.Text = string.Empty;
+            txtHoraSemanaAte.Text = string.Empty;
+            txtHoraSemanaDe.Text = string.Empty;
+            txtIncricaoEstadual.Text = string.Empty;
             txtNome.Text = string.Empty;
+            txtNomeFantasia.Text = string.Empty;
+            txtObservacoes.Text = string.Empty;
+            txtRazaoSocial.Text = string.Empty;
+            txtResponsavel.Text = string.Empty;
+            txtServicos.Text = string.Empty;
+            txtSite.Text = string.Empty;
+            txtTelefone1.Text = string.Empty;
+            txtTelefone2.Text = string.Empty;
+
+            ddlCategoria.SelectedIndex = 0;
+
+            ddlSubCategoria.SelectedIndex = 0;
+
+            rdlAtivo.SelectedValue = "0";
+        }
+
+        private void PreencheControlesEditar(ClienteEntity objCliente)
+        {
+            txtBairro.Text = objCliente.bairro;
+            txtCep.Text = objCliente.cep;
+            txtCidade.Text = objCliente.cidade;
+            txtComplemento.Text = objCliente.complemento;
+            txtCpfCnpj.Text = objCliente.cpfCnpj;
+            txtEmail.Text = objCliente.email;
+            txtEndereco.Text = objCliente.endereco;
+            txtEstado.Text = objCliente.estado;
+            txtHoraFdsAte.Text = objCliente.horaFdsAte;
+            txtHoraFdsDe.Text = objCliente.horaFdsDe;
+            txtHoraSemanaAte.Text = objCliente.horaSemanaAte;
+            txtHoraSemanaDe.Text = objCliente.horaSemanaDe;
+            txtIncricaoEstadual.Text = objCliente.inscricaoEstadual;
+            txtNome.Text = objCliente.nome;
+            txtNomeFantasia.Text = objCliente.nomeFantasia;
+            txtObservacoes.Text = objCliente.observacoes;
+            txtRazaoSocial.Text = objCliente.razaoSocial;
+            txtResponsavel.Text = objCliente.contatoResponsavel;
+            txtServicos.Text = objCliente.servicos;
+            txtSite.Text = objCliente.site;
+            txtTelefone1.Text = objCliente.telefone1;
+            txtTelefone2.Text = objCliente.telefone2;
+
+            ddlCategoria.SelectedValue = objCliente.idCategoriaCliente.ToString();
+
+            ddlSubCategoria.DataSource = new SubCategoriaClienteBusiness().ConsultaSubCategoriasClientebyCategoriaPai(Convert.ToInt32(objCliente.idCategoriaCliente));
+            ddlSubCategoria.DataValueField = "id";
+            ddlSubCategoria.DataTextField = "Nome";
+            ddlSubCategoria.DataBind();
+            ddlSubCategoria.Items.Insert(0, "Selecione...");
+
+            ddlSubCategoria.SelectedValue = objCliente.idSubCategoriaCliente.ToString();
+
+            rdlAtivo.SelectedValue = Convert.ToInt32(objCliente.ativo).ToString();
         }
 
         private void PreencheCombos()
@@ -174,6 +309,11 @@ namespace CirculoNegociosAdm.Pages
             ddlSubCategoria.DataBind();
             ddlSubCategoria.Items.Insert(0, "Selecione...");
 
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            RestauraControles();
         }
     }
 }

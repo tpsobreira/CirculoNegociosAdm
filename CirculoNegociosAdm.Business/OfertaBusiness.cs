@@ -21,6 +21,11 @@ namespace CirculoNegociosAdm.Business
             return lObjOfertaDAL.InsereOferta(oferta);
         }
 
+        public void AtualizaFilePathImagemOferta(int idOferta, string filePath)
+        {
+            lObjOfertaDAL.AtualizaFilePathImagemOferta(idOferta, filePath);
+        }
+
         public string DeletaOferta(int id)
         {
             bool ret = lObjOfertaDAL.DeletaOferta(id);
