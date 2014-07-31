@@ -10,34 +10,16 @@
 namespace CirculoNegociosAdm.Pages {
     
     
-    public partial class CadastroPromocao {
+    public partial class CadastroVideos {
         
         /// <summary>
-        /// ddlTipoPromocao control.
+        /// ddlUF control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoPromocao;
-        
-        /// <summary>
-        /// ddlCliente control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCliente;
-        
-        /// <summary>
-        /// ddlEstado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstado;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUF;
         
         /// <summary>
         /// txtTitulo control.
@@ -49,22 +31,13 @@ namespace CirculoNegociosAdm.Pages {
         protected global::System.Web.UI.WebControls.TextBox txtTitulo;
         
         /// <summary>
-        /// txtLinkDestino control.
+        /// txtDescricao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLinkDestino;
-        
-        /// <summary>
-        /// FileUpImagemPromocao control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpImagemPromocao;
+        protected global::System.Web.UI.WebControls.TextBox txtDescricao;
         
         /// <summary>
         /// txtDataHoraDe control.
@@ -85,48 +58,39 @@ namespace CirculoNegociosAdm.Pages {
         protected global::System.Web.UI.WebControls.TextBox txtDataHoraAte;
         
         /// <summary>
-        /// rdlAtivo control.
+        /// rdlAtiva control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rdlAtivo;
+        protected global::System.Web.UI.WebControls.RadioButtonList rdlAtiva;
         
         /// <summary>
-        /// btnIncluirPromocao control.
+        /// fileUpImagemInicial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIncluirPromocao;
+        protected global::System.Web.UI.WebControls.FileUpload fileUpImagemInicial;
         
         /// <summary>
-        /// btnCancelar control.
+        /// FileUpVideos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelar;
+        protected global::System.Web.UI.WebControls.FileUpload FileUpVideos;
         
         /// <summary>
-        /// BtnAlterarPromocao control.
+        /// btnIncluir control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnAlterarPromocao;
-        
-        /// <summary>
-        /// gdvPromocoes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gdvPromocoes;
+        protected global::System.Web.UI.WebControls.Button btnIncluir;
     }
 }

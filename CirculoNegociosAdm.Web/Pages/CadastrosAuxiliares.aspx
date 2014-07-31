@@ -33,6 +33,12 @@
 
         <tr>
             <td>
+                <a href="CadastroTipoPromocao.aspx">Cadastro de Tipo de Promoção</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
                 <a href="CadastroEstado.aspx">Cadastro de Estados</a>
             </td>
         </tr>

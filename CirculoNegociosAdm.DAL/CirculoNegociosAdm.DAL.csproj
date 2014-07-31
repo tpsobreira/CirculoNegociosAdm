@@ -50,10 +50,13 @@
     <Compile Include="EstadoDAL.cs" />
     <Compile Include="NoticiaDAL.cs" />
     <Compile Include="OfertaDAL.cs" />
+    <Compile Include="PlanoDAL.cs" />
     <Compile Include="PromocaoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubCategoriaClienteDAL.cs" />
     <Compile Include="TipoBannerDAL.cs" />
+    <Compile Include="TipoPromocaoDAL.cs" />
+    <Compile Include="VideoDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CirculoNegocios.Entity\CirculoNegociosAdm.Entity.csproj">

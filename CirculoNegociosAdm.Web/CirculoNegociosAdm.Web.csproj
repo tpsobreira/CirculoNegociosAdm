@@ -76,6 +76,8 @@
     <Content Include="Pages\CadastrosAuxiliares.aspx" />
     <Content Include="Pages\CadastroSubCategoriaCliente.aspx" />
     <Content Include="Pages\CadastroTipoBanner.aspx" />
+    <Content Include="Pages\CadastroTipoPromocao.aspx" />
+    <Content Include="Pages\CadastroVideos.aspx" />
     <Content Include="Scripts\Mask.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
@@ -215,6 +217,20 @@
     </Compile>
     <Compile Include="Pages\CadastroTipoBanner.aspx.designer.cs">
       <DependentUpon>CadastroTipoBanner.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CadastroTipoPromocao.aspx.cs">
+      <DependentUpon>CadastroTipoPromocao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CadastroTipoPromocao.aspx.designer.cs">
+      <DependentUpon>CadastroTipoPromocao.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CadastroVideos.aspx.cs">
+      <DependentUpon>CadastroVideos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CadastroVideos.aspx.designer.cs">
+      <DependentUpon>CadastroVideos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

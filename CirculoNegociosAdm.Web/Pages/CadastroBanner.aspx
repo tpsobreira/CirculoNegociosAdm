@@ -12,14 +12,19 @@
             }
 
             caracteres = '0123456789';
-            separacao1 = '/';
+            separacao1 = '-';
             separacao2 = ' ';
             separacao3 = ':';
-            conjunto1 = 2;
-            conjunto2 = 5;
+            conjunto1 = 4;
+            conjunto2 = 7;
             conjunto3 = 10;
             conjunto4 = 13;
             conjunto5 = 16;
+//            conjunto1 = 4;
+//            conjunto2 = 7;
+//            conjunto3 = 10;
+//            conjunto4 = 13;
+//            conjunto5 = 16;
             if ((caracteres.search(String.fromCharCode(keypress)) != -1) && campo.value.length < (19)) {
                 if (campo.value.length == conjunto1)
                     campo.value = campo.value + separacao1;

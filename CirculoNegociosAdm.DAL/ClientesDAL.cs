@@ -110,6 +110,12 @@ namespace CirculoNegociosAdm.DAL
                     tCliente.horaSemanaAte = cliente.horaSemanaAte;
                     tCliente.horaSemanaDe = cliente.horaSemanaDe;
 
+                    tCliente.horaDomingoAte = cliente.horaDomingoAte;
+                    tCliente.horaDomingoDe = cliente.horaDomingoDe;
+
+                    tCliente.latitude = cliente.latitude;
+                    tCliente.longitude = cliente.longitude;
+
                     context.SaveChanges();
                 }
 
@@ -196,6 +202,11 @@ namespace CirculoNegociosAdm.DAL
             tCliente.horaFdsDe = cliente.horaFdsDe;
             tCliente.horaSemanaAte = cliente.horaSemanaAte;
             tCliente.horaSemanaDe = cliente.horaSemanaDe;
+            tCliente.horaDomingoAte = cliente.horaDomingoAte;
+            tCliente.horaDomingoDe = cliente.horaDomingoDe;
+
+            tCliente.latitude = cliente.latitude;
+            tCliente.longitude = cliente.longitude;
 
             return tCliente;
         }
@@ -235,7 +246,11 @@ namespace CirculoNegociosAdm.DAL
             objCliente.horaFdsDe = cliente.horaFdsDe;
             objCliente.horaSemanaAte = cliente.horaSemanaAte;
             objCliente.horaSemanaDe = cliente.horaSemanaDe;
+            objCliente.horaDomingoAte = cliente.horaDomingoAte;
+            objCliente.horaDomingoDe = cliente.horaDomingoDe;
 
+            objCliente.latitude = cliente.latitude;
+            objCliente.longitude = cliente.longitude;
 
             return objCliente;
         }
@@ -280,7 +295,10 @@ namespace CirculoNegociosAdm.DAL
                 tCliente.horaFdsDe = cliente.horaFdsDe;
                 tCliente.horaSemanaAte = cliente.horaSemanaAte;
                 tCliente.horaSemanaDe = cliente.horaSemanaDe;
-
+                tCliente.horaDomingoAte = cliente.horaDomingoAte;
+                tCliente.horaDomingoDe = cliente.horaDomingoDe;
+                tCliente.latitude = cliente.latitude;
+                tCliente.longitude = cliente.longitude;
 
                 lstClientesEntity.Add(tCliente);
             }

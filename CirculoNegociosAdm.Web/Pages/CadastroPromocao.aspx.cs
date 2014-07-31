@@ -55,6 +55,14 @@ namespace CirculoNegociosAdm.Pages
             ddlEstado.DataTextField = "Nome";
             ddlEstado.DataBind();
             ddlEstado.Items.Insert(0, "Selecionar...");
+
+            ddlTipoPromocao.DataSource = new TipoPromocaoBusiness().ConsultaTodosTipoPromocao();
+            ddlTipoPromocao.DataValueField = "id";
+            ddlTipoPromocao.DataTextField = "Nome";
+            ddlTipoPromocao.DataBind();
+            ddlTipoPromocao.Items.Insert(0, "Selecionar...");
+
+
         }
 
         private void Alert(string mensagem)
@@ -77,6 +85,7 @@ namespace CirculoNegociosAdm.Pages
             objPromocao.titulo = txtTitulo.Text;
             ativo = rdlAtivo.SelectedValue == "1" ? true : false;
             objPromocao.Ativo = ativo;
+            objPromocao.idTipoPromocao = Convert.ToInt32(ddlTipoPromocao.SelectedValue);
 
             int idPromocao = promocaoBusiness.InserePromocao(objPromocao);
 
@@ -130,6 +139,7 @@ namespace CirculoNegociosAdm.Pages
 
             ddlCliente.SelectedIndex = 0;
             ddlEstado.SelectedIndex = 0;
+            ddlTipoPromocao.SelectedIndex = 0;
         }
     }
 }

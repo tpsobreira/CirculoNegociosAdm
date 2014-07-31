@@ -148,6 +148,24 @@ namespace CirculoNegociosAdm.Pages {
         protected global::System.Web.UI.WebControls.TextBox txtComplemento;
         
         /// <summary>
+        /// txtLatitude control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLatitude;
+        
+        /// <summary>
+        /// txtLongitude control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLongitude;
+        
+        /// <summary>
         /// txtTelefone1 control.
         /// </summary>
         /// <remarks>
@@ -193,6 +211,15 @@ namespace CirculoNegociosAdm.Pages {
         protected global::System.Web.UI.WebControls.DropDownList ddlSubCategoria;
         
         /// <summary>
+        /// ddlPlanos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPlanos;
+        
+        /// <summary>
         /// txtServicos control.
         /// </summary>
         /// <remarks>
@@ -220,22 +247,58 @@ namespace CirculoNegociosAdm.Pages {
         protected global::System.Web.UI.WebControls.TextBox txtHoraSemanaAte;
         
         /// <summary>
-        /// txtHoraFdsDe control.
+        /// txtHoraSabDe control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHoraFdsDe;
+        protected global::System.Web.UI.WebControls.TextBox txtHoraSabDe;
         
         /// <summary>
-        /// txtHoraFdsAte control.
+        /// txtHoraSabAte control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHoraFdsAte;
+        protected global::System.Web.UI.WebControls.TextBox txtHoraSabAte;
+        
+        /// <summary>
+        /// chkSabado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkSabado;
+        
+        /// <summary>
+        /// txtHoraDomingoDe control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtHoraDomingoDe;
+        
+        /// <summary>
+        /// txtHoraDomingoAte control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtHoraDomingoAte;
+        
+        /// <summary>
+        /// chkDomingo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkDomingo;
         
         /// <summary>
         /// txtObservacoes control.

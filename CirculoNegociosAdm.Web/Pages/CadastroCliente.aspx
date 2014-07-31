@@ -121,6 +121,22 @@
         </tr>
         <tr>
             <td>
+                Latitude:
+            </td>
+            <td>
+                Longitude:
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:TextBox ID="txtLatitude" runat="server" Width="300px"></asp:TextBox>
+            </td>
+            <td>
+                <asp:TextBox ID="txtLongitude" runat="server" Width="300px"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 Telefone 1:
             </td>
             <td>
@@ -157,10 +173,17 @@
             <td>
                 Sub-Categoria:
             </td>
+            <td>
+                Plano:
+            </td>
         </tr>
         <tr>
             <td>
                 <asp:DropDownList ID="ddlSubCategoria" runat="server" Width="300px">
+                </asp:DropDownList>
+            </td>
+            <td>
+                <asp:DropDownList ID="ddlPlanos" runat="server" Width="300px">
                 </asp:DropDownList>
             </td>
         </tr>
@@ -181,9 +204,16 @@
                 <asp:TextBox ID="txtHoraSemanaDe" runat="server" Width="80px"></asp:TextBox>até<asp:TextBox
                     ID="txtHoraSemanaAte" runat="server" Width="80px"></asp:TextBox>
                 <br />
-                Finais de Semana
-                <asp:TextBox ID="txtHoraFdsDe" runat="server" Width="80px"></asp:TextBox>até<asp:TextBox
-                    ID="txtHoraFdsAte" runat="server" Width="80px"></asp:TextBox>
+                Sábado:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:TextBox ID="txtHoraSabDe" runat="server" Width="80px"></asp:TextBox>até<asp:TextBox
+                    ID="txtHoraSabAte" runat="server" Width="80px"></asp:TextBox><asp:CheckBox ID="chkSabado"
+                        runat="server" Text="Não Abre"/>
+                    <br />
+                    Domingo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:TextBox ID="txtHoraDomingoDe" runat="server" Width="80px"></asp:TextBox>até<asp:TextBox
+                    ID="txtHoraDomingoAte" runat="server" Width="80px"></asp:TextBox><asp:CheckBox ID="chkDomingo"
+                        runat="server" Text="Não Abre"/>
+
             </td>
         </tr>
         <tr>

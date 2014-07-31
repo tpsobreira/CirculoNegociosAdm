@@ -50,7 +50,7 @@ namespace CirculoNegociosAdm.Pages
             objCliente.endereco = txtEndereco.Text;
             objCliente.estado = txtEstado.Text;
             objCliente.bairro = txtBairro.Text;
-            objCliente.Funcionamento = string.Format("Util: {0} as {1} | Final: {2} as {3}", txtHoraSemanaDe.Text, txtHoraSemanaAte.Text, txtHoraFdsDe.Text, txtHoraFdsAte.Text);
+            objCliente.Funcionamento = string.Format("Util: {0} as {1} | Final: {2} as {3}", txtHoraSemanaDe.Text, txtHoraSemanaAte.Text, txtHoraSabDe.Text, txtHoraSabAte.Text);
             objCliente.idCategoriaCliente = Convert.ToInt32(ddlCategoria.SelectedValue);
             objCliente.idSubCategoriaCliente = Convert.ToInt32(ddlSubCategoria.SelectedValue);
             objCliente.inscricaoEstadual = txtIncricaoEstadual.Text;
@@ -59,10 +59,35 @@ namespace CirculoNegociosAdm.Pages
             objCliente.observacoes = txtObservacoes.Text;
             objCliente.razaoSocial = txtRazaoSocial.Text;
             objCliente.servicos = txtServicos.Text;
-            objCliente.horaFdsAte = txtHoraFdsAte.Text;
-            objCliente.horaFdsDe = txtHoraFdsDe.Text;
+
+            objCliente.latitude = txtLatitude.Text;
+            objCliente.longitude = txtLongitude.Text;
+
+            if (chkSabado.Checked)//Nao trabalha no Sabado
+            {
+                objCliente.horaFdsAte = "99:99";
+                objCliente.horaFdsDe = "99:99";
+            }
+            else
+            {
+                objCliente.horaFdsAte = txtHoraSabAte.Text;
+                objCliente.horaFdsDe = txtHoraSabDe.Text;
+            }
+
             objCliente.horaSemanaAte = txtHoraSemanaAte.Text;
             objCliente.horaSemanaDe = txtHoraSemanaDe.Text;
+
+            if (chkDomingo.Checked)//Nao trabalha Domingo
+            {
+                objCliente.horaDomingoAte = "99:99";
+                objCliente.horaDomingoDe = "99:99";
+            }
+            else
+            {
+                objCliente.horaDomingoAte = txtHoraDomingoAte.Text;
+                objCliente.horaDomingoDe = txtHoraDomingoDe.Text;
+            }
+
             objCliente.site = txtSite.Text;
             objCliente.telefone1 = txtTelefone1.Text;
             objCliente.telefone2 = txtTelefone2.Text;
@@ -100,7 +125,7 @@ namespace CirculoNegociosAdm.Pages
             objCliente.endereco = txtEndereco.Text;
             objCliente.estado = txtEstado.Text;
             objCliente.bairro = txtBairro.Text;
-            objCliente.Funcionamento = string.Format("Util: {0} as {1} | Final: {2} as {3}", txtHoraSemanaDe.Text, txtHoraSemanaAte.Text, txtHoraFdsDe.Text, txtHoraFdsAte.Text);
+            objCliente.Funcionamento = string.Format("Util: {0} as {1} | Final: {2} as {3}", txtHoraSemanaDe.Text, txtHoraSemanaAte.Text, txtHoraSabDe.Text, txtHoraSabAte.Text);
             
 
             objCliente.idCategoriaCliente = Convert.ToInt32(ddlCategoria.SelectedValue);
@@ -111,10 +136,35 @@ namespace CirculoNegociosAdm.Pages
             objCliente.observacoes = txtObservacoes.Text;
             objCliente.razaoSocial = txtRazaoSocial.Text;
             objCliente.servicos = txtServicos.Text;
-            objCliente.horaFdsAte = txtHoraFdsAte.Text;
-            objCliente.horaFdsDe = txtHoraFdsDe.Text;
+
+            objCliente.latitude = txtLatitude.Text;
+            objCliente.longitude = txtLongitude.Text;
+
+            if (chkSabado.Checked)//Nao trabalha no Sabado
+            {
+                objCliente.horaFdsAte = "99:99";
+                objCliente.horaFdsDe = "99:99";
+            }
+            else
+            {
+                objCliente.horaFdsAte = txtHoraSabAte.Text;
+                objCliente.horaFdsDe = txtHoraSabDe.Text;
+            }
+
             objCliente.horaSemanaAte = txtHoraSemanaAte.Text;
             objCliente.horaSemanaDe = txtHoraSemanaDe.Text;
+
+            if (chkDomingo.Checked)//Nao trabalha Domingo
+            {
+                objCliente.horaDomingoAte = "99:99";
+                objCliente.horaDomingoDe = "99:99";
+            }
+            else
+            {
+                objCliente.horaDomingoAte = txtHoraDomingoAte.Text;
+                objCliente.horaDomingoDe = txtHoraDomingoDe.Text;
+            }
+
             objCliente.site = txtSite.Text;
             objCliente.telefone1 = txtTelefone1.Text;
             objCliente.telefone2 = txtTelefone2.Text;
@@ -231,8 +281,8 @@ namespace CirculoNegociosAdm.Pages
             txtEmail.Text = string.Empty;
             txtEndereco.Text = string.Empty;
             txtEstado.Text = string.Empty;
-            txtHoraFdsAte.Text = string.Empty;
-            txtHoraFdsDe.Text = string.Empty;
+            txtHoraSabAte.Text = string.Empty;
+            txtHoraSabDe.Text = string.Empty;
             txtHoraSemanaAte.Text = string.Empty;
             txtHoraSemanaDe.Text = string.Empty;
             txtIncricaoEstadual.Text = string.Empty;
@@ -263,8 +313,15 @@ namespace CirculoNegociosAdm.Pages
             txtEmail.Text = objCliente.email;
             txtEndereco.Text = objCliente.endereco;
             txtEstado.Text = objCliente.estado;
-            txtHoraFdsAte.Text = objCliente.horaFdsAte;
-            txtHoraFdsDe.Text = objCliente.horaFdsDe;
+            txtHoraSabAte.Text = objCliente.horaFdsAte;
+            txtHoraSabDe.Text = objCliente.horaFdsDe;
+
+            txtHoraDomingoAte.Text = objCliente.horaDomingoAte;
+            txtHoraDomingoDe.Text = objCliente.horaDomingoDe;
+
+            txtLatitude.Text = objCliente.latitude;
+            txtLongitude.Text = objCliente.longitude;
+
             txtHoraSemanaAte.Text = objCliente.horaSemanaAte;
             txtHoraSemanaDe.Text = objCliente.horaSemanaDe;
             txtIncricaoEstadual.Text = objCliente.inscricaoEstadual;
@@ -299,6 +356,11 @@ namespace CirculoNegociosAdm.Pages
             ddlCategoria.DataBind();
             ddlCategoria.Items.Insert(0, "Selecione...");
 
+            ddlPlanos.DataSource = new PlanoBusiness().ConsultaTodosPlanos();
+            ddlPlanos.DataValueField = "id";
+            ddlPlanos.DataTextField = "Nome";
+            ddlPlanos.DataBind();
+            ddlPlanos.Items.Insert(0, "Selecione...");
         }
 
         protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)

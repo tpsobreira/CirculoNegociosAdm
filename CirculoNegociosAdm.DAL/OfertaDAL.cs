@@ -116,6 +116,7 @@ namespace CirculoNegociosAdm.DAL
             tb.responsavelUltimaAlteracao = oferta.responsavelUltimaAlteracao;
             tb.titulo = oferta.titulo;
             tb.estado = oferta.estado;
+            tb.Ativo = oferta.Ativo;
 
             return tb;
         }

@@ -48,6 +48,7 @@
                         <asp:MenuItem NavigateUrl="~/Pages/CadastroBanner.aspx" Text="Cadastro Banner" />
                         <asp:MenuItem NavigateUrl="~/Pages/CadastroOferta.aspx" Text="Cadastro Oferta" />
                         <asp:MenuItem NavigateUrl="~/Pages/CadastroPromocao.aspx" Text="Cadastro Promoção" />
+                        <asp:MenuItem NavigateUrl="~/Pages/CadastroVideos.aspx" Text="Cadastro Vídeos" />
                         <asp:MenuItem NavigateUrl="~/Account/Register.aspx" Text="Cadastro Administradores" />
                         <asp:MenuItem NavigateUrl="~/Pages/CadastrosAuxiliares.aspx" Text="Cadastros Auxiliares" />
                     </Items>

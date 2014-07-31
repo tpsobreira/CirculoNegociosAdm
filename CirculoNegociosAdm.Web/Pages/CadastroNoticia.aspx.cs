@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using CirculoNegociosAdm.Business;
 using CirculoNegociosAdm.Entity;
 using System.IO;
+using System.Web.Security;
 
 namespace CirculoNegociosAdm.Pages
 {
@@ -41,6 +42,7 @@ namespace CirculoNegociosAdm.Pages
                 noticia.Ativo = ativo;
                 noticia.dataHoraAte = Convert.ToDateTime(Convert.ToDateTime(txtDataHoraAte.Text).ToString("s"));
                 noticia.dataHoraDe = Convert.ToDateTime(Convert.ToDateTime(txtDataHoraDe.Text).ToString("s"));
+                noticia.responsavelInsercao = Membership.GetUser().UserName;
 
                 int idNoticia = noticiaBusiness.InsereNoticia(noticia);
 

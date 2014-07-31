@@ -114,6 +114,7 @@ namespace CirculoNegociosAdm.DAL
             tb.responsavelUltimaAlteracao = promocao.responsavelUltimaAlteracao;
             tb.titulo = promocao.titulo;
             tb.estado = promocao.estado;
+            tb.Ativo = promocao.Ativo;
 
             return tb;
         }
@@ -135,6 +136,7 @@ namespace CirculoNegociosAdm.DAL
                 obj.link = item.link;
                 obj.responsavelUltimaAlteracao = item.responsavelUltimaAlteracao;
                 obj.titulo = item.titulo;
+                obj.Ativo = item.Ativo;
 
                 lstPromocaosEntity.Add(obj);
             }

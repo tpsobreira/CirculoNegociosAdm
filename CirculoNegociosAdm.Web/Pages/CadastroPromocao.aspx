@@ -11,11 +11,11 @@
             }
 
             caracteres = '0123456789';
-            separacao1 = '/';
+            separacao1 = '-';
             separacao2 = ' ';
             separacao3 = ':';
-            conjunto1 = 2;
-            conjunto2 = 5;
+            conjunto1 = 4;
+            conjunto2 = 7;
             conjunto3 = 10;
             conjunto4 = 13;
             conjunto5 = 16;
@@ -45,6 +45,9 @@
     <table>
         <tr>
             <td>
+                Tipo de Promoção:
+            </td>
+            <td>
                 Cliente:
             </td>
             <td>
@@ -52,6 +55,10 @@
             </td>
         </tr>
         <tr>
+            <td>
+                <asp:DropDownList ID="ddlTipoPromocao" runat="server" Width="250px">
+                </asp:DropDownList>
+            </td>
             <td>
                 <asp:DropDownList ID="ddlCliente" runat="server" Width="250px">
                 </asp:DropDownList>

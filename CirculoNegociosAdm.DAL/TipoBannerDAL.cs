@@ -67,30 +67,30 @@ namespace CirculoNegociosAdm.DAL
         {
             List<TipoBannerEntity> lst = new List<TipoBannerEntity>();
 
-            foreach (var categoriaTipoBanner in tbTipoBanner)
+            foreach (var TipoBanner in tbTipoBanner)
             {
-                TipoBannerEntity categoria = new TipoBannerEntity();
+                TipoBannerEntity tipoBanner = new TipoBannerEntity();
 
-                categoria.DataUltimaAlteracao = categoriaTipoBanner.DataUltimaAlteracao;
-                categoria.id = categoriaTipoBanner.id;
-                categoria.Nome = categoriaTipoBanner.Nome;
-                categoria.responsavelUltimaAlteracao = categoriaTipoBanner.responsavelUltimaAlteracao;
+                tipoBanner.DataUltimaAlteracao = TipoBanner.DataUltimaAlteracao;
+                tipoBanner.id = TipoBanner.id;
+                tipoBanner.Nome = TipoBanner.Nome;
+                tipoBanner.responsavelUltimaAlteracao = TipoBanner.responsavelUltimaAlteracao;
 
-                lst.Add(categoria);
+                lst.Add(tipoBanner);
 
             }
 
             return lst;
         }
 
-        private tbTipoBanner CastTipoBanner(TipoBannerEntity categoriaTipoBanner)
+        private tbTipoBanner CastTipoBanner(TipoBannerEntity TipoBanner)
         {
             tbTipoBanner tb = new tbTipoBanner();
 
-            tb.DataUltimaAlteracao = categoriaTipoBanner.DataUltimaAlteracao;
-            tb.id = categoriaTipoBanner.id;
-            tb.Nome = categoriaTipoBanner.Nome;
-            tb.responsavelUltimaAlteracao = categoriaTipoBanner.responsavelUltimaAlteracao;
+            tb.DataUltimaAlteracao = TipoBanner.DataUltimaAlteracao;
+            tb.id = TipoBanner.id;
+            tb.Nome = TipoBanner.Nome;
+            tb.responsavelUltimaAlteracao = TipoBanner.responsavelUltimaAlteracao;
 
             return tb;
         }

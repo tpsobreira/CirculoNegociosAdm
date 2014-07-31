@@ -113,6 +113,10 @@ namespace CirculoNegociosAdm.Pages
             banner.Rodape2 = txtTextoRodape2BannerPrincial.Text;
             banner.dataAte = Convert.ToDateTime(Convert.ToDateTime(txtDataHoraFinalBannerPrincipal.Text).ToString("s"));
             banner.dataDe = Convert.ToDateTime(Convert.ToDateTime(txtDataHoraInicialBannerPrincipal.Text).ToString("s"));
+
+            banner.dataAte = Convert.ToDateTime(Convert.ToDateTime(txtDataHoraFinalBannerPrincipal.Text).ToString("s"));
+            banner.dataDe = Convert.ToDateTime(Convert.ToDateTime(txtDataHoraInicialBannerPrincipal.Text).ToString("s"));
+
             banner.estado = ddlEstadoBannerPrincipal.SelectedValue;
             banner.responsavelUltimaAlteracao = Membership.GetUser().UserName;
             banner.DataUltimaAlteracao = DateTime.Now;
