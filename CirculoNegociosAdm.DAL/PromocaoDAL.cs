@@ -30,7 +30,8 @@ namespace CirculoNegociosAdm.DAL
                                link = p.link,
                                nomeCliente = c.nome,
                                responsavelUltimaAlteracao = p.responsavelUltimaAlteracao,
-                               titulo = p.titulo
+                               titulo = p.titulo,
+                               idTipoPromocao = p.idTipoPromocao
                            }).ToList();
 
                 lstPromocoesEntity = ret;
@@ -115,6 +116,7 @@ namespace CirculoNegociosAdm.DAL
             tb.titulo = promocao.titulo;
             tb.estado = promocao.estado;
             tb.Ativo = promocao.Ativo;
+            tb.idTipoPromocao = promocao.idTipoPromocao;
 
             return tb;
         }
@@ -137,6 +139,7 @@ namespace CirculoNegociosAdm.DAL
                 obj.responsavelUltimaAlteracao = item.responsavelUltimaAlteracao;
                 obj.titulo = item.titulo;
                 obj.Ativo = item.Ativo;
+                obj.idTipoPromocao = item.idTipoPromocao;
 
                 lstPromocaosEntity.Add(obj);
             }

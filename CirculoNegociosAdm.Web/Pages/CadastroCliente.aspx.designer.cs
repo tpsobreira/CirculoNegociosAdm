@@ -328,6 +328,15 @@ namespace CirculoNegociosAdm.Pages {
         protected global::System.Web.UI.WebControls.FileUpload FileUpLogo;
         
         /// <summary>
+        /// hdLogoEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdLogoEdit;
+        
+        /// <summary>
         /// FileUpImg1 control.
         /// </summary>
         /// <remarks>
@@ -335,6 +344,15 @@ namespace CirculoNegociosAdm.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpImg1;
+        
+        /// <summary>
+        /// hdImg1Edit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdImg1Edit;
         
         /// <summary>
         /// FileUpImg2 control.
@@ -346,6 +364,15 @@ namespace CirculoNegociosAdm.Pages {
         protected global::System.Web.UI.WebControls.FileUpload FileUpImg2;
         
         /// <summary>
+        /// hdImg2Edit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdImg2Edit;
+        
+        /// <summary>
         /// FileUpImg3 control.
         /// </summary>
         /// <remarks>
@@ -353,6 +380,15 @@ namespace CirculoNegociosAdm.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpImg3;
+        
+        /// <summary>
+        /// hdImg3Edit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdImg3Edit;
         
         /// <summary>
         /// btnIncluir control.

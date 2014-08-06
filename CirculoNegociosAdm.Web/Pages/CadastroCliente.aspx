@@ -207,13 +207,12 @@
                 Sábado:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="txtHoraSabDe" runat="server" Width="80px"></asp:TextBox>até<asp:TextBox
                     ID="txtHoraSabAte" runat="server" Width="80px"></asp:TextBox><asp:CheckBox ID="chkSabado"
-                        runat="server" Text="Não Abre"/>
-                    <br />
-                    Domingo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        runat="server" Text="Não Abre" />
+                <br />
+                Domingo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="txtHoraDomingoDe" runat="server" Width="80px"></asp:TextBox>até<asp:TextBox
                     ID="txtHoraDomingoAte" runat="server" Width="80px"></asp:TextBox><asp:CheckBox ID="chkDomingo"
-                        runat="server" Text="Não Abre"/>
-
+                        runat="server" Text="Não Abre" />
             </td>
         </tr>
         <tr>
@@ -253,24 +252,28 @@
         <tr>
             <td>
                 <asp:FileUpload ID="FileUpLogo" runat="server" />
+                <asp:HiddenField ID="hdLogoEdit" runat="server" />
             </td>
             <td>
                 <asp:FileUpload ID="FileUpImg1" runat="server" />
+                <asp:HiddenField ID="hdImg1Edit" runat="server" />
             </td>
             <td>
                 <asp:FileUpload ID="FileUpImg2" runat="server" />
+                <asp:HiddenField ID="hdImg2Edit" runat="server" />
             </td>
             <td>
                 <asp:FileUpload ID="FileUpImg3" runat="server" />
+                <asp:HiddenField ID="hdImg3Edit" runat="server" />
             </td>
         </tr>
         <tr>
             <td colspan="2">
                 <asp:Button ID="btnIncluir" runat="server" Text="Concluir" OnClick="btnIncluir_Click" />
-                <asp:Button ID="btnAlterar" runat="server" Text="Alterar" OnClick="btnAlterar_Click" Visible="false" />
+                <asp:Button ID="btnAlterar" runat="server" Text="Alterar" OnClick="btnAlterar_Click"
+                    Visible="false" />
                 &nbsp;
-                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
-                    onclick="btnCancelar_Click" />
+                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
             </td>
         </tr>
     </table>
@@ -288,7 +291,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="">
                             <ItemTemplate>
-                                <asp:LinkButton ID="lnkDeletar" runat="server" CommandName="Deletar" CommandArgument='<%#DataBinder.Eval(Container.DataItem,"id") %>'>Deletar</asp:LinkButton>
+                                <asp:LinkButton ID="lnkDeletar" runat="server" CommandName="Deletar" CommandArgument='<%#DataBinder.Eval(Container.DataItem,"id") %>' OnClientClick="return confirm('Deseja Mesmo Deletar o Cliente');">Deletar</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Nome PF">

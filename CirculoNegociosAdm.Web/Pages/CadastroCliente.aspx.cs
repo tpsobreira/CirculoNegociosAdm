@@ -60,6 +60,8 @@ namespace CirculoNegociosAdm.Pages
             objCliente.razaoSocial = txtRazaoSocial.Text;
             objCliente.servicos = txtServicos.Text;
 
+            objCliente.idPlano = Convert.ToInt32(ddlPlanos.SelectedValue);
+
             objCliente.latitude = txtLatitude.Text;
             objCliente.longitude = txtLongitude.Text;
 
@@ -169,6 +171,8 @@ namespace CirculoNegociosAdm.Pages
             objCliente.telefone1 = txtTelefone1.Text;
             objCliente.telefone2 = txtTelefone2.Text;
 
+            AlteraImagensCliente(Convert.ToInt32(hdIdClienteEdit.Value));
+
             string mensagem = clienteBusiness.AtualizaCliente(Convert.ToInt32(hdIdClienteEdit.Value), objCliente);
 
             this.Alert(mensagem);
@@ -202,6 +206,56 @@ namespace CirculoNegociosAdm.Pages
 
             }
 
+        }
+
+        private void AlteraImagensCliente(int idCliente)
+        {
+            string caminhoLogo = string.Empty;
+            string caminhoImg1 = string.Empty;
+            string caminhoImg2 = string.Empty;
+            string caminhoImg3 = string.Empty;
+
+            if (FileUpLogo.HasFile)
+            {
+                caminhoLogo = Server.MapPath(@"~/LogotipoClientes/" + idCliente) + @"\" + FileUpLogo.FileName;
+                File.Delete(hdLogoEdit.Value);
+                FileUpLogo.SaveAs(caminhoLogo);
+            }
+
+            if (FileUpImg1.HasFile)
+            {
+                caminhoImg1 = Server.MapPath(@"~/ImgClientes/" + idCliente) + @"\" + FileUpImg1.FileName;
+                File.Delete(hdImg1Edit.Value);
+                FileUpImg1.SaveAs(caminhoImg1);
+            }
+
+            if (FileUpImg2.HasFile)
+            {
+                caminhoImg2 = Server.MapPath(@"~/ImgClientes/" + idCliente) + @"\" + FileUpImg2.FileName;
+                File.Delete(hdImg2Edit.Value);
+                FileUpImg2.SaveAs(caminhoImg2);
+            }
+
+            if (FileUpImg3.HasFile)
+            {
+                caminhoImg3 = Server.MapPath(@"~/ImgClientes/" + idCliente) + @"\" + FileUpImg3.FileName;
+                File.Delete(hdImg3Edit.Value);
+                FileUpImg3.SaveAs(caminhoImg3);
+            }
+
+            if (string.IsNullOrEmpty(caminhoLogo))
+                caminhoLogo = hdLogoEdit.Value;
+
+            if (string.IsNullOrEmpty(caminhoImg1))
+                caminhoImg1 = hdImg1Edit.Value;
+
+            if (string.IsNullOrEmpty(caminhoImg2))
+                caminhoImg2 = hdImg2Edit.Value;
+
+            if (string.IsNullOrEmpty(caminhoImg3))
+                caminhoImg3 = hdImg3Edit.Value;
+
+            clienteBusiness.AtualizaImagensCliente(idCliente, caminhoLogo, caminhoImg1, caminhoImg2, caminhoImg3);
         }
 
         private void SalvaImagensCliente(int idCliente)
@@ -344,8 +398,14 @@ namespace CirculoNegociosAdm.Pages
             ddlSubCategoria.Items.Insert(0, "Selecione...");
 
             ddlSubCategoria.SelectedValue = objCliente.idSubCategoriaCliente.ToString();
+            ddlPlanos.SelectedValue = objCliente.idPlano.ToString();
 
             rdlAtivo.SelectedValue = Convert.ToInt32(objCliente.ativo).ToString();
+
+            hdImg1Edit.Value = objCliente.anexoImagem1Path;
+            hdImg2Edit.Value = objCliente.anexoImagem2Path;
+            hdImg3Edit.Value = objCliente.anexoImagem3Path;
+            hdLogoEdit.Value = objCliente.anexoLogoPath;
         }
 
         private void PreencheCombos()

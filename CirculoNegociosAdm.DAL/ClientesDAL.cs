@@ -78,10 +78,10 @@ namespace CirculoNegociosAdm.DAL
                                           where p.id == idCliente
                                           select p).First();
 
-                    tCliente.anexoImagem1Path = cliente.anexoImagem1Path;
-                    tCliente.anexoImagem2Path = cliente.anexoImagem2Path;
-                    tCliente.anexoImagem3Path = cliente.anexoImagem3Path;
-                    tCliente.anexoLogoPath = cliente.anexoLogoPath;
+                    //tCliente.anexoImagem1Path = cliente.anexoImagem1Path;
+                    //tCliente.anexoImagem2Path = cliente.anexoImagem2Path;
+                    //tCliente.anexoImagem3Path = cliente.anexoImagem3Path;
+                    //tCliente.anexoLogoPath = cliente.anexoLogoPath;
                     tCliente.ativo = cliente.ativo;
                     tCliente.cep = cliente.cep;
                     tCliente.cidade = cliente.cidade;
@@ -205,6 +205,8 @@ namespace CirculoNegociosAdm.DAL
             tCliente.horaDomingoAte = cliente.horaDomingoAte;
             tCliente.horaDomingoDe = cliente.horaDomingoDe;
 
+            tCliente.idPlano = cliente.idPlano;
+
             tCliente.latitude = cliente.latitude;
             tCliente.longitude = cliente.longitude;
 
@@ -248,6 +250,8 @@ namespace CirculoNegociosAdm.DAL
             objCliente.horaSemanaDe = cliente.horaSemanaDe;
             objCliente.horaDomingoAte = cliente.horaDomingoAte;
             objCliente.horaDomingoDe = cliente.horaDomingoDe;
+
+            objCliente.idPlano = cliente.idPlano;
 
             objCliente.latitude = cliente.latitude;
             objCliente.longitude = cliente.longitude;
